@@ -127,6 +127,41 @@ img {
   transition: transform 0.3s, opacity 0.3s;
 }
 
+
+.promo-banner {
+  background: linear-gradient(90deg, #f5b700 0%, #ffd24d 100%);
+  color: #1a365d;
+  border-bottom: 1px solid rgba(26,54,93,0.15);
+}
+
+.promo-banner-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 14px 0;
+  text-align: center;
+  flex-wrap: wrap;
+}
+
+.promo-label {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(26,54,93,0.1);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.promo-banner p {
+  margin: 0;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
 /* ---- Hero ---- */
 .hero {
   position: relative;
@@ -664,6 +699,19 @@ img {
 
   .hero-sub {
     font-size: 1rem;
+  }
+
+  .promo-banner-inner {
+    gap: 8px;
+    padding: 12px 0;
+  }
+
+  .promo-label {
+    font-size: 0.78rem;
+  }
+
+  .promo-banner p {
+    font-size: 0.95rem;
   }
 
   .hero-buttons {
