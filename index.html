@@ -65,9 +65,18 @@
 </script>
 
 
-<!-- HTTPS Redirect (skip local preview) -->
+<!-- HTTPS Redirect (skip local/staging preview hosts) -->
 <script>
-const isLocalPreviewHost = ["localhost", "127.0.0.1", "::1"].includes(location.hostname);
+const hostname = location.hostname;
+const isIpv4Loopback = /^127(?:\.\d{1,3}){3}$/.test(hostname);
+const isLocalPreviewHost =
+  ["localhost", "::1"].includes(hostname) ||
+  isIpv4Loopback ||
+  hostname.endsWith(".local") ||
+  hostname.endsWith(".localhost") ||
+  hostname.endsWith(".internal") ||
+  hostname.endsWith(".test");
+
 if (location.protocol !== "https:" && !isLocalPreviewHost) {
   location.replace("https://" + location.host + location.pathname + location.search + location.hash);
 }
