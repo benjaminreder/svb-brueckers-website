@@ -567,10 +567,16 @@ img {
 .faq-list {
   max-width: 860px;
   margin: 0 auto;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
+  border: 1px solid #d8e0e8;
+  border-radius: 16px;
   background: white;
   overflow: hidden;
+  box-shadow: 0 14px 36px rgba(15, 23, 42, 0.06);
+}
+
+.faq-intro {
+  max-width: 760px;
+  margin-bottom: 34px;
 }
 
 .faq-item + .faq-item {
@@ -596,11 +602,12 @@ img {
   line-height: 1.4;
   padding: 22px 24px;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 .faq-trigger:hover {
-  background: #f9fbfd;
+  background: #f7fafc;
+  color: #0f172a;
 }
 
 .faq-trigger:focus-visible {
@@ -615,22 +622,25 @@ img {
   width: 24px;
   min-width: 24px;
   color: var(--accent);
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   font-weight: 400;
   line-height: 1;
+  transition: transform 0.25s ease;
 }
 
 .faq-panel {
   max-height: 0;
   opacity: 0;
   overflow: hidden;
-  transition: max-height 0.32s ease, opacity 0.22s ease;
+  transition: max-height 0.4s ease, opacity 0.28s ease;
 }
 
 .faq-panel p {
   margin: 0;
   padding: 0 24px 22px 62px;
   color: var(--text-light);
+  line-height: 1.72;
+  max-width: 72ch;
 }
 
 .faq-item.is-open .faq-panel {
@@ -638,7 +648,11 @@ img {
 }
 
 .faq-item.is-open .faq-trigger {
-  background: #f9fbfd;
+  background: #f5f8fb;
+}
+
+.faq-item.is-open .faq-symbol {
+  transform: rotate(180deg);
 }
 
 @media (max-width: 768px) {
@@ -651,6 +665,7 @@ img {
   .faq-panel p {
     padding: 0 18px 18px 52px;
     font-size: 0.95rem;
+    line-height: 1.65;
   }
 }
 

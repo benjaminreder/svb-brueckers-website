@@ -18,7 +18,7 @@ window.addEventListener('scroll', function () {
 });
 
 // FAQ Accordion (single-open)
-document.addEventListener('DOMContentLoaded', function () {
+function initFaqAccordion() {
   var accordion = document.querySelector('[data-faq-accordion]');
   if (!accordion) return;
 
@@ -62,6 +62,7 @@ document.addEventListener('DOMContentLoaded', function () {
   items.forEach(function (item) {
     var panel = item.querySelector('.faq-panel');
     panel.hidden = false;
+    panel.removeAttribute('hidden');
     panel.style.maxHeight = '0px';
     panel.style.opacity = '0';
 
@@ -69,13 +70,18 @@ document.addEventListener('DOMContentLoaded', function () {
     trigger.addEventListener('click', function () {
       var isOpen = item.classList.contains('is-open');
 
+      if (isOpen) {
+        closeItem(item);
+        return;
+      }
+
       items.forEach(function (otherItem) {
-        closeItem(otherItem);
+        if (otherItem !== item) {
+          closeItem(otherItem);
+        }
       });
 
-      if (!isOpen) {
-        openItem(item);
-      }
+      openItem(item);
     });
   });
 
@@ -85,4 +91,10 @@ document.addEventListener('DOMContentLoaded', function () {
       openItemElement.style.maxHeight = openItemElement.scrollHeight + 'px';
     }
   });
-});
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initFaqAccordion);
+} else {
+  initFaqAccordion();
+}
