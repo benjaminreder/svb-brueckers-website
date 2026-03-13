@@ -129,7 +129,7 @@ img {
 
 .promo-banner {
   margin-top: 70px;
-  background: linear-gradient(90deg, #f5b700 0%, #ffd24d 100%);
+  background: var(--accent);
   color: #1a365d;
   border-bottom: 1px solid rgba(26,54,93,0.15);
 }
