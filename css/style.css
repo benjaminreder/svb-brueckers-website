@@ -193,6 +193,31 @@ img {
   background: linear-gradient(180deg, rgba(26,54,93,0.85) 0%, rgba(26,54,93,0.7) 100%);
 }
 
+.hero-cost-badge {
+  position: absolute;
+  top: 56px;
+  right: clamp(18px, 5vw, 80px);
+  z-index: 1;
+  width: clamp(170px, 20vw, 255px);
+  aspect-ratio: 1 / 1;
+  display: grid;
+  place-content: center;
+  gap: 2px;
+  text-align: center;
+  color: #fff;
+  font-weight: 700;
+  line-height: 1.2;
+  font-size: clamp(1.25rem, 1.9vw, 1.95rem);
+  background: linear-gradient(160deg, #ef8f4d 0%, var(--accent) 100%);
+  box-shadow: 0 16px 30px rgba(15, 23, 42, 0.26), inset 0 0 0 2px rgba(255,255,255,0.22);
+  clip-path: polygon(50% 0%, 58% 9%, 69% 3%, 74% 14%, 86% 9%, 87% 22%, 98% 20%, 95% 31%, 100% 42%, 90% 49%, 100% 58%, 95% 69%, 98% 80%, 87% 78%, 86% 91%, 74% 86%, 69% 97%, 58% 91%, 50% 100%, 42% 91%, 31% 97%, 26% 86%, 14% 91%, 13% 78%, 2% 80%, 5% 69%, 0% 58%, 10% 51%, 0% 42%, 5% 31%, 2% 20%, 13% 22%, 14% 9%, 26% 14%, 31% 3%, 42% 9%);
+  transform: rotate(-8deg);
+}
+
+.hero-cost-badge span {
+  display: block;
+}
+
 .hero-content {
   position: relative;
   z-index: 1;
@@ -1011,7 +1036,16 @@ img {
   }
 
   .hero-content {
-    transform: translateY(-16px);
+    transform: translateY(8px);
+  }
+
+  .hero-cost-badge {
+    top: 26px;
+    right: 50%;
+    transform: translateX(50%) rotate(0deg);
+    width: min(195px, 56vw);
+    font-size: clamp(1.02rem, 4.6vw, 1.3rem);
+    gap: 1px;
   }
 
   .promo-banner-inner {
