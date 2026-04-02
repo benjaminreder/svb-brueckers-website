@@ -1075,6 +1075,11 @@ img {
     transform: rotate(-3deg) !important;
     width: min(118px, 34vw) !important;
     font-size: clamp(0.68rem, 2.7vw, 0.9rem) !important;
+    top: 12px;
+    right: 10px;
+    transform: rotate(-3deg);
+    width: min(118px, 34vw);
+    font-size: clamp(0.68rem, 2.7vw, 0.9rem);
     gap: 1px;
   }
 
