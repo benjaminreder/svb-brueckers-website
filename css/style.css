@@ -340,7 +340,7 @@ img {
 
 /* ---- Sections ---- */
 .section {
-  padding: 80px 0;
+  padding: 64px 0;
 }
 
 .section-alt {
@@ -573,26 +573,6 @@ img {
   color: var(--accent);
   font-weight: 700;
   font-size: 0.82rem;
-}
-
-.services-cta {
-  margin-top: 30px;
-  text-align: center;
-  padding: 28px 20px 6px;
-  border-top: 1px solid #e3ebf4;
-}
-
-.services-cta-title {
-  font-family: Georgia, serif;
-  font-size: clamp(1.3rem, 2vw, 1.6rem);
-  color: #132b48;
-  margin-bottom: 8px;
-}
-
-.services-cta p {
-  max-width: 680px;
-  margin: 0 auto;
-  color: #334155;
 }
 
 /* ---- About ---- */
@@ -1118,7 +1098,7 @@ img {
 
   /* Sections Mobile */
   .section {
-    padding: 60px 0;
+    padding: 48px 0;
   }
 
   .grid-2 {
@@ -1152,11 +1132,6 @@ img {
     padding-left: 0;
     border-top: 1px solid #d6e1ed;
     padding-top: 20px;
-  }
-
-  .services-cta {
-    margin-top: 20px;
-    padding: 18px 0 0;
   }
 
   /* About Mobile */
