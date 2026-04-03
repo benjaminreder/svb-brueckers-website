@@ -149,7 +149,7 @@ img {
 
 .hero-cost-badge {
   position: absolute;
-  top: 56px;
+  top: 74px;
   right: clamp(18px, 5vw, 80px);
   z-index: 1;
   width: clamp(170px, 20vw, 255px);
@@ -1023,7 +1023,7 @@ img {
   }
 
   .hero-cost-badge {
-    top: 64px;
+    top: 82px;
     right: 8px;
     left: auto;
     transform: rotate(-3deg);
