@@ -1000,7 +1000,7 @@ img {
   /* Hero Mobile */
   .hero {
     min-height: 80vh;
-    padding: 92px 20px 150px;
+    padding: 116px 20px 150px;
   }
 
   .hero h1 {
@@ -1012,7 +1012,7 @@ img {
   }
 
   .hero-content {
-    transform: translateY(26px);
+    transform: translateY(44px);
   }
 
   .cost-footnote {
@@ -1034,7 +1034,12 @@ img {
   }
 
   .hero-badge {
-    padding-right: 112px;
+    display: block;
+    width: 100%;
+    max-width: 560px;
+    margin: 0 auto 20px;
+    padding-right: 0;
+    text-align: center;
   }
 
   /* Sections Mobile */
