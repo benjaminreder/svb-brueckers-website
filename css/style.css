@@ -1012,7 +1012,7 @@ img {
   }
 
   .hero-content {
-    transform: translateY(8px);
+    transform: translateY(26px);
   }
 
   .cost-footnote {
@@ -1023,20 +1023,19 @@ img {
   }
 
   .hero-cost-badge {
-    top: 12px !important;
-    right: 10px !important;
-    left: auto !important;
-    transform: rotate(-3deg) !important;
-    width: min(118px, 34vw) !important;
-    font-size: clamp(0.68rem, 2.7vw, 0.9rem) !important;
-    top: 12px;
-    right: 10px;
+    top: 22px;
+    right: 8px;
+    left: auto;
     transform: rotate(-3deg);
-    width: min(118px, 34vw);
-    font-size: clamp(0.68rem, 2.7vw, 0.9rem);
-    gap: 1px;
+    width: min(106px, 30vw);
+    font-size: clamp(0.82rem, 3vw, 1rem);
+    line-height: 1;
+    gap: 0;
   }
 
+  .hero-badge {
+    padding-right: 112px;
+  }
 
   /* Sections Mobile */
   .section {
