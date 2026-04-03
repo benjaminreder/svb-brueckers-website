@@ -88,8 +88,10 @@ img {
 }
 
 .logo-text {
-  font-family: Georgia, serif;
-  font-size: 1.2rem;
+  font-family: inherit;
+  font-size: 1.08rem;
+  font-weight: 650;
+  letter-spacing: 0.01em;
 }
 
 .nav {
@@ -98,7 +100,10 @@ img {
 }
 
 .nav a {
-  font-size: 0.9rem;
+  font-family: inherit;
+  font-size: 0.93rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
   opacity: 0.85;
   transition: opacity 0.2s;
 }
@@ -210,9 +215,9 @@ img {
 
 .hero-badge {
   display: inline-block;
-  font-size: 1.1rem;
+  font-size: 1.03rem;
   font-weight: 600;
-  letter-spacing: 3px;
+  letter-spacing: 2.3px;
   color: var(--accent);
   margin-bottom: 20px;
 }
@@ -257,8 +262,10 @@ img {
   align-items: center;
   justify-content: center;
   padding: 14px 28px;
-  font-size: 1rem;
+  font-family: inherit;
+  font-size: 0.98rem;
   font-weight: 600;
+  letter-spacing: 0.01em;
   border-radius: 8px;
   border: none;
   cursor: pointer;
@@ -300,6 +307,16 @@ img {
 
 .btn-ghost:hover {
   background: #f8fafc;
+}
+
+
+.legal-title {
+  font-family: inherit;
+  font-size: 2rem;
+  line-height: 1.25;
+  margin-bottom: 32px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
 }
 
 /* ---- Sections ---- */
@@ -610,8 +627,9 @@ img {
   background: #e8f0fe;
   color: var(--primary);
   border-radius: 20px;
-  font-size: 1.05rem;
+  font-size: 0.92rem;
   font-weight: 500;
+  line-height: 1.35;
 }
 
 /* ---- Tags (Einzugsgebiet) ---- */
@@ -700,7 +718,8 @@ img {
 
 .benefit-card p {
   opacity: 0.85;
-  font-size: 1.1rem;
+  font-size: 0.98rem;
+  line-height: 1.6;
 }
 
 /* ---- Testimonials ---- */
@@ -767,7 +786,8 @@ img {
   color: var(--text-light);
   font-style: italic;
   margin-bottom: 16px;
-  font-size: 1.1rem;
+  font-size: 1rem;
+  line-height: 1.65;
 }
 
 .testimonial-author strong {
@@ -777,7 +797,7 @@ img {
 
 .testimonial-author span {
   color: var(--text-light);
-  font-size: 1.05rem;
+  font-size: 0.94rem;
 }
 
 
@@ -882,8 +902,8 @@ img {
 
   .faq-panel p {
     padding: 0 18px 18px 52px;
-    font-size: 1.1rem;
-    line-height: 1.65;
+    font-size: 0.97rem;
+    line-height: 1.62;
   }
 }
 
@@ -902,8 +922,10 @@ img {
 
 .form-group label {
   display: block;
+  font-family: inherit;
   font-weight: 600;
   font-size: 0.9rem;
+  letter-spacing: 0.01em;
   margin-bottom: 6px;
 }
 
@@ -950,7 +972,8 @@ img {
 
 .contact-item p {
   color: var(--text-light);
-  font-size: 1.1rem;
+  font-size: 0.98rem;
+  line-height: 1.55;
 }
 
 .contact-item a {
@@ -983,7 +1006,9 @@ img {
 }
 
 .footer-brand .logo-text {
-  font-family: Georgia, serif;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
 }
 
 .footer-links {
@@ -994,8 +1019,10 @@ img {
 
 .footer-links a,
 .footer-settings-link {
-  opacity: 0.7;
-  font-size: 0.9rem;
+  font-family: inherit;
+  opacity: 0.72;
+  font-size: 0.89rem;
+  font-weight: 500;
   transition: opacity 0.2s;
 }
 
@@ -1013,8 +1040,9 @@ img {
 }
 
 .footer-copy {
-  font-size: 1.05rem;
-  opacity: 0.5;
+  font-size: 0.82rem;
+  opacity: 0.48;
+  letter-spacing: 0.01em;
   width: 100%;
   text-align: center;
   margin-top: 8px;
@@ -1087,7 +1115,7 @@ img {
   }
 
   .nav a {
-    font-size: 1rem;
+    font-size: 0.96rem;
     padding: 8px 0;
   }
 
@@ -1279,11 +1307,14 @@ img {
   border-radius: 50px;
   font-size: 13px;
   font-weight: 600;
+  letter-spacing: 0.01em;
   display: flex;
   align-items: center;
   gap: 8px;
   text-decoration: none;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.22);
+  backdrop-filter: saturate(120%);
   z-index: 9999;
   transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
   animation: fabPulse 4s ease-in-out infinite;
@@ -1292,6 +1323,7 @@ img {
 .whatsapp-fab:hover {
   background: #1ebe5d;
   transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgba(15, 23, 42, 0.3);
 }
 
 .fab-icon {
