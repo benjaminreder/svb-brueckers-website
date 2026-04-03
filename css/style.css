@@ -287,6 +287,16 @@ img {
   flex-wrap: wrap;
 }
 
+.hero-footnote {
+  margin: 20px auto 0;
+  max-width: 760px;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.9);
+  text-align: center;
+  text-wrap: balance;
+}
+
 /* ---- Buttons ---- */
 .btn {
   display: inline-flex;
@@ -1066,6 +1076,13 @@ img {
 
   .hero-content {
     transform: translateY(8px);
+  }
+
+  .hero-footnote {
+    margin-top: 14px;
+    font-size: 0.74rem;
+    line-height: 1.42;
+    max-width: 95%;
   }
 
   .hero-cost-badge {
