@@ -93,8 +93,116 @@ function initFaqAccordion() {
   });
 }
 
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initFaqAccordion);
-} else {
+function initConsentAndMaps() {
+  var CONSENT_KEY = 'siteConsentExternalContent';
+  var CONSENT_ACCEPTED = 'accepted';
+  var CONSENT_DECLINED = 'declined';
+  var mapContainer = document.querySelector('[data-map-container]');
+  var mapPlaceholder = document.querySelector('[data-map-placeholder]');
+  var mapConsentButton = document.querySelector('[data-map-consent-button]');
+  var consentBanner = document.querySelector('[data-consent-banner]');
+  var acceptButton = document.querySelector('[data-consent-accept]');
+  var declineButton = document.querySelector('[data-consent-decline]');
+  var settingsTriggers = document.querySelectorAll('[data-open-cookie-settings]');
+
+  function getConsentValue() {
+    try {
+      return window.localStorage.getItem(CONSENT_KEY);
+    } catch (error) {
+      return null;
+    }
+  }
+
+  function setConsentValue(value) {
+    try {
+      window.localStorage.setItem(CONSENT_KEY, value);
+    } catch (error) {
+      // Fallback ohne Persistenz
+    }
+  }
+
+  function hideBanner() {
+    if (!consentBanner) return;
+    consentBanner.hidden = true;
+  }
+
+  function showBanner() {
+    if (!consentBanner) return;
+    consentBanner.hidden = false;
+  }
+
+  function renderMap() {
+    if (!mapContainer || mapContainer.dataset.mapLoaded === 'true') return;
+
+    var mapIframe = document.createElement('iframe');
+    mapIframe.src = 'https://maps.google.com/maps?q=48.7475466,9.2399083&z=15&output=embed';
+    mapIframe.loading = 'lazy';
+    mapIframe.referrerPolicy = 'no-referrer-when-downgrade';
+    mapIframe.allowFullscreen = true;
+    mapIframe.title = 'Google Maps Standort von SVB Brückers';
+
+    mapContainer.innerHTML = '';
+    mapContainer.appendChild(mapIframe);
+    mapContainer.dataset.mapLoaded = 'true';
+  }
+
+  function applyConsentState(value) {
+    if (value === CONSENT_ACCEPTED) {
+      renderMap();
+      hideBanner();
+      return;
+    }
+
+    if (mapPlaceholder) {
+      mapPlaceholder.hidden = false;
+    }
+
+    if (value === CONSENT_DECLINED) {
+      hideBanner();
+      return;
+    }
+
+    showBanner();
+  }
+
+  if (acceptButton) {
+    acceptButton.addEventListener('click', function () {
+      setConsentValue(CONSENT_ACCEPTED);
+      applyConsentState(CONSENT_ACCEPTED);
+    });
+  }
+
+  if (declineButton) {
+    declineButton.addEventListener('click', function () {
+      setConsentValue(CONSENT_DECLINED);
+      applyConsentState(CONSENT_DECLINED);
+    });
+  }
+
+  if (mapConsentButton) {
+    mapConsentButton.addEventListener('click', function () {
+      setConsentValue(CONSENT_ACCEPTED);
+      applyConsentState(CONSENT_ACCEPTED);
+      hideBanner();
+    });
+  }
+
+  settingsTriggers.forEach(function (trigger) {
+    trigger.addEventListener('click', function () {
+      showBanner();
+    });
+  });
+
+  applyConsentState(getConsentValue());
+}
+
+function initPageFeatures() {
   initFaqAccordion();
+  initConsentAndMaps();
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initPageFeatures);
+} else {
+  initPageFeatures();
 }
