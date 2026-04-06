@@ -250,8 +250,12 @@ img {
   display: flex;
 }
 
-.hero-main-cta {
-  min-height: 44px;
+.hero-main-cta-desktop {
+  display: inline;
+}
+
+.hero-main-cta-mobile {
+  display: none;
 }
 
 .hero-icon-cta {
@@ -1233,6 +1237,14 @@ img {
     white-space: nowrap;
   }
 
+  .hero-main-cta-desktop {
+    display: none;
+  }
+
+  .hero-main-cta-mobile {
+    display: inline;
+  }
+
   .hero-icon-cta {
     display: inline-flex;
     align-items: center;
@@ -1473,6 +1485,12 @@ img {
 }
 
 @media (max-width: 768px) {
+  .whatsapp-fab {
+    display: none;
+  }
+}
+
+@media (min-width: 769px) {
   .whatsapp-fab {
     display: none;
   }
