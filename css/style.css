@@ -1491,6 +1491,10 @@ img {
 }
 
 @media (min-width: 769px) {
+  .hero-primary-group .hero-icon-cta {
+    display: none !important;
+  }
+
   .whatsapp-fab {
     display: flex;
   }
