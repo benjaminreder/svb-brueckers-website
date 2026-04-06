@@ -246,6 +246,21 @@ img {
   flex-wrap: wrap;
 }
 
+.hero-primary-group {
+  display: flex;
+}
+
+.hero-main-cta {
+  min-height: 44px;
+}
+
+.hero-icon-cta {
+  display: none;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0;
+}
+
 .cost-footnote {
   margin: 20px auto 0;
   max-width: 760px;
@@ -1162,6 +1177,45 @@ img {
     margin: 0 auto 20px;
     padding-right: 0;
     text-align: center;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .hero-primary-group {
+    display: flex;
+    width: 100%;
+    max-width: 560px;
+    justify-content: center;
+    align-items: stretch;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .hero-main-cta {
+    flex: 1 1 70%;
+    min-width: 220px;
+    max-width: 420px;
+  }
+
+  .hero-icon-cta {
+    display: inline-flex;
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    flex: 0 0 48px;
+  }
+
+  .hero-icon-cta svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .hero-buttons .btn-secondary {
+    min-height: 44px;
   }
 
   /* Sections Mobile */
