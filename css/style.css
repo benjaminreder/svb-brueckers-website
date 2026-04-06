@@ -1238,11 +1238,11 @@ img {
   }
 
   .hero-main-cta-desktop {
-    display: none;
+    display: none !important;
   }
 
   .hero-main-cta-mobile {
-    display: inline;
+    display: inline !important;
   }
 
   .hero-icon-cta {
