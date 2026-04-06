@@ -1492,7 +1492,7 @@ img {
 
 @media (min-width: 769px) {
   .whatsapp-fab {
-    display: none;
+    display: flex;
   }
 }
 
