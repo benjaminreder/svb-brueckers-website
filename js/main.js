@@ -196,7 +196,27 @@ function initConsentAndMaps() {
   applyConsentState(getConsentValue());
 }
 
+function initScrollRestorationFix() {
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+  }
+
+  var navigationEntries = performance.getEntriesByType
+    ? performance.getEntriesByType('navigation')
+    : [];
+  var navigationType = navigationEntries.length ? navigationEntries[0].type : null;
+
+  if (!navigationType && performance.navigation) {
+    navigationType = performance.navigation.type === 1 ? 'reload' : null;
+  }
+
+  if (navigationType === 'reload') {
+    window.scrollTo(0, 0);
+  }
+}
+
 function initPageFeatures() {
+  initScrollRestorationFix();
   initFaqAccordion();
   initConsentAndMaps();
 }
