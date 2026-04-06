@@ -1190,31 +1190,44 @@ img {
     width: 100%;
     max-width: 430px;
     justify-content: center;
-    align-items: stretch;
-    gap: 8px;
+    align-items: center;
+    gap: 10px;
     flex-wrap: nowrap;
   }
 
   .hero-main-cta {
     flex: 1 1 auto;
     min-width: 0;
-    max-width: 220px;
-    padding: 12px 14px;
+    max-width: 240px;
+    height: 50px;
+    min-height: 50px;
+    padding: 0 16px;
+    border-radius: 10px;
     font-size: 0.92rem;
+    line-height: 1;
+    white-space: nowrap;
   }
 
   .hero-icon-cta {
     display: inline-flex;
-    width: 44px;
-    height: 44px;
-    border-radius: 8px;
-    flex: 0 0 44px;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    min-width: 50px;
+    min-height: 50px;
+    padding: 0;
+    border-radius: 10px;
+    flex: 0 0 50px;
     color: #fff;
+    line-height: 1;
   }
 
   .hero-icon-cta svg {
     width: 22px;
     height: 22px;
+    display: block;
+    flex-shrink: 0;
   }
 
   .hero-buttons .btn-secondary {
