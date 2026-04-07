@@ -210,9 +210,27 @@ function initScrollRestorationFix() {
     navigationType = performance.navigation.type === 1 ? 'reload' : null;
   }
 
-  if (navigationType === 'reload') {
+  function scrollToTop() {
     window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
   }
+
+  if (navigationType === 'reload') {
+    scrollToTop();
+  }
+
+  window.addEventListener('pageshow', function (event) {
+    if (event.persisted || navigationType === 'reload') {
+      scrollToTop();
+    }
+  });
+
+  window.addEventListener('load', function () {
+    if (navigationType === 'reload') {
+      scrollToTop();
+    }
+  });
 }
 
 function initPageFeatures() {
