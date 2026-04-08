@@ -9,6 +9,105 @@
   <link rel="canonical" href="https://svb-brueckers.de/ratgeber/glossar-kfz-gutachten-begriffe/">
   <link rel="stylesheet" href="../../css/style.css">
   <link rel="icon" type="image/x-icon" href="../../images/favicon.ico">
+  <style>
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+    .glossary-intro {
+      background: #f5f8fc;
+      border: 1px solid #dce6f3;
+      border-radius: 14px;
+      padding: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+    .glossary-intro ul { margin: .75rem 0 0 1.15rem; }
+    .glossary-tools { margin-bottom: 1.25rem; }
+    .glossary-search {
+      width: 100%;
+      max-width: 38rem;
+      border: 1px solid #cfd9e6;
+      border-radius: 10px;
+      padding: .85rem 1rem;
+      font: inherit;
+    }
+    .glossary-search:focus { outline: 2px solid #1f5ea8; outline-offset: 1px; }
+    .glossary-nav-wrap {
+      position: sticky;
+      top: 68px;
+      z-index: 5;
+      margin: 1rem 0 1.4rem;
+      background: #fff;
+      border: 1px solid #dce6f3;
+      border-radius: 12px;
+      padding: .5rem;
+      overflow-x: auto;
+    }
+    .glossary-nav { display: flex; gap: .45rem; min-width: max-content; }
+    .glossary-nav-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 2.15rem;
+      min-height: 2.15rem;
+      border-radius: 999px;
+      border: 1px solid #c9d5e5;
+      text-decoration: none;
+      font-weight: 700;
+      color: #1d2f4a;
+      padding: 0 .55rem;
+      background: #fff;
+    }
+    .glossary-nav-link.is-active { background: #1f5ea8; color: #fff; border-color: #1f5ea8; }
+    .glossary-letter-group { scroll-margin-top: 140px; margin-bottom: 1.8rem; }
+    .glossary-letter { border-bottom: 1px solid #e4ecf5; padding-bottom: .4rem; margin-bottom: .95rem; }
+    .glossary-item {
+      background: #fff;
+      border: 1px solid #e4ecf5;
+      border-radius: 14px;
+      padding: 1rem 1.05rem;
+      margin-bottom: .8rem;
+      box-shadow: 0 4px 12px rgba(8, 31, 67, 0.04);
+    }
+    .glossary-item summary {
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 1.05rem;
+      line-height: 1.35;
+    }
+    .glossary-item p {
+      max-width: 72ch;
+      line-height: 1.72;
+      margin-top: .75rem;
+    }
+    .glossary-item .kw { font-weight: 700; }
+    .glossary-related {
+      display: inline-block;
+      margin-top: .4rem;
+      font-size: .95rem;
+      font-weight: 600;
+    }
+    .glossary-note {
+      border-left: 4px solid #1f5ea8;
+      background: #f7faff;
+      border-radius: 10px;
+      padding: .95rem 1rem;
+      margin: 1.1rem 0 1.3rem;
+    }
+    .glossary-note a { font-weight: 700; }
+    .glossary-empty { margin-top: .7rem; color: #526176; }
+    @media (max-width: 768px) {
+      .glossary-nav-wrap { top: 60px; }
+      .glossary-item { padding: .95rem; }
+    }
+  </style>
 </head>
 <body>
   <header class="header" id="top">
@@ -39,10 +138,27 @@
 
         <h1 class="page-title">Glossar Kfz Gutachten – wichtige Begriffe einfach erklärt</h1>
 
-        <p>Nach einem Unfall tauchen oft viele Fachbegriffe auf, die auf den ersten Blick kompliziert wirken. Genau dafür ist dieses Glossar da: Sie finden hier typische Begriffe aus Kfz-Gutachten und Schadenregulierung einfach erklärt – verständlich, klar und ohne unnötiges Fachchinesisch. So können Sie Ihre Ansprüche besser einordnen und sicherer entscheiden.</p>
+        <div class="glossary-intro" aria-label="Einführung ins Glossar">
+          <p>Nach einem Unfall tauchen oft viele Fachbegriffe auf, die auf den ersten Blick kompliziert wirken. Genau dafür ist dieses Glossar da: Sie finden hier typische Begriffe aus Kfz-Gutachten und Schadenregulierung einfach erklärt – verständlich, klar und ohne unnötiges Fachchinesisch. So können Sie Ihre Ansprüche besser einordnen und sicherer entscheiden.</p>
+          <ul>
+            <li>Fachbegriffe einfach und verständlich erklärt</li>
+            <li>Klare Einordnung für Geschädigte nach einem Unfall</li>
+            <li>Schnelle Orientierung per Suche und A–Z Navigation</li>
+          </ul>
+        </div>
 
         <h2>Alle Begriffe von A bis Z</h2>
         <p>Tippen oder klicken Sie auf den jeweiligen Begriff, um die Erklärung zu öffnen. Alle Inhalte sind vollständig auf der Seite enthalten und damit auch mobil schnell nutzbar.</p>
+
+        <div class="glossary-tools">
+          <label for="glossary-search" class="sr-only">Glossar durchsuchen</label>
+          <input id="glossary-search" class="glossary-search" type="search" placeholder="Begriff suchen …" autocomplete="off">
+          <p id="glossary-empty" class="glossary-empty" hidden>Kein passender Begriff gefunden.</p>
+        </div>
+
+        <nav class="glossary-nav-wrap" aria-label="Alphabetische Navigation im Glossar">
+          <div class="glossary-nav" id="glossary-nav"></div>
+        </nav>
 
         <div class="glossary-list" aria-label="Glossar Kfz Gutachten von A bis Z">
           <section class="glossary-letter-group" aria-labelledby="glossar-a">
@@ -85,14 +201,21 @@
             <details class="glossary-item"><summary>Fahrzeugbewertung</summary><p>Bei der Fahrzeugbewertung wird der Wert eines Fahrzeugs auf Grundlage von Alter, Laufleistung, Ausstattung, Zustand und Marktsituation ermittelt. Sie ist wichtig, wenn es um Wiederbeschaffungswert, Verkehrswert oder den Zustand vor einem Schaden geht. Eine präzise Bewertung ist besonders relevant bei Totalschäden, Leasingrückgaben oder Wertgutachten.</p></details>
             <details class="glossary-item"><summary>Fahrzeugidentifikationsnummer (FIN / VIN)</summary><p>Die Fahrzeugidentifikationsnummer ist die eindeutige Seriennummer eines Fahrzeugs. Mit ihr lässt sich ein Fahrzeug zweifelsfrei identifizieren, unabhängig von Kennzeichen oder Halter. In einem Gutachten ist die FIN ein wichtiger Bestandteil, weil sie sicherstellt, dass alle Angaben dem richtigen Fahrzeug zugeordnet werden.</p></details>
             <details class="glossary-item"><summary>Fiktive Abrechnung</summary><p>Bei der fiktiven Abrechnung lassen Sie sich den Schaden auszahlen, ohne das Fahrzeug tatsächlich reparieren zu lassen. Grundlage dafür ist in der Regel ein Gutachten, das die voraussichtlichen Reparaturkosten ermittelt. Diese Form der Abrechnung gibt Ihnen mehr Freiheit, wird aber oft von Versicherungen besonders genau geprüft oder gekürzt.</p></details>
+            <a class="glossary-related" href="/ratgeber/fiktive-abrechnung-was-ist-das/">Mehr dazu im Ratgeber</a>
           </section>
+          <aside class="glossary-note" aria-label="Service-Hinweis">
+            Unsicher, was diese Begriffe in Ihrem Fall bedeuten? Ich unterstütze Sie gern mit einer unabhängigen Einschätzung.
+            <a href="/#kontakt">Jetzt Kontakt aufnehmen</a>
+          </aside>
 
           <section class="glossary-letter-group" aria-labelledby="glossar-g">
             <h3 id="glossar-g" class="glossary-letter">G</h3>
             <details class="glossary-item"><summary>Gebrauchsspuren / altersbedingter Zustand</summary><p>Darunter versteht man normale Abnutzungserscheinungen, die durch Alter und übliche Nutzung eines Fahrzeugs entstehen. Dazu zählen zum Beispiel kleinere Steinschläge, leichte Kratzer oder allgemeiner Verschleiß. Solche Spuren sind nicht automatisch als Unfallschaden zu bewerten und müssen im Gutachten von tatsächlichen Schäden unterschieden werden.</p></details>
             <details class="glossary-item"><summary>Gutachten / Kfz-Gutachten</summary><p>Ein Kfz-Gutachten ist eine fachlich fundierte und schriftliche Bewertung eines Fahrzeugschadens oder Fahrzeugwerts. Es enthält nicht nur eine Beschreibung des Schadens, sondern auch wirtschaftliche Werte wie Reparaturkosten, Wertminderung, Restwert oder Wiederbeschaffungswert. Für die Schadenregulierung ist es oft die wichtigste Grundlage, weil es objektiv dokumentiert, welche Ansprüche bestehen.</p></details>
+            <a class="glossary-related" href="/ratgeber/was-macht-ein-kfz-gutachten-aus/">Mehr dazu im Ratgeber</a>
             <details class="glossary-item"><summary>Gutachtenprüfung</summary><p>Bei der Gutachtenprüfung kontrolliert die Versicherung oder ein externer Prüfdienst das vorgelegte Gutachten. Dabei werden einzelne Positionen wie Stundenverrechnungssätze, Lackierkosten oder UPE-Aufschläge häufig hinterfragt. Diese Prüfung führt in der Praxis oft zu Kürzungsversuchen, weshalb ein sauber erstelltes Gutachten besonders wichtig ist.</p></details>
             <details class="glossary-item"><summary>Gutachter / Kfz-Gutachter</summary><p>Ein Gutachter ist ein Fachmann, der Schäden und Werte an Fahrzeugen professionell beurteilt. Er dokumentiert den Schaden neutral und nachvollziehbar und erstellt daraus ein Gutachten. Für Geschädigte ist ein unabhängiger Gutachter besonders wichtig, weil er ausschließlich auf Grundlage technischer Fakten arbeitet und nicht im Interesse der Versicherung.</p></details>
+            <a class="glossary-related" href="/ratgeber/gutachter-versicherung-unabhaengig/">Mehr dazu im Ratgeber</a>
           </section>
 
           <section class="glossary-letter-group" aria-labelledby="glossar-h">
@@ -134,7 +257,12 @@
             <details class="glossary-item"><summary>Nicht fachgerecht ausgeführte Instandsetzungen</summary><p>Damit sind Reparaturen gemeint, die technisch unzureichend oder nicht nach anerkannten Standards durchgeführt wurden. Solche Mängel können die Verkehrssicherheit, den Fahrzeugwert und die spätere Schadenbewertung negativ beeinflussen. Im Gutachten müssen sie klar beschrieben und von ordnungsgemäßen Reparaturen abgegrenzt werden.</p></details>
             <details class="glossary-item"><summary>Neuwertentschädigung</summary><p>Die Neuwertentschädigung bedeutet, dass unter bestimmten Voraussetzungen nicht nur der Zeitwert, sondern der Neupreis oder ein nahezu neuwertiger Ersatz gezahlt wird. Das spielt meist bei sehr neuen Fahrzeugen oder in bestimmten Kaskoverträgen eine Rolle. Ob ein Anspruch besteht, hängt stark von Alter, Laufleistung und Versicherungsbedingungen ab.</p></details>
             <details class="glossary-item"><summary>Nutzungsausfall</summary><p>Nutzungsausfall ist eine Entschädigung dafür, dass Sie Ihr Fahrzeug während der Reparatur oder bis zur Ersatzbeschaffung nicht nutzen können. Voraussetzung ist meist, dass das Fahrzeug normalerweise genutzt worden wäre und tatsächlich ausfällt. Die Höhe richtet sich in der Regel nach Fahrzeugklasse und Ausfallzeit.</p></details>
+            <a class="glossary-related" href="/ratgeber/wann-sich-ein-gutachten-lohnt/">Mehr dazu im Ratgeber</a>
           </section>
+          <aside class="glossary-note" aria-label="Service-Hinweis">
+            Sie möchten wissen, welche Positionen in Ihrem Schadenfall realistisch durchsetzbar sind? Ich helfe Ihnen bei der Einordnung.
+            <a href="/#kontakt">Unverbindlich Kontakt aufnehmen</a>
+          </aside>
 
           <section class="glossary-letter-group" aria-labelledby="glossar-r">
             <h3 id="glossar-r" class="glossary-letter">R</h3>
@@ -143,6 +271,7 @@
             <details class="glossary-item"><summary>Reparierte Vorschäden</summary><p>Reparierte Vorschäden sind ältere Schäden, die bereits vor dem aktuellen Unfall vorhanden waren, aber instand gesetzt wurden. Für das Gutachten ist entscheidend, ob diese Reparaturen fachgerecht durchgeführt wurden und welchen Einfluss sie noch auf den Fahrzeugzustand haben. Sie müssen von neuen Schäden sauber abgegrenzt werden.</p></details>
             <details class="glossary-item"><summary>Reparaturweg</summary><p>Der Reparaturweg beschreibt, wie ein Schaden technisch korrekt beseitigt werden soll. Dazu gehört zum Beispiel, ob Teile instand gesetzt oder ersetzt werden und welche Arbeitsschritte notwendig sind. Der Reparaturweg ist ein wichtiger Bestandteil des Gutachtens, weil er die Grundlage für die Kostenkalkulation bildet.</p></details>
             <details class="glossary-item"><summary>Restwert</summary><p>Der Restwert ist der Wert, den ein beschädigtes Fahrzeug im unreparierten Zustand noch hat. Er spielt vor allem bei Totalschäden eine wichtige Rolle, weil er vom Wiederbeschaffungswert abgezogen wird. Die Ermittlung muss nachvollziehbar und marktgerecht erfolgen, da hier häufig Streit mit Versicherungen entsteht.</p></details>
+            <a class="glossary-related" href="/ratgeber/streitpunkte-und-kuerzungsversuche/">Mehr dazu im Ratgeber</a>
           </section>
 
           <section class="glossary-letter-group" aria-labelledby="glossar-s">
@@ -185,7 +314,9 @@
             <h3 id="glossar-w" class="glossary-letter">W</h3>
             <details class="glossary-item"><summary>Wertgutachten</summary><p>Ein Wertgutachten dient nicht in erster Linie der Schadenbewertung, sondern der Ermittlung des Fahrzeugwerts. Es wird zum Beispiel für Oldtimer, besondere Fahrzeuge, Kauf oder Verkauf oder zur Versicherungseinstufung erstellt. Im Gegensatz zum Unfallgutachten steht hier der Marktwert im Vordergrund.</p></details>
             <details class="glossary-item"><summary>Wertminderung</summary><p>Die Wertminderung beschreibt den Umstand, dass ein Fahrzeug nach einem Unfall trotz fachgerechter Reparatur weniger wert sein kann als zuvor. Viele Käufer bevorzugen unfallfreie Fahrzeuge, weshalb ein repariertes Unfallfahrzeug oft schwerer oder nur günstiger verkäuflich ist. Diese Minderung kann ein eigener ersatzfähiger Schaden sein.</p></details>
+            <a class="glossary-related" href="/ratgeber/streitpunkte-und-kuerzungsversuche/">Mehr dazu im Ratgeber</a>
             <details class="glossary-item"><summary>Wiederbeschaffungswert</summary><p>Der Wiederbeschaffungswert ist der Betrag, den Sie aufwenden müssten, um ein vergleichbares Fahrzeug vor dem Unfall auf dem regionalen Markt zu kaufen. Dabei werden Zustand, Alter, Laufleistung und Ausstattung berücksichtigt. Dieser Wert ist besonders wichtig bei der Berechnung von Totalschäden.</p></details>
+            <a class="glossary-related" href="/ratgeber/wann-sich-ein-gutachten-lohnt/">Mehr dazu im Ratgeber</a>
             <details class="glossary-item"><summary>Wiederherstellungsaufwand</summary><p>Der Wiederherstellungsaufwand beschreibt die Kosten, die notwendig sind, um den Zustand des Fahrzeugs vor dem Schaden wiederherzustellen. Das kann Reparaturkosten, Nebenkosten und weitere wirtschaftliche Faktoren umfassen. Im Gutachten hilft dieser Begriff, den finanziellen Rahmen der Schadensbeseitigung zu erfassen.</p></details>
             <details class="glossary-item"><summary>Wirtschaftlicher Totalschaden</summary><p>Ein wirtschaftlicher Totalschaden liegt vor, wenn die Reparaturkosten den Wiederbeschaffungswert des Fahrzeugs wirtschaftlich unvernünftig überschreiten. Technisch könnte das Fahrzeug zwar repariert werden, aber der Aufwand steht nicht mehr in einem sinnvollen Verhältnis zum Fahrzeugwert. Dann wird meist auf Basis von Wiederbeschaffungswert und Restwert reguliert.</p></details>
           </section>
@@ -238,5 +369,78 @@
   </footer>
 
   <script src="../../js/main.js"></script>
+  <script>
+    (function () {
+      const list = document.querySelector('.glossary-list');
+      const groups = Array.from(document.querySelectorAll('.glossary-letter-group'));
+      const nav = document.getElementById('glossary-nav');
+      const search = document.getElementById('glossary-search');
+      const emptyState = document.getElementById('glossary-empty');
+      const keywords = ['Schadenregulierung', 'Reparaturkosten', 'Versicherung', 'Wertminderung', 'Wiederbeschaffungswert'];
+
+      groups.forEach((group) => {
+        const heading = group.querySelector('.glossary-letter');
+        if (!heading || !heading.id) return;
+        const link = document.createElement('a');
+        link.className = 'glossary-nav-link';
+        link.href = '#' + heading.id;
+        link.textContent = heading.textContent.trim();
+        nav.appendChild(link);
+      });
+
+      const navLinks = Array.from(document.querySelectorAll('.glossary-nav-link'));
+      const setActive = (id) => {
+        navLinks.forEach((link) => link.classList.toggle('is-active', link.getAttribute('href') === '#' + id));
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActive(entry.target.querySelector('.glossary-letter').id);
+        });
+      }, { rootMargin: '-25% 0px -60% 0px', threshold: 0.01 });
+      groups.forEach((group) => observer.observe(group));
+
+      function emphasizeKeywords() {
+        list.querySelectorAll('.glossary-item p').forEach((p) => {
+          let html = p.innerHTML;
+          keywords.forEach((word) => {
+            const regex = new RegExp('\\b(' + word + ')\\b', 'gi');
+            html = html.replace(regex, '<strong class="kw">$1</strong>');
+          });
+          p.innerHTML = html;
+        });
+      }
+
+      function filterGlossary() {
+        const q = (search.value || '').trim().toLowerCase();
+        let anyMatch = false;
+        groups.forEach((group) => {
+          let groupHasItems = false;
+          group.querySelectorAll('.glossary-item').forEach((item) => {
+            const text = item.textContent.toLowerCase();
+            const match = text.includes(q);
+            item.style.display = match ? '' : 'none';
+            if (match) groupHasItems = true;
+          });
+
+          const related = group.querySelectorAll('.glossary-related');
+          related.forEach((link) => {
+            link.style.display = groupHasItems ? 'inline-block' : 'none';
+          });
+
+          group.style.display = groupHasItems ? '' : 'none';
+          if (groupHasItems) anyMatch = true;
+        });
+        document.querySelectorAll('.glossary-note').forEach((note) => {
+          note.style.display = q && !anyMatch ? 'none' : '';
+        });
+        emptyState.hidden = anyMatch;
+      }
+
+      emphasizeKeywords();
+      search.addEventListener('input', filterGlossary);
+      filterGlossary();
+    })();
+  </script>
 </body>
 </html>
