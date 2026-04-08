@@ -958,6 +958,16 @@ img {
   transform: rotate(180deg);
 }
 
+@media (max-width: 1024px) {
+  .article-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .article-card {
+    min-height: 300px;
+  }
+}
+
 @media (max-width: 768px) {
   .faq-trigger {
     font-size: 0.98rem;
@@ -1208,11 +1218,13 @@ img {
 
 .article-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 24px;
 }
 
 .article-card {
+  height: 100%;
+  min-height: 320px;
   border: 1px solid #dce5f0;
   border-radius: 16px;
   background: #fff;
@@ -1705,7 +1717,12 @@ img {
     margin-bottom: 16px;
   }
 
+  .article-grid {
+    grid-template-columns: 1fr;
+  }
+
   .article-card {
+    min-height: auto;
     padding: 22px;
   }
 
