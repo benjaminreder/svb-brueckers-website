@@ -149,9 +149,22 @@ function initConsentAndMaps() {
 
     window.__svbGoogleMapsPromise = new Promise(function (resolve, reject) {
       var callbackName = 'initSvbGoogleMapsApi';
+      var previousAuthFailureHandler = window.gm_authFailure;
       window[callbackName] = function () {
         resolve(window.google.maps);
         delete window[callbackName];
+        window.gm_authFailure = previousAuthFailureHandler;
+      };
+
+      window.gm_authFailure = function () {
+        window.__svbGoogleMapsPromise = null;
+        reject(new Error('Google Maps Auth fehlgeschlagen.'));
+        delete window[callbackName];
+        if (typeof previousAuthFailureHandler === 'function') {
+          previousAuthFailureHandler();
+        } else {
+          delete window.gm_authFailure;
+        }
       };
 
       var script = document.createElement('script');
@@ -163,6 +176,7 @@ function initConsentAndMaps() {
         window.__svbGoogleMapsPromise = null;
         reject(new Error('Google Maps konnte nicht geladen werden.'));
         delete window[callbackName];
+        window.gm_authFailure = previousAuthFailureHandler;
       };
 
       document.head.appendChild(script);
@@ -317,8 +331,33 @@ function initConsentAndMaps() {
       })
       .catch(function () {
         console.warn('Google Maps API konnte nicht geladen werden.');
-        showMapStatus('Die Karte konnte aktuell nicht geladen werden. Bitte versuchen Sie es später erneut.');
+        renderMapFallbackEmbed();
+        showMapStatus('Google Maps konnte wegen einer Konfigurationsstörung nicht geladen werden. Ersatzkarte wurde angezeigt.');
       });
+  }
+
+  function renderMapFallbackEmbed() {
+    if (!mapCanvas) return;
+    if (mapCanvas.querySelector('[data-map-fallback="embed"]')) return;
+
+    var iframe = document.createElement('iframe');
+    iframe.setAttribute('data-map-fallback', 'embed');
+    iframe.className = 'map-embed-fallback';
+    iframe.loading = 'lazy';
+    iframe.referrerPolicy = 'no-referrer-when-downgrade';
+    iframe.title = 'Einsatzgebiet von SVB Brückers auf Google Maps';
+    iframe.src = 'https://www.google.com/maps?q=48.7475466,9.2399083&z=12&output=embed';
+
+    mapCanvas.innerHTML = '';
+    mapCanvas.appendChild(iframe);
+    mapCanvas.hidden = false;
+
+    if (mapPlaceholder) {
+      mapPlaceholder.hidden = true;
+    }
+    if (mapConsentButton) {
+      mapConsentButton.hidden = true;
+    }
   }
 
   function applyConsentState(value) {
