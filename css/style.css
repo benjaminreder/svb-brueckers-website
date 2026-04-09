@@ -718,9 +718,13 @@ img {
   background: #f8fafc;
 }
 
-.map-container iframe {
+.map-container.is-loaded {
+  background: #eef3f8;
+}
+
+.map-canvas {
   width: 100%;
-  height: 350px;
+  height: 380px;
   border: 0;
   display: block;
 }
@@ -750,6 +754,11 @@ img {
 
 .map-consent-btn {
   margin-top: 4px;
+}
+
+.map-placeholder[hidden],
+.map-canvas[hidden] {
+  display: none;
 }
 
 /* ---- Benefit Cards ---- */
@@ -1730,6 +1739,10 @@ img {
   .map-placeholder {
     min-height: 300px;
     padding: 22px;
+  }
+
+  .map-canvas {
+    height: 320px;
   }
 
   .consent-banner {

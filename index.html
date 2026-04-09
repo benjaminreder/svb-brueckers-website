@@ -278,12 +278,14 @@ if (location.protocol !== "https:" && !isLocalPreviewHost) {
         <span class="tag"><svg width="14" height="14" viewBox="0 0 24 24" fill="#E07A3A" stroke="none"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3" fill="white"></circle></svg> Esslingen</span>
         <span class="tag"><svg width="14" height="14" viewBox="0 0 24 24" fill="#E07A3A" stroke="none"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3" fill="white"></circle></svg> Filderstadt</span>
       </div>
-      <div class="map-container" data-map-container aria-live="polite">
+      <!-- Google Maps API Key hier eintragen (HTTP-Referrer in der Google Cloud Console absichern). -->
+      <div class="map-container" data-map-container data-map-api-key="HIER_GOOGLE_MAPS_API_KEY_EINFUEGEN" aria-live="polite">
         <div class="map-placeholder" data-map-placeholder>
-          <h3>Anfahrt mit Google Maps</h3>
+          <h3>Einsatzgebiet von SVB Brückers</h3>
           <p>Aus Datenschutzgründen wird die Karte erst nach Ihrer Einwilligung geladen. Dabei können personenbezogene Daten an Google übertragen werden.</p>
           <button type="button" class="btn btn-primary map-consent-btn" data-map-consent-button>Google Maps laden</button>
         </div>
+        <div class="map-canvas" data-map-canvas hidden aria-label="Einsatzgebiet von SVB Brückers auf Google Maps"></div>
       </div>
     </div>
   </section>

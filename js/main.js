@@ -98,6 +98,7 @@ function initConsentAndMaps() {
   var CONSENT_ACCEPTED = 'accepted';
   var CONSENT_DECLINED = 'declined';
   var mapContainer = document.querySelector('[data-map-container]');
+  var mapCanvas = document.querySelector('[data-map-canvas]');
   var mapPlaceholder = document.querySelector('[data-map-placeholder]');
   var mapConsentButton = document.querySelector('[data-map-consent-button]');
   var consentBanner = document.querySelector('[data-consent-banner]');
@@ -131,19 +132,119 @@ function initConsentAndMaps() {
     consentBanner.hidden = false;
   }
 
+  function loadGoogleMapsApi(apiKey) {
+    if (window.google && window.google.maps) {
+      return Promise.resolve(window.google.maps);
+    }
+
+    if (window.__svbGoogleMapsPromise) {
+      return window.__svbGoogleMapsPromise;
+    }
+
+    window.__svbGoogleMapsPromise = new Promise(function (resolve, reject) {
+      var callbackName = 'initSvbGoogleMapsApi';
+      window[callbackName] = function () {
+        resolve(window.google.maps);
+        delete window[callbackName];
+      };
+
+      var script = document.createElement('script');
+      script.src = 'https://maps.googleapis.com/maps/api/js?key=' + encodeURIComponent(apiKey) + '&callback=' + callbackName;
+      script.async = true;
+      script.defer = true;
+      script.onerror = function () {
+        reject(new Error('Google Maps konnte nicht geladen werden.'));
+        delete window[callbackName];
+      };
+
+      document.head.appendChild(script);
+    });
+
+    return window.__svbGoogleMapsPromise;
+  }
+
+  function initServiceAreaMap() {
+    if (!mapCanvas || mapCanvas.dataset.mapInitialized === 'true') return;
+
+    var companyPosition = { lat: 48.7475466, lng: 9.2399083 };
+
+    // Einsatzgebiet von SVB Brückers: ruhiges Polygon rund um die relevanten Stadtteile.
+    var serviceAreaPath = [
+      { lat: 48.7489, lng: 9.1712 }, // Degerloch
+      { lat: 48.7434, lng: 9.2261 }, // Sillenbuch
+      { lat: 48.7379, lng: 9.2564 }, // Heumaden
+      { lat: 48.7213, lng: 9.2767 }, // Ostfildern / Scharnhauser Park
+      { lat: 48.7872, lng: 9.2794 }, // Mettingen
+      { lat: 48.7728, lng: 9.2671 }, // Obertürkheim
+      { lat: 48.7813, lng: 9.2365 } // Wangen
+    ];
+
+    var map = new google.maps.Map(mapCanvas, {
+      center: companyPosition,
+      mapTypeControl: false,
+      streetViewControl: false,
+      fullscreenControl: false,
+      zoomControl: true,
+      gestureHandling: 'cooperative'
+    });
+
+    new google.maps.Marker({
+      position: companyPosition,
+      map: map,
+      title: 'SVB Brückers – Firmenstandort'
+    });
+
+    var serviceAreaPolygon = new google.maps.Polygon({
+      paths: serviceAreaPath,
+      strokeColor: '#1b4a77',
+      strokeOpacity: 0.9,
+      strokeWeight: 2,
+      fillColor: '#E07A3A',
+      fillOpacity: 0.24
+    });
+    serviceAreaPolygon.setMap(map);
+
+    var bounds = new google.maps.LatLngBounds();
+    bounds.extend(companyPosition);
+
+    serviceAreaPath.forEach(function (point) {
+      bounds.extend(point);
+    });
+
+    map.fitBounds(bounds, {
+      top: 40,
+      right: 40,
+      bottom: 40,
+      left: 40
+    });
+
+    mapCanvas.dataset.mapInitialized = 'true';
+  }
+
   function renderMap() {
-    if (!mapContainer || mapContainer.dataset.mapLoaded === 'true') return;
+    if (!mapContainer || !mapCanvas || mapContainer.dataset.mapLoaded === 'true') return;
 
-    var mapIframe = document.createElement('iframe');
-    mapIframe.src = 'https://maps.google.com/maps?q=48.7475466,9.2399083&z=15&output=embed';
-    mapIframe.loading = 'lazy';
-    mapIframe.referrerPolicy = 'no-referrer-when-downgrade';
-    mapIframe.allowFullscreen = true;
-    mapIframe.title = 'Google Maps Standort von SVB Brückers';
+    var apiKey = mapContainer.dataset.mapApiKey;
+    if (!apiKey || apiKey === 'HIER_GOOGLE_MAPS_API_KEY_EINFUEGEN') {
+      console.warn('Google Maps API Key fehlt. Bitte data-map-api-key im HTML setzen.');
+      return;
+    }
 
-    mapContainer.innerHTML = '';
-    mapContainer.appendChild(mapIframe);
-    mapContainer.dataset.mapLoaded = 'true';
+    loadGoogleMapsApi(apiKey)
+      .then(function () {
+        mapContainer.dataset.mapLoaded = 'true';
+        mapContainer.classList.add('is-loaded');
+        mapCanvas.hidden = false;
+        if (mapPlaceholder) {
+          mapPlaceholder.hidden = true;
+        }
+        initServiceAreaMap();
+      })
+      .catch(function () {
+        if (mapPlaceholder) {
+          mapPlaceholder.hidden = false;
+        }
+      });
   }
 
   function applyConsentState(value) {
@@ -155,6 +256,10 @@ function initConsentAndMaps() {
 
     if (mapPlaceholder) {
       mapPlaceholder.hidden = false;
+    }
+
+    if (mapCanvas) {
+      mapCanvas.hidden = true;
     }
 
     if (value === CONSENT_DECLINED) {
