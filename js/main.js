@@ -138,6 +138,11 @@ function initConsentAndMaps() {
       return Promise.resolve(window.google.maps);
     }
 
+    var existingScript = document.querySelector('script[data-google-maps-loader="svb"]');
+    if (existingScript && window.__svbGoogleMapsPromise) {
+      return window.__svbGoogleMapsPromise;
+    }
+
     if (window.__svbGoogleMapsPromise) {
       return window.__svbGoogleMapsPromise;
     }
@@ -153,7 +158,9 @@ function initConsentAndMaps() {
       script.src = 'https://maps.googleapis.com/maps/api/js?key=' + encodeURIComponent(apiKey) + '&callback=' + callbackName;
       script.async = true;
       script.defer = true;
+      script.dataset.googleMapsLoader = 'svb';
       script.onerror = function () {
+        window.__svbGoogleMapsPromise = null;
         reject(new Error('Google Maps konnte nicht geladen werden.'));
         delete window[callbackName];
       };
@@ -257,9 +264,19 @@ function initConsentAndMaps() {
     var containerKey = mapContainer ? (mapContainer.dataset.mapApiKey || '').trim() : '';
     var metaTag = document.querySelector('meta[name="google-maps-api-key"]');
     var metaKey = metaTag ? (metaTag.getAttribute('content') || '').trim() : '';
-    var globalKey = (window.SVB_GOOGLE_MAPS_API_KEY || '').toString().trim();
+    var globalCandidates = [
+      window.SVB_GOOGLE_MAPS_API_KEY,
+      window.GOOGLE_MAPS_API_KEY,
+      window.GMAPS_API_KEY,
+      window.GOOGLE_MAPS_KEY
+    ];
+    var globalKeys = globalCandidates
+      .map(function (value) {
+        return (value || '').toString().trim();
+      })
+      .filter(Boolean);
 
-    var candidates = [containerKey, metaKey, globalKey];
+    var candidates = [containerKey, metaKey].concat(globalKeys);
 
     for (var i = 0; i < candidates.length; i += 1) {
       var candidate = candidates[i];
