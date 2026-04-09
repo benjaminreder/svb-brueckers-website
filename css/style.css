@@ -709,6 +709,14 @@ img {
   background: white;
 }
 
+.map-caption {
+  margin-bottom: 14px;
+  text-align: left;
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 1rem;
+}
+
 .map-container {
   min-height: 350px;
   border-radius: var(--radius);
@@ -750,6 +758,15 @@ img {
 .map-placeholder p {
   color: var(--text-light);
   max-width: 64ch;
+}
+
+.map-status {
+  font-size: 0.92rem;
+  color: #7c2d12;
+  background: #fff7ed;
+  border: 1px solid #fed7aa;
+  border-radius: 8px;
+  padding: 10px 12px;
 }
 
 .map-consent-btn {
@@ -1739,6 +1756,10 @@ img {
   .map-placeholder {
     min-height: 300px;
     padding: 22px;
+  }
+
+  .map-caption {
+    text-align: center;
   }
 
   .map-canvas {

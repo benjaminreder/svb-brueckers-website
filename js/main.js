@@ -100,6 +100,7 @@ function initConsentAndMaps() {
   var mapContainer = document.querySelector('[data-map-container]');
   var mapCanvas = document.querySelector('[data-map-canvas]');
   var mapPlaceholder = document.querySelector('[data-map-placeholder]');
+  var mapStatus = document.querySelector('[data-map-status]');
   var mapConsentButton = document.querySelector('[data-map-consent-button]');
   var consentBanner = document.querySelector('[data-consent-banner]');
   var acceptButton = document.querySelector('[data-consent-accept]');
@@ -166,188 +167,90 @@ function initConsentAndMaps() {
   function initServiceAreaMap() {
     if (!mapCanvas || mapCanvas.dataset.mapInitialized === 'true') return;
 
+    // Firmenstandort aus bestehender Einbindung übernommen.
     var companyPosition = { lat: 48.7475466, lng: 9.2399083 };
-    var districtAreas = [
-      {
-        name: 'Degerloch',
-        path: [
-          { lat: 48.7394, lng: 9.1571 },
-          { lat: 48.7399, lng: 9.1868 },
-          { lat: 48.7549, lng: 9.1907 },
-          { lat: 48.761, lng: 9.1645 },
-          { lat: 48.7514, lng: 9.1499 }
-        ]
-      },
-      {
-        name: 'Sillenbuch',
-        path: [
-          { lat: 48.7533, lng: 9.2088 },
-          { lat: 48.7482, lng: 9.2384 },
-          { lat: 48.7658, lng: 9.2472 },
-          { lat: 48.7767, lng: 9.2212 },
-          { lat: 48.7674, lng: 9.2018 }
-        ]
-      },
-      {
-        name: 'Heumaden',
-        path: [
-          { lat: 48.736, lng: 9.2368 },
-          { lat: 48.7368, lng: 9.2661 },
-          { lat: 48.7525, lng: 9.2735 },
-          { lat: 48.7607, lng: 9.2461 },
-          { lat: 48.7494, lng: 9.2291 }
-        ]
-      },
-      {
-        name: 'Wangen',
-        path: [
-          { lat: 48.7794, lng: 9.2241 },
-          { lat: 48.775, lng: 9.2518 },
-          { lat: 48.7907, lng: 9.2596 },
-          { lat: 48.7994, lng: 9.2358 },
-          { lat: 48.7913, lng: 9.2162 }
-        ]
-      },
-      {
-        name: 'Obertürkheim',
-        path: [
-          { lat: 48.7612, lng: 9.2504 },
-          { lat: 48.7609, lng: 9.2784 },
-          { lat: 48.7762, lng: 9.2858 },
-          { lat: 48.7856, lng: 9.2611 },
-          { lat: 48.7753, lng: 9.2452 }
-        ]
-      },
-      {
-        name: 'Mettingen',
-        path: [
-          { lat: 48.7785, lng: 9.2736 },
-          { lat: 48.7756, lng: 9.3021 },
-          { lat: 48.7923, lng: 9.3097 },
-          { lat: 48.8016, lng: 9.2852 },
-          { lat: 48.7934, lng: 9.2678 }
-        ]
-      },
-      {
-        name: 'Scharnhauser Park',
-        path: [
-          { lat: 48.7164, lng: 9.2522 },
-          { lat: 48.7157, lng: 9.2864 },
-          { lat: 48.7339, lng: 9.2952 },
-          { lat: 48.7422, lng: 9.2647 },
-          { lat: 48.7305, lng: 9.2455 }
-        ]
-      }
+
+    // Kompakte, harmonische Polygon-Kontur für das mobile Einsatzgebiet.
+    var serviceAreaCoords = [
+      { lat: 48.7368, lng: 9.1702 }, // Degerloch
+      { lat: 48.7648, lng: 9.2015 }, // Wangen
+      { lat: 48.7792, lng: 9.2368 }, // Mettingen (leicht geglättet)
+      { lat: 48.7635, lng: 9.2588 }, // Obertürkheim (leicht geglättet)
+      { lat: 48.7265, lng: 9.2528 }, // Scharnhauser Park / Ostfildern (leicht geglättet)
+      { lat: 48.7148, lng: 9.2148 }, // Heumaden
+      { lat: 48.7268, lng: 9.2012 }  // Sillenbuch
     ];
 
     var map = new google.maps.Map(mapCanvas, {
       center: companyPosition,
+      zoom: 12,
       mapTypeControl: false,
       streetViewControl: false,
       fullscreenControl: false,
       zoomControl: true,
-      gestureHandling: 'cooperative'
+      gestureHandling: 'cooperative',
+      clickableIcons: false
     });
 
-    new google.maps.Marker({
+    var companyMarker = new google.maps.Marker({
       position: companyPosition,
       map: map,
       title: 'SVB Brückers – Firmenstandort'
     });
 
-    var bounds = new google.maps.LatLngBounds();
-    bounds.extend(companyPosition);
-    var districtLabelInfoWindow = new google.maps.InfoWindow();
-
-    function getDistrictCenter(path) {
-      var totals = path.reduce(
-        function (accumulator, point) {
-          accumulator.lat += point.lat;
-          accumulator.lng += point.lng;
-          return accumulator;
-        },
-        { lat: 0, lng: 0 }
-      );
-
-      return {
-        lat: totals.lat / path.length,
-        lng: totals.lng / path.length
-      };
-    }
-
-    districtAreas.forEach(function (district) {
-      var districtPolygon = new google.maps.Polygon({
-        paths: district.path,
-        strokeColor: '#1b4a77',
-        strokeOpacity: 0.9,
-        strokeWeight: 2,
-        fillColor: '#E07A3A',
-        fillOpacity: 0.24,
-        map: map
-      });
-
-      var districtCenter = getDistrictCenter(district.path);
-
-      new google.maps.Marker({
-        position: districtCenter,
-        map: map,
-        icon: {
-          path: google.maps.SymbolPath.CIRCLE,
-          scale: 0
-        },
-        label: {
-          text: district.name,
-          color: '#1b4a77',
-          fontSize: '12px',
-          fontWeight: '700'
-        },
-        clickable: false,
-        zIndex: 10
-      });
-
-      districtPolygon.addListener('click', function (event) {
-        districtLabelInfoWindow.setContent('<strong>' + district.name + '</strong>');
-        districtLabelInfoWindow.setPosition(event.latLng || districtCenter);
-        districtLabelInfoWindow.open(map);
-      });
-
-      district.path.forEach(function (point) {
-        bounds.extend(point);
-      });
+    var serviceAreaPolygon = new google.maps.Polygon({
+      paths: serviceAreaCoords,
+      strokeColor: '#1a365d',
+      strokeOpacity: 0.86,
+      strokeWeight: 2,
+      fillColor: '#E07A3A',
+      fillOpacity: 0.2,
+      map: map
     });
 
-    map.fitBounds(bounds, {
-      top: 40,
-      right: 40,
-      bottom: 40,
-      left: 40
+    var bounds = new google.maps.LatLngBounds();
+    bounds.extend(companyPosition);
+
+    serviceAreaCoords.forEach(function (point) {
+      bounds.extend(point);
+    });
+
+    function fitMapToServiceArea() {
+      map.fitBounds(bounds, {
+        top: 36,
+        right: 36,
+        bottom: 36,
+        left: 36
+      });
+    }
+
+    fitMapToServiceArea();
+
+    google.maps.event.addListenerOnce(map, 'idle', function () {
+      if (map.getZoom() > 13) {
+        map.setZoom(13);
+      }
+    });
+
+    window.addEventListener('resize', fitMapToServiceArea);
+
+    companyMarker.addListener('click', function () {
+      new google.maps.InfoWindow({
+        content: '<strong>SVB Brückers</strong><br>Firmenstandort'
+      }).open(map, companyMarker);
+    });
+
+    serviceAreaPolygon.addListener('click', function () {
+      map.fitBounds(bounds);
     });
 
     mapCanvas.dataset.mapInitialized = 'true';
   }
 
-  function renderFallbackMap() {
-    if (!mapContainer || mapContainer.dataset.mapLoaded === 'true') return;
-
-    var mapIframe = document.createElement('iframe');
-    mapIframe.src = 'https://maps.google.com/maps?q=48.7475466,9.2399083&z=13&output=embed';
-    mapIframe.loading = 'lazy';
-    mapIframe.referrerPolicy = 'no-referrer-when-downgrade';
-    mapIframe.allowFullscreen = true;
-    mapIframe.title = 'Google Maps Standort von SVB Brückers';
-    mapIframe.className = 'map-canvas';
-
-    if (mapPlaceholder) {
-      mapPlaceholder.hidden = true;
-    }
-
-    if (mapCanvas) {
-      mapCanvas.remove();
-    }
-
-    mapContainer.classList.add('is-loaded');
-    mapContainer.appendChild(mapIframe);
-    mapContainer.dataset.mapLoaded = 'true';
+  function showMapStatus(message) {
+    if (!mapStatus) return;
+    mapStatus.textContent = message;
+    mapStatus.hidden = false;
   }
 
   function renderMap() {
@@ -355,8 +258,9 @@ function initConsentAndMaps() {
 
     var apiKey = (mapContainer.dataset.mapApiKey || '').trim();
     if (!apiKey || apiKey === 'HIER_GOOGLE_MAPS_API_KEY_EINFUEGEN') {
-      console.warn('Google Maps API Key fehlt. Fallback auf eingebettete Karte wird verwendet.');
-      renderFallbackMap();
+      console.warn('Google Maps API Key fehlt. Karte kann nicht geladen werden.');
+      showMapStatus('Google Maps ist aktuell nicht verfügbar, weil der API-Key noch fehlt.');
+      if (mapConsentButton) mapConsentButton.hidden = true;
       return;
     }
 
@@ -371,8 +275,8 @@ function initConsentAndMaps() {
         initServiceAreaMap();
       })
       .catch(function () {
-        console.warn('Google Maps API konnte nicht geladen werden. Fallback auf eingebettete Karte wird verwendet.');
-        renderFallbackMap();
+        console.warn('Google Maps API konnte nicht geladen werden.');
+        showMapStatus('Die Karte konnte aktuell nicht geladen werden. Bitte versuchen Sie es später erneut.');
       });
   }
 
@@ -389,6 +293,14 @@ function initConsentAndMaps() {
 
     if (mapCanvas) {
       mapCanvas.hidden = true;
+    }
+
+    if (mapConsentButton) {
+      mapConsentButton.hidden = false;
+    }
+
+    if (mapStatus) {
+      mapStatus.hidden = true;
     }
 
     if (value === CONSENT_DECLINED) {
