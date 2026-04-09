@@ -253,11 +253,29 @@ function initConsentAndMaps() {
     mapStatus.hidden = false;
   }
 
+  function resolveGoogleMapsApiKey() {
+    var containerKey = mapContainer ? (mapContainer.dataset.mapApiKey || '').trim() : '';
+    var metaTag = document.querySelector('meta[name="google-maps-api-key"]');
+    var metaKey = metaTag ? (metaTag.getAttribute('content') || '').trim() : '';
+    var globalKey = (window.SVB_GOOGLE_MAPS_API_KEY || '').toString().trim();
+
+    var candidates = [containerKey, metaKey, globalKey];
+
+    for (var i = 0; i < candidates.length; i += 1) {
+      var candidate = candidates[i];
+      if (candidate && candidate !== 'HIER_GOOGLE_MAPS_API_KEY_EINFUEGEN') {
+        return candidate;
+      }
+    }
+
+    return '';
+  }
+
   function renderMap() {
     if (!mapContainer || !mapCanvas || mapContainer.dataset.mapLoaded === 'true') return;
 
-    var apiKey = (mapContainer.dataset.mapApiKey || '').trim();
-    if (!apiKey || apiKey === 'HIER_GOOGLE_MAPS_API_KEY_EINFUEGEN') {
+    var apiKey = resolveGoogleMapsApiKey();
+    if (!apiKey) {
       console.warn('Google Maps API Key fehlt. Karte kann nicht geladen werden.');
       showMapStatus('Google Maps ist aktuell nicht verfügbar, weil der API-Key noch fehlt.');
       if (mapConsentButton) mapConsentButton.hidden = true;
