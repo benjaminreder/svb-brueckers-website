@@ -1456,13 +1456,15 @@ img {
 }
 
 .article-card img {
-  height: 170px;
   width: 100%;
-  object-fit: cover;
-  object-position: var(--img-pos-desktop, center);
+  height: 130px;
+  max-height: 130px;
+  object-fit: contain;
+  object-position: center;
   border-radius: 8px;
   margin-bottom: 10px;
-  background: #e8eef6;
+  padding: 8px;
+  background: #f8f9fb;
 }
 
 .article-card-title {
@@ -2136,8 +2138,9 @@ img {
   }
 
   .article-card img {
-    height: 150px;
-    object-position: var(--img-pos-mobile, var(--img-pos-desktop, center));
+    height: 130px;
+    max-height: 130px;
+    object-position: center;
   }
 
   .article-card-title {
