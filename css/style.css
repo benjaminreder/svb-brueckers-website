@@ -258,6 +258,8 @@ img {
 
 .hero-primary-group {
   display: flex;
+  align-items: center;
+  gap: 14px;
 }
 
 .hero-main-cta-desktop {
@@ -269,10 +271,25 @@ img {
 }
 
 .hero-icon-cta {
-  display: none;
-  min-width: 44px;
+  min-height: 56px;
+  padding: 0 18px;
+  border-radius: 24px;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.hero-icon-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.hero-main-cta {
   min-height: 44px;
-  padding: 0;
+}
+
+.hero-main-cta:hover {
+  transform: none;
 }
 
 .hero-about-cta {
@@ -706,6 +723,39 @@ img {
   max-width: 34ch;
   margin: 0 auto;
   text-wrap: pretty;
+}
+
+.process-card-ctas {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+
+.process-card-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 40px;
+  padding: 8px 14px;
+  border-radius: 14px;
+  border: 0;
+  text-decoration: none;
+  font-size: 0.86rem;
+  font-weight: 650;
+  line-height: 1;
+  color: #fff;
+  background: #ff5000;
+  box-shadow: 0 8px 16px rgba(255, 80, 0, 0.2);
+  transition: background-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.process-card-cta:hover {
+  background: #ed4a00;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 20px rgba(237, 74, 0, 0.24);
 }
 
 .process-nav {
@@ -1866,6 +1916,10 @@ img {
     line-height: 1;
   }
 
+  .hero-icon-label {
+    display: none;
+  }
+
   .hero-icon-cta svg {
     width: 20px;
     height: 20px;
@@ -2180,6 +2234,32 @@ img {
 
 
 /* ---- WhatsApp Floating Action Button (Desktop) ---- */
+.contact-fab {
+  position: fixed;
+  bottom: 83px;
+  right: 25px;
+  background: #ff5000;
+  color: #fff;
+  padding: 10px 15px;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  box-shadow: 0 10px 24px rgba(255, 80, 0, 0.32);
+  z-index: 9999;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-fab:hover {
+  background: #ed4a00;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(237, 74, 0, 0.34);
+}
+
 .whatsapp-fab {
   position: fixed;
   bottom: 25px;
@@ -2226,6 +2306,7 @@ img {
 }
 
 @media (max-width: 768px) {
+  .contact-fab,
   .whatsapp-fab {
     display: none;
   }
@@ -2233,9 +2314,11 @@ img {
 
 @media (min-width: 769px) {
   .hero-primary-group .hero-icon-cta {
-    display: none !important;
+    display: inline-flex;
+    min-width: 128px;
   }
 
+  .contact-fab,
   .whatsapp-fab {
     display: flex;
   }
