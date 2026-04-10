@@ -611,6 +611,7 @@ img {
 
 .process-section-header {
   margin-bottom: 20px;
+  text-align: center;
 }
 
 .process-title {
@@ -619,12 +620,13 @@ img {
   line-height: var(--line-height-h3);
   font-weight: 700;
   color: #12253f;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
 }
 
 .process-intro {
   color: #3b4d65;
-  max-width: 68ch;
+  max-width: 760px;
+  margin: 0 auto;
 }
 
 .process-slider-wrap {
@@ -655,12 +657,17 @@ img {
 }
 
 .process-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   scroll-snap-align: start;
   min-height: 100%;
   border: 1px solid #d9e4ef;
   border-radius: 16px;
   background: linear-gradient(180deg, #ffffff 0%, #f9fbfe 100%);
-  padding: 22px;
+  padding: 24px;
   box-shadow: 0 14px 32px rgba(15, 23, 42, 0.08);
 }
 
@@ -671,7 +678,7 @@ img {
   min-height: 30px;
   padding: 6px 12px;
   border-radius: 999px;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
   background: rgba(224, 122, 58, 0.14);
   color: #a5511f;
   font-size: 0.84rem;
@@ -679,19 +686,21 @@ img {
   letter-spacing: 0.01em;
 }
 
-.process-card h4 {
+.process-card-title {
   color: #12253f;
   font-family: var(--font-main);
   font-size: 1.12rem;
   line-height: 1.45;
   font-weight: 700;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
-.process-card p {
+.process-card-text {
   color: #3f5168;
   font-size: 0.98rem;
-  line-height: 1.62;
+  line-height: 1.55;
+  max-width: 320px;
+  margin: 0 auto;
 }
 
 .process-nav {
