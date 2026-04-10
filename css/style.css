@@ -258,8 +258,6 @@ img {
 
 .hero-primary-group {
   display: flex;
-  align-items: center;
-  gap: 14px;
 }
 
 .hero-main-cta-desktop {
@@ -271,37 +269,14 @@ img {
 }
 
 .hero-icon-cta {
-  min-height: 56px;
-  padding: 0 18px;
-  border-radius: 24px;
-  gap: 8px;
-  white-space: nowrap;
-}
-
-.hero-icon-label {
-  font-size: 0.9rem;
-  font-weight: 600;
-  letter-spacing: 0.01em;
+  display: none;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0;
 }
 
 .hero-main-cta {
-  min-height: 56px;
-  padding: 0 32px;
-  border-radius: 24px;
-  border: none;
-  background: #FF5000;
-  color: #FFFFFF;
-  box-shadow: 0 14px 28px rgba(255, 80, 0, 0.32), 0 6px 16px rgba(15, 23, 42, 0.18);
-  font-size: 1rem;
-  font-weight: 700;
-  letter-spacing: 0.01em;
-  transition: background-color 0.28s ease, transform 0.28s ease, box-shadow 0.28s ease;
-}
-
-.hero-main-cta:hover {
-  background: #ed4a00;
-  transform: translateY(-3px);
-  box-shadow: 0 18px 30px rgba(237, 74, 0, 0.36), 0 10px 20px rgba(15, 23, 42, 0.2);
+  min-height: 44px;
 }
 
 .hero-about-cta {
@@ -1893,17 +1868,16 @@ img {
   .hero-main-cta {
     flex: 1 1 auto;
     min-width: 0;
-    max-width: 280px;
+    max-width: 252px;
     height: 52px;
     min-height: 52px;
-    padding: 0 14px;
-    border-radius: 24px;
+    padding: 0 16px;
+    border-radius: 12px;
     font-size: 0.93rem;
     font-weight: 650;
-    line-height: 1.15;
+    line-height: 1;
     letter-spacing: 0.01em;
-    text-align: center;
-    white-space: normal;
+    white-space: nowrap;
   }
 
   .hero-main-cta-desktop {
@@ -1927,10 +1901,6 @@ img {
     flex: 0 0 52px;
     color: #fff;
     line-height: 1;
-  }
-
-  .hero-icon-label {
-    display: none;
   }
 
   .hero-icon-cta svg {
