@@ -1477,7 +1477,7 @@ img {
 
 .article-card {
   height: 100%;
-  min-height: 360px;
+  min-height: 0;
   border: 1px solid #444;
   border-radius: 16px;
   background: #fff;
@@ -1505,7 +1505,7 @@ img {
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
   overflow: hidden;
-  aspect-ratio: 16 / 9;
+  height: var(--article-image-height-desktop, 190px);
   margin: -16px -16px 10px;
 }
 
@@ -2119,6 +2119,7 @@ img {
   .article-card {
     width: 100%;
     padding: 16px 16px 20px;
+    min-height: 430px;
   }
 
   .article-card-link {
@@ -2193,10 +2194,11 @@ img {
     width: 100%;
     padding: 16px 16px 20px;
     border-radius: 16px;
-    min-height: 340px;
+    min-height: 520px;
   }
 
   .article-card-media {
+    height: var(--article-image-height-mobile, 250px);
     margin: -16px -16px 10px;
   }
 
