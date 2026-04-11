@@ -2065,7 +2065,8 @@ img {
   .process-slider {
     --process-columns: 1;
     --process-gap: 14px;
-    grid-auto-columns: minmax(0, 86%);
+    display: flex;
+    gap: var(--process-gap);
     justify-content: flex-start;
     scroll-padding-inline: 7%;
     padding-inline: 7%;
@@ -2077,6 +2078,7 @@ img {
   }
 
   .process-card {
+    flex: 0 0 86%;
     scroll-snap-align: center;
     min-height: 278px;
     opacity: 0.66;
