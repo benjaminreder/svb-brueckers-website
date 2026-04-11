@@ -280,6 +280,19 @@ img {
   display: none;
 }
 
+@media (max-width: 1023px) {
+  .hero-mobile-only {
+    display: inline-flex;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-cta-phone,
+  .hero-cta-whatsapp {
+    display: none !important;
+  }
+}
+
 .hero-main-cta {
   min-height: 44px;
 }
