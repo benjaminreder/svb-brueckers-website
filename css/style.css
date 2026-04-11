@@ -638,6 +638,7 @@ img {
   display: flex;
   align-items: center;
   gap: 12px;
+  overflow: visible;
 }
 
 .process-slider {
@@ -655,7 +656,7 @@ img {
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
   width: 100%;
-  padding-bottom: 6px;
+  padding: 4px 0 10px;
 }
 
 .process-slider::-webkit-scrollbar {
@@ -667,15 +668,19 @@ img {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  gap: 10px;
   text-align: center;
   scroll-snap-align: start;
-  min-height: 250px;
+  min-height: 292px;
   height: 100%;
-  border: 1px solid #d9e4ef;
-  border-radius: 16px;
-  background: linear-gradient(180deg, #ffffff 0%, #f9fbfe 100%);
-  padding: 22px;
-  box-shadow: 0 14px 32px rgba(15, 23, 42, 0.08);
+  border: 1px solid #dce6f1;
+  border-radius: 20px;
+  background: #ffffff;
+  padding: 22px 20px 20px;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, opacity 0.25s ease, border-color 0.25s ease;
+  transform-origin: center center;
+  opacity: 0.72;
 }
 
 .process-step-badge {
@@ -693,13 +698,31 @@ img {
   letter-spacing: 0.01em;
 }
 
+.process-highlight-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #ff5000;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 999px;
+  line-height: 1;
+  box-shadow: 0 8px 16px rgba(255, 80, 0, 0.26);
+}
+
 .process-card-title {
   color: #12253f;
   font-family: var(--font-main);
   font-size: 1.12rem;
   line-height: 1.45;
   font-weight: 700;
-  margin-bottom: 10px;
+  margin: 0;
+  min-height: 3.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .process-card-text {
@@ -709,6 +732,9 @@ img {
   width: 100%;
   max-width: 34ch;
   margin: 0 auto;
+  min-height: 7.2em;
+  display: flex;
+  align-items: flex-start;
   text-wrap: pretty;
 }
 
@@ -717,7 +743,8 @@ img {
   gap: 10px;
   justify-content: center;
   flex-wrap: wrap;
-  margin-top: 16px;
+  margin-top: auto;
+  padding-top: 8px;
 }
 
 .process-card-cta {
@@ -739,10 +766,12 @@ img {
   transition: background-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.process-card-cta:hover {
-  background: #ed4a00;
-  transform: translateY(-2px);
-  box-shadow: 0 12px 20px rgba(237, 74, 0, 0.24);
+.process-card.is-active {
+  transform: scale(1.035);
+  border-color: rgba(255, 80, 0, 0.35);
+  box-shadow: 0 22px 45px rgba(15, 23, 42, 0.16);
+  opacity: 1;
+  z-index: 2;
 }
 
 .process-nav {
@@ -772,6 +801,7 @@ img {
 .process-dots {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 8px;
   margin-top: 18px;
 }
@@ -779,17 +809,38 @@ img {
 .process-dot {
   width: 8px;
   height: 8px;
-  border-radius: 50%;
+  border-radius: 999px;
   border: 0;
   padding: 0;
-  background: #c8d3df;
+  background: #d6dbe2;
   cursor: pointer;
-  transition: transform 0.2s ease, background-color 0.2s ease;
+  transition: width 0.25s ease, transform 0.2s ease, background-color 0.25s ease;
 }
 
 .process-dot.is-active {
   background: var(--accent);
-  transform: scale(1.15);
+  width: 22px;
+  transform: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .process-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(15, 23, 42, 0.12);
+    opacity: 0.92;
+  }
+
+  .process-card.is-active:hover {
+    transform: scale(1.035) translateY(-4px);
+    box-shadow: 0 24px 48px rgba(15, 23, 42, 0.18);
+    opacity: 1;
+  }
+
+  .process-card-cta:hover {
+    background: #ed4a00;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 20px rgba(237, 74, 0, 0.24);
+  }
 }
 
 /* ---- About ---- */
@@ -2013,10 +2064,27 @@ img {
 
   .process-slider {
     --process-columns: 1;
+    --process-gap: 14px;
+    grid-auto-columns: minmax(0, 86%);
+    justify-content: flex-start;
+    scroll-padding-inline: 7%;
+    padding-inline: 7%;
+    overflow-x: auto;
   }
 
   .process-nav {
     display: none;
+  }
+
+  .process-card {
+    scroll-snap-align: center;
+    min-height: 278px;
+    opacity: 0.66;
+  }
+
+  .process-card.is-active {
+    transform: scale(1.02);
+    box-shadow: 0 18px 34px rgba(15, 23, 42, 0.14);
   }
 
   .services-trust-intro {
@@ -2221,8 +2289,17 @@ img {
   }
 
   .process-card {
-    min-height: 230px;
+    min-height: 260px;
     padding: 20px;
+  }
+
+  .process-card-title {
+    min-height: 3rem;
+  }
+
+  .process-card-text {
+    min-height: 7.7em;
+    font-size: 0.95rem;
   }
 
   .ratgeber-posts {

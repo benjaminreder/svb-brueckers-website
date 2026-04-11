@@ -316,40 +316,55 @@ function initProcessSlider() {
 
   dotsContainer.innerHTML = '';
 
-  function getStepWidth() {
-    return cards[0].offsetWidth + parseFloat(window.getComputedStyle(track).columnGap || '0');
-  }
-
   function getMaxScroll() {
     return Math.max(0, track.scrollWidth - track.clientWidth);
   }
 
-  function getSlidesCount() {
-    var stepWidth = getStepWidth();
-    if (!stepWidth) return cards.length;
-    return Math.max(1, Math.floor(getMaxScroll() / stepWidth) + 1);
-  }
-
   function getIndex() {
-    var maxScroll = getMaxScroll();
-    if (maxScroll <= 0) return 0;
-    return Math.round((track.scrollLeft / maxScroll) * (getSlidesCount() - 1));
+    var trackCenter = track.scrollLeft + track.clientWidth / 2;
+    var closestIndex = 0;
+    var closestDistance = Number.POSITIVE_INFINITY;
+
+    Array.prototype.forEach.call(cards, function (card, cardIndex) {
+      var cardCenter = card.offsetLeft + card.offsetWidth / 2;
+      var distance = Math.abs(cardCenter - trackCenter);
+
+      if (distance < closestDistance) {
+        closestDistance = distance;
+        closestIndex = cardIndex;
+      }
+    });
+
+    return closestIndex;
   }
 
   function scrollToIndex(index) {
-    var maxScroll = getMaxScroll();
-    var slidesCount = getSlidesCount();
-    if (slidesCount <= 1) {
+    var boundedIndex = Math.max(0, Math.min(cards.length - 1, index));
+    var targetCard = cards[boundedIndex];
+    if (!targetCard) return;
+
+    var rawTarget = targetCard.offsetLeft - (track.clientWidth - targetCard.offsetWidth) / 2;
+    var target = Math.min(Math.max(0, rawTarget), getMaxScroll());
+
+    if (cards.length <= 1) {
       track.scrollTo({ left: 0, behavior: 'smooth' });
       return;
     }
-    var target = (index / (slidesCount - 1)) * maxScroll;
+
     track.scrollTo({ left: target, behavior: 'smooth' });
+  }
+
+  function updateActiveCard(index) {
+    Array.prototype.forEach.call(cards, function (card, cardIndex) {
+      var isActive = cardIndex === index;
+      card.classList.toggle('is-active', isActive);
+      card.setAttribute('aria-current', isActive ? 'true' : 'false');
+    });
   }
 
   function updateControls() {
     var index = getIndex();
-    var slidesCount = getSlidesCount();
+    var slidesCount = cards.length;
 
     Array.prototype.forEach.call(dotsContainer.children, function (dot, dotIndex) {
       var active = dotIndex === index;
@@ -357,12 +372,14 @@ function initProcessSlider() {
       dot.setAttribute('aria-current', active ? 'true' : 'false');
     });
 
+    updateActiveCard(index);
+
     if (prevButton) prevButton.disabled = index === 0;
     if (nextButton) nextButton.disabled = index >= slidesCount - 1;
   }
 
   function renderDots() {
-    var slidesCount = getSlidesCount();
+    var slidesCount = cards.length;
     dotsContainer.innerHTML = '';
 
     for (var i = 0; i < slidesCount; i += 1) {
@@ -389,7 +406,7 @@ function initProcessSlider() {
 
   if (nextButton) {
     nextButton.addEventListener('click', function () {
-      scrollToIndex(Math.min(getSlidesCount() - 1, getIndex() + 1));
+      scrollToIndex(Math.min(cards.length - 1, getIndex() + 1));
     });
   }
 
