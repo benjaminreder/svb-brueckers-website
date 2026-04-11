@@ -275,6 +275,11 @@ img {
   padding: 0;
 }
 
+
+.hero-mobile-only {
+  display: none;
+}
+
 .hero-main-cta {
   min-height: 44px;
 }
@@ -1999,6 +2004,10 @@ img {
 
   .hero-main-cta-mobile {
     display: inline !important;
+  }
+
+  .hero-mobile-only {
+    display: inline-flex;
   }
 
   .hero-icon-cta {
