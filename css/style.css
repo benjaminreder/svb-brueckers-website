@@ -1626,6 +1626,7 @@ img {
   margin: auto;
   object-fit: contain;
   object-position: center;
+  transform: translateX(var(--ratgeber-image-shift-desktop, 12px));
 }
 
 .ratgeber-content {
@@ -2374,6 +2375,10 @@ img {
 
   .article-card img {
     object-position: var(--img-pos-mobile, center);
+  }
+
+  .ratgeber-image-wrapper img {
+    transform: translateX(var(--ratgeber-image-shift-mobile, 14px));
   }
 
   .article-card-title {
