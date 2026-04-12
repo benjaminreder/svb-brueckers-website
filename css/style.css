@@ -179,7 +179,7 @@ img {
   font-size: clamp(1.15rem, 1.75vw, 1.75rem);
   letter-spacing: 0.02em;
   text-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
-  background: radial-gradient(circle at 26% 20%, #ffc592 0%, #ef9652 38%, #d16c2c 100%);
+  background: var(--accent);
   border: 1px solid rgba(255,255,255,0.48);
   box-shadow: 0 18px 34px rgba(15, 23, 42, 0.34), 0 0 0 7px rgba(224,122,58,0.22);
   clip-path: polygon(50% 0%, 59.6% 10.2%, 71.2% 3.8%, 75.3% 16.8%, 87.7% 14.6%, 85.4% 27%, 96.2% 28.8%, 89.8% 40.4%, 100% 50%, 89.8% 59.6%, 96.2% 71.2%, 85.4% 73%, 87.7% 85.4%, 75.3% 83.2%, 71.2% 96.2%, 59.6% 89.8%, 50% 100%, 40.4% 89.8%, 28.8% 96.2%, 24.7% 83.2%, 12.3% 85.4%, 14.6% 73%, 3.8% 71.2%, 10.2% 59.6%, 0% 50%, 10.2% 40.4%, 3.8% 28.8%, 14.6% 27%, 12.3% 14.6%, 24.7% 16.8%, 28.8% 3.8%, 40.4% 10.2%);
@@ -798,14 +798,14 @@ img {
   font-weight: 650;
   line-height: 1;
   color: #fff;
-  background: #ff5000;
-  box-shadow: 0 8px 16px rgba(255, 80, 0, 0.2);
+  background: var(--accent);
+  box-shadow: 0 8px 16px rgba(224, 122, 58, 0.24);
   transition: background-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .process-card.is-active {
   transform: scale(1.035);
-  border-color: rgba(255, 80, 0, 0.35);
+  border-color: rgba(224, 122, 58, 0.35);
   box-shadow: 0 22px 45px rgba(15, 23, 42, 0.16);
   opacity: 1;
   z-index: 2;
@@ -881,9 +881,9 @@ img {
   }
 
   .process-card-cta:hover {
-    background: #ed4a00;
+    background: var(--accent-hover);
     transform: translateY(-2px);
-    box-shadow: 0 12px 20px rgba(237, 74, 0, 0.24);
+    box-shadow: 0 12px 20px rgba(201, 106, 47, 0.28);
   }
 }
 
@@ -2172,6 +2172,16 @@ img {
     gap: 12px;
   }
 
+  .process-card-mobile-cta-lift {
+    justify-content: flex-start;
+  }
+
+  .process-card-mobile-cta-lift .process-card-ctas {
+    margin-top: 14px;
+    margin-bottom: 8px;
+    padding-top: 0;
+  }
+
   .process-card-ctas .process-card-cta {
     width: 52px;
     height: 52px;
@@ -2460,7 +2470,7 @@ img {
   position: fixed;
   bottom: 25px;
   right: 25px;
-  background: #ff5000;
+  background: var(--accent);
   color: #fff;
   padding: 10px 15px;
   border-radius: 50px;
@@ -2471,15 +2481,15 @@ img {
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  box-shadow: 0 10px 24px rgba(255, 80, 0, 0.32);
+  box-shadow: 0 10px 24px rgba(224, 122, 58, 0.34);
   z-index: 9999;
   transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .contact-fab:hover {
-  background: #ed4a00;
+  background: var(--accent-hover);
   transform: translateY(-2px);
-  box-shadow: 0 12px 28px rgba(237, 74, 0, 0.34);
+  box-shadow: 0 12px 28px rgba(201, 106, 47, 0.36);
 }
 
 .whatsapp-fab {
@@ -2597,13 +2607,13 @@ img {
   }
 
   .hero-btn-primary {
-    background: #ff5000;
+    background: var(--accent);
     color: #fff;
     border: none;
   }
 
   .hero-btn-primary:hover {
-    background: #e64900;
+    background: var(--accent-hover);
   }
 
   .hero-btn-secondary {
