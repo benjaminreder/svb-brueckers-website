@@ -307,12 +307,26 @@ function initProcessSlider() {
   if (!section) return;
 
   var track = section.querySelector('[data-process-track]');
-  var cards = track ? track.querySelectorAll('[data-process-card]') : [];
   var prevButton = section.querySelector('[data-process-prev]');
   var nextButton = section.querySelector('[data-process-next]');
   var dotsContainer = document.querySelector('[data-process-dots]');
+  var mobileMediaQuery = window.matchMedia('(max-width: 768px)');
+  var cards = [];
+  var initialIndex = 0;
 
-  if (!track || !cards.length || !dotsContainer) return;
+  function isMobileProcessSlider() {
+    return mobileMediaQuery.matches;
+  }
+
+  function getCards() {
+    if (!track) return [];
+    var selector = isMobileProcessSlider()
+      ? '[data-process-card], .process-card-dummy'
+      : '[data-process-card]';
+    return Array.prototype.slice.call(track.querySelectorAll(selector));
+  }
+
+  if (!track || !dotsContainer) return;
 
   dotsContainer.innerHTML = '';
 
@@ -325,7 +339,7 @@ function initProcessSlider() {
     var closestIndex = 0;
     var closestDistance = Number.POSITIVE_INFINITY;
 
-    Array.prototype.forEach.call(cards, function (card, cardIndex) {
+    cards.forEach(function (card, cardIndex) {
       var cardCenter = card.offsetLeft + card.offsetWidth / 2;
       var distance = Math.abs(cardCenter - trackCenter);
 
@@ -355,7 +369,7 @@ function initProcessSlider() {
   }
 
   function updateActiveCard(index) {
-    Array.prototype.forEach.call(cards, function (card, cardIndex) {
+    cards.forEach(function (card, cardIndex) {
       var isActive = cardIndex === index;
       card.classList.toggle('is-active', isActive);
       card.setAttribute('aria-current', isActive ? 'true' : 'false');
@@ -365,6 +379,8 @@ function initProcessSlider() {
   function updateControls() {
     var index = getIndex();
     var slidesCount = cards.length;
+
+    if (!slidesCount) return;
 
     Array.prototype.forEach.call(dotsContainer.children, function (dot, dotIndex) {
       var active = dotIndex === index;
@@ -379,8 +395,11 @@ function initProcessSlider() {
   }
 
   function renderDots() {
+    cards = getCards();
     var slidesCount = cards.length;
     dotsContainer.innerHTML = '';
+
+    if (!slidesCount) return;
 
     for (var i = 0; i < slidesCount; i += 1) {
       var dot = document.createElement('button');
@@ -412,10 +431,16 @@ function initProcessSlider() {
 
   track.addEventListener('scroll', updateControls, { passive: true });
   window.addEventListener('resize', renderDots);
+  if (mobileMediaQuery.addEventListener) {
+    mobileMediaQuery.addEventListener('change', renderDots);
+  } else if (mobileMediaQuery.addListener) {
+    mobileMediaQuery.addListener(renderDots);
+  }
 
   renderDots();
   requestAnimationFrame(function () {
-    scrollToIndex(0, 'auto');
+    initialIndex = isMobileProcessSlider() ? 1 : 0;
+    scrollToIndex(initialIndex, 'auto');
   });
 }
 
