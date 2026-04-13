@@ -102,7 +102,7 @@ if (location.protocol !== "https:" && !isLocalPreviewHost) {
         <a href="#einzugsgebiet" onclick="closeMenu()">Einzugsgebiet</a>
         <a href="#vorteile" onclick="closeMenu()">Vorteile</a>
         <a href="#referenzen" onclick="closeMenu()">Referenzen</a>
-        <a href="#faq" onclick="closeMenu()">FAQ</a>
+        <a href="/faq/" onclick="closeMenu()">FAQ</a>
         <a href="/ratgeber/" onclick="closeMenu()">Ratgeber</a>
         <a href="#kontakt" onclick="closeMenu()">Kontakt</a>
       </nav>
@@ -123,21 +123,22 @@ if (location.protocol !== "https:" && !isLocalPreviewHost) {
       <span class="hero-badge">INGENIEUR- UND <br>SACHVERSTÄNDIGENBÜRO <br>BRÜCKERS</span>
       <h1>Gutachter für Unfallschäden in Stuttgart Sillenbuch, Heumaden und Umgebung</h1>
       <p class="hero-sub">Ihr unabhängiger Kfz-Sachverständiger unterstützt Sie mit professionellen Unfallgutachten und Schadengutachten.</p>
-      <div class="hero-buttons">
+      <div class="hero-buttons hero-cta-wrapper">
         <div class="hero-primary-group">
-          <a href="tel:+491759415528" class="btn btn-primary hero-icon-cta hero-icon-cta-phone" aria-label="Jetzt anrufen">
+          <a href="tel:+491759415528" class="btn btn-primary hero-icon-cta hero-icon-cta-phone hero-cta-phone hero-mobile-only" aria-label="Jetzt anrufen">
             <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
               <path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24 11.7 11.7 0 0 0 3.68.59 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.3 21 3 13.7 3 4a1 1 0 0 1 1-1h3.47a1 1 0 0 1 1 1 11.7 11.7 0 0 0 .59 3.68 1 1 0 0 1-.24 1.01z" fill="currentColor"></path>
             </svg>
           </a>
-          <a href="#kontakt" class="btn btn-primary hero-main-cta"><span class="hero-main-cta-desktop">Jetzt Kontakt aufnehmen</span><span class="hero-main-cta-mobile">Kontakt aufnehmen</span></a>
-          <a href="https://wa.me/491608610203?text=Hallo%20Herr%20Br%C3%BCckers,%20ich%20interessiere%20mich%20f%C3%BCr%20ein%20Gutachten.%20K%C3%B6nnen%20Sie%20mich%20bitte%20kontaktieren?" class="btn btn-primary hero-icon-cta hero-icon-cta-whatsapp" aria-label="Kontakt per WhatsApp">
+          <a href="#kontakt" class="btn btn-primary hero-main-cta hero-btn-primary"><span class="hero-main-cta-desktop">Jetzt Kontakt aufnehmen</span><span class="hero-main-cta-mobile">Kontakt aufnehmen</span></a>
+          <a href="https://wa.me/491608610203?text=Hallo%20Herr%20Br%C3%BCckers,%20ich%20interessiere%20mich%20f%C3%BCr%20ein%20Gutachten.%20K%C3%B6nnen%20Sie%20mich%20bitte%20kontaktieren?" class="btn btn-primary hero-icon-cta hero-icon-cta-whatsapp hero-cta-whatsapp hero-mobile-only" aria-label="Kontakt per WhatsApp">
             <svg width="22" height="22" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
               <path d="M16 3C8.82 3 3 8.82 3 16c0 2.28.59 4.51 1.7 6.47L3 29l6.75-1.64A12.9 12.9 0 0 0 16 29c7.18 0 13-5.82 13-13S23.18 3 16 3zm0 23.6c-1.98 0-3.92-.52-5.62-1.5l-.4-.23-4 .97.99-3.9-.26-.41a10.5 10.5 0 1 1 9.3 5.07zm5.76-7.9c-.31-.16-1.85-.91-2.13-1.01-.29-.11-.49-.16-.7.16-.21.31-.8 1.01-.98 1.22-.18.21-.36.24-.67.08-.31-.16-1.31-.48-2.49-1.52-.92-.82-1.54-1.83-1.72-2.14-.18-.31-.02-.48.14-.64.14-.14.31-.36.47-.54.16-.18.21-.31.31-.52.1-.21.05-.39-.03-.54-.08-.16-.7-1.69-.96-2.32-.25-.61-.5-.53-.7-.54h-.6c-.21 0-.54.08-.82.39-.28.31-1.08 1.06-1.08 2.58s1.11 2.98 1.26 3.19c.16.21 2.17 3.3 5.25 4.63.73.31 1.31.49 1.75.62.73.23 1.39.2 1.91.12.58-.09 1.85-.76 2.11-1.49.26-.74.26-1.37.18-1.5-.08-.13-.29-.2-.6-.36z" fill="currentColor"></path>
             </svg>
           </a>
         </div>
-        <a href="#ueber-mich" class="btn btn-secondary hero-about-cta">Über mich</a>
+        <a href="#leistungen" class="btn hero-services-cta hero-btn-secondary">Meine Leistungen</a>
+        <a href="#ueber-mich" class="btn btn-secondary hero-about-cta hero-btn-secondary">Über mich</a>
       </div>
     </div>
   </section>
@@ -146,7 +147,7 @@ if (location.protocol !== "https:" && !isLocalPreviewHost) {
   <section class="section" id="leistungen">
     <div class="container">
       <h2 class="section-title">Meine Gutachter Leistungen</h2>
-      <p class="section-subtitle">Als Kfz-Sachverständiger erstelle ich für Sie Unfallgutachten, Schadengutachten und Fahrzeugbewertungen. So erhalten Sie eine belastbare Grundlage für die Regulierung mit der Versicherung und eine faire Einschätzung Ihres Schadens und des Fahrzeugs.</p>
+      <p class="section-subtitle">Als Kfz-Sachverständiger und Gutachter erstelle ich für Sie Unfallgutachten, Schadengutachten und Fahrzeugbewertungen. So erhalten Sie eine belastbare Grundlage für die Regulierung mit der Versicherung und eine faire Einschätzung Ihres Schadens und des Fahrzeugs.</p>
       <div class="grid grid-2 services-grid">
         <article class="card service-card">
           <div class="card-icon" aria-hidden="true">
@@ -197,32 +198,94 @@ if (location.protocol !== "https:" && !isLocalPreviewHost) {
           </ul>
         </article>
       </div>
-      <div class="services-trust-block" aria-label="Ihre Vorteile bei meinen Leistungen">
-        <h3>Ihre Vorteile</h3>
-        <p class="services-trust-intro">Ich dokumentiere den Schaden vollständig und erstelle als Kfz Sachverständiger ein nachvollziehbares Gutachten als Grundlage für die Regulierung durch die Versicherung.</p>
-        <div class="services-trust-columns">
-          <div class="services-trust-group" aria-label="Fachliche Vorteile">
-            <h4>Fachliche Qualität</h4>
-            <ul class="services-trust-list">
-              <li>Unabhängige und neutrale Bewertung</li>
-              <li>Schnelle Terminvergabe</li>
-              <li>Technisch fundierte Gutachten</li>
-              <li>Begutachtung in gant Stuttgart und Umgebung</li>
-              <li>Nachvollziehbare Dokumentation für die Regulierung</li>
-            </ul>
-          </div>
-          <div class="services-trust-group" aria-label="Vorteile bei der Abwicklung">
-            <h4>Unterstützung bei der Abwicklung</h4>
-            <ul class="services-trust-list">
-              <li>Für Sie entstehen keine Kosten, da ich direkt mit der Versicherung abrechne.</li>
-              <li>Auch bei einer Teilschuld zahlen Sie bei mir keinen Cent.</li>
-              <li>Ich ermittle den Wiederbeschaffungswert und bei Bedarf den Restwert inklusive verbindlicher Angebote.</li>
-              <li>Ich komme zu Ihnen vor Ort und unterstütze Sie bei der Abstimmung mit der Versicherung.</li>
-              <li>Ich erstelle eine präzise Kalkulation inkl. aller Nebenkosten als Grundlage für eine Auszahlung oder eine reibungslose Reparatur.</li>
-            </ul>
-          </div>
+      <section class="process-section" id="so-funktionierts" aria-label="Ablauf der Schadenregulierung in sechs Schritten">
+        <div class="process-section-header">
+          <h3 class="process-title">So funktioniert&rsquo;s</h3>
+          <p class="process-intro">In wenigen Schritten von der ersten Kontaktaufnahme bis zur Reparatur ihres Fahrzeugs oder Auszahlung der Schadensumme.</p>
         </div>
-      </div>
+        <div class="process-slider-wrap" data-process-slider>
+          <button class="process-nav process-nav-prev" type="button" aria-label="Vorheriger Schritt" data-process-prev>
+            <span aria-hidden="true">&#8592;</span>
+          </button>
+          <div class="process-slider" data-process-track>
+            <article class="process-card process-card-dummy process-card-dummy-left card-0" aria-hidden="true">
+              <div class="process-card-image-wrapper">
+                <img src="images/Kachel_0.png" alt="" class="process-card-dummy-image" loading="lazy" decoding="async">
+              </div>
+            </article>
+            <article class="process-card process-card-mobile-cta-lift" data-process-card>
+              <span class="process-step-badge">Schritt 1</span>
+              <h4 class="process-card-title">Erste Beratung</h4>
+              <p class="process-card-text">Sie rufen mich an und erhalten direkt eine klare Ersteinschätzung zur besten Vorgehensweise.</p>
+              <div class="process-card-ctas">
+                <a href="tel:+491759415528" class="process-card-cta process-card-cta-phone" aria-label="Anruf starten">
+                  <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24 11.7 11.7 0 0 0 3.68.59 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.3 21 3 13.7 3 4a1 1 0 0 1 1-1h3.47a1 1 0 0 1 1 1 11.7 11.7 0 0 0 .59 3.68 1 1 0 0 1-.24 1.01z" fill="currentColor"></path>
+                  </svg>
+                  <span>Anruf</span>
+                </a>
+                <a href="https://wa.me/491608610203?text=Hallo%20Herr%20Br%C3%BCckers,%20ich%20interessiere%20mich%20f%C3%BCr%20ein%20Gutachten.%20K%C3%B6nnen%20Sie%20mich%20bitte%20kontaktieren?" class="process-card-cta process-card-cta-whatsapp" aria-label="Kontakt per WhatsApp">
+                  <svg width="18" height="18" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+                    <path d="M16 3C8.82 3 3 8.82 3 16c0 2.28.59 4.51 1.7 6.47L3 29l6.75-1.64A12.9 12.9 0 0 0 16 29c7.18 0 13-5.82 13-13S23.18 3 16 3zm0 23.6c-1.98 0-3.92-.52-5.62-1.5l-.4-.23-4 .97.99-3.9-.26-.41a10.5 10.5 0 1 1 9.3 5.07zm5.76-7.9c-.31-.16-1.85-.91-2.13-1.01-.29-.11-.49-.16-.7.16-.21.31-.8 1.01-.98 1.22-.18.21-.36.24-.67.08-.31-.16-1.31-.48-2.49-1.52-.92-.82-1.54-1.83-1.72-2.14-.18-.31-.02-.48.14-.64.14-.14.31-.36.47-.54.16-.18.21-.31.31-.52.1-.21.05-.39-.03-.54-.08-.16-.7-1.69-.96-2.32-.25-.61-.5-.53-.7-.54h-.6c-.21 0-.54.08-.82.39-.28.31-1.08 1.06-1.08 2.58s1.11 2.98 1.26 3.19c.16.21 2.17 3.3 5.25 4.63.73.31 1.31.49 1.75.62.73.23 1.39.2 1.91.12.58-.09 1.85-.76 2.11-1.49.26-.74.26-1.37.18-1.5-.08-.13-.29-.2-.6-.36z" fill="currentColor"></path>
+                  </svg>
+                  <span>WhatsApp</span>
+                </a>
+              </div>
+            </article>
+            <article class="process-card" data-process-card>
+              <span class="process-step-badge">Schritt 2</span>
+              <h4 class="process-card-title">Terminvereinbarung</h4>
+              <p class="process-card-text">Gemeinsam finden wir kurzfristig einen Termin. Auf Wunsch komme ich flexibel zu Ihnen nach Hause oder zur Arbeit.</p>
+            </article>
+            <article class="process-card" data-process-card>
+              <span class="process-step-badge">Schritt 3</span>
+              <h4 class="process-card-title">Besichtigung vor Ort</h4>
+              <p class="process-card-text">Ich begutachte das Fahrzeug bei Ihnen vor Ort oder in der Werkstatt. Der Termin dauert in der Regel 30 bis 45 Minuten.</p>
+            </article>
+            <article class="process-card" data-process-card>
+              <span class="process-step-badge">Schritt 4</span>
+              <h4 class="process-card-title">Kalkulation &amp; Gutachten</h4>
+              <p class="process-card-text">Ich kalkuliere den Schaden präzise und erstelle Ihr Gutachten. Meist erhalten Sie es bereits innerhalb von 2 bis 3 Tagen.</p>
+              <div class="process-card-cta-wrap">
+                <span class="process-card-cta process-card-cta-highlight" aria-label="Kostenhinweis">💶 Für Sie kostenlos</span>
+              </div>
+            </article>
+            <article class="process-card" data-process-card>
+              <span class="process-step-badge">Schritt 5</span>
+              <h4 class="process-card-title">Versand an die Versicherung</h4>
+              <p class="process-card-text">Ich sende das Gutachten direkt an die gegnerische Versicherung. Sie erhalten zeitgleich ein Exemplar zur eigenen Dokumentation.</p>
+            </article>
+            <article class="process-card process-card-mobile-cta-lift" data-process-card>
+              <span class="process-step-badge">Schritt 6</span>
+              <h4 class="process-card-title">Begleitung bis zur Regulierung</h4>
+              <p class="process-card-text">Ich begleite Sie bis zur Regulierung und bleibe im direkten Austausch mit Ihnen sowie mit der Versicherung.</p>
+              <div class="process-card-ctas">
+                <a href="tel:+491759415528" class="process-card-cta process-card-cta-phone" aria-label="Anruf starten">
+                  <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24 11.7 11.7 0 0 0 3.68.59 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.3 21 3 13.7 3 4a1 1 0 0 1 1-1h3.47a1 1 0 0 1 1 1 11.7 11.7 0 0 0 .59 3.68 1 1 0 0 1-.24 1.01z" fill="currentColor"></path>
+                  </svg>
+                  <span>Anruf</span>
+                </a>
+                <a href="https://wa.me/491608610203?text=Hallo%20Herr%20Br%C3%BCckers,%20ich%20interessiere%20mich%20f%C3%BCr%20ein%20Gutachten.%20K%C3%B6nnen%20Sie%20mich%20bitte%20kontaktieren?" class="process-card-cta process-card-cta-whatsapp" aria-label="Kontakt per WhatsApp">
+                  <svg width="18" height="18" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+                    <path d="M16 3C8.82 3 3 8.82 3 16c0 2.28.59 4.51 1.7 6.47L3 29l6.75-1.64A12.9 12.9 0 0 0 16 29c7.18 0 13-5.82 13-13S23.18 3 16 3zm0 23.6c-1.98 0-3.92-.52-5.62-1.5l-.4-.23-4 .97.99-3.9-.26-.41a10.5 10.5 0 1 1 9.3 5.07zm5.76-7.9c-.31-.16-1.85-.91-2.13-1.01-.29-.11-.49-.16-.7.16-.21.31-.8 1.01-.98 1.22-.18.21-.36.24-.67.08-.31-.16-1.31-.48-2.49-1.52-.92-.82-1.54-1.83-1.72-2.14-.18-.31-.02-.48.14-.64.14-.14.31-.36.47-.54.16-.18.21-.31.31-.52.1-.21.05-.39-.03-.54-.08-.16-.7-1.69-.96-2.32-.25-.61-.5-.53-.7-.54h-.6c-.21 0-.54.08-.82.39-.28.31-1.08 1.06-1.08 2.58s1.11 2.98 1.26 3.19c.16.21 2.17 3.3 5.25 4.63.73.31 1.31.49 1.75.62.73.23 1.39.2 1.91.12.58-.09 1.85-.76 2.11-1.49.26-.74.26-1.37.18-1.5-.08-.13-.29-.2-.6-.36z" fill="currentColor"></path>
+                  </svg>
+                  <span>WhatsApp</span>
+                </a>
+              </div>
+            </article>
+            <article class="process-card process-card-dummy process-card-dummy-right card-7" aria-hidden="true">
+              <div class="process-card-image-wrapper">
+                <img src="images/Kachel_7.png" alt="" class="process-card-dummy-image" loading="lazy" decoding="async">
+              </div>
+            </article>
+          </div>
+          <button class="process-nav process-nav-next" type="button" aria-label="Nächster Schritt" data-process-next>
+            <span aria-hidden="true">&#8594;</span>
+          </button>
+        </div>
+        <div class="process-dots" data-process-dots aria-label="Navigation für die einzelnen Schritte"></div>
+      </section>
     </div>
   </section>
 
@@ -258,6 +321,42 @@ if (location.protocol !== "https:" && !isLocalPreviewHost) {
             <span class="badge">Dipl.-Ing. (FH) Fahrzeugtechnik</span>
             <span class="badge">17+ Jahre Automobilbranche</span>
             <span class="badge">Unabhängig & neutral</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="ihre-vorteile">
+    <div class="container">
+      <div class="services-trust-block" aria-label="Ihre Vorteile bei meinen Leistungen">
+        <h2 class="section-title services-trust-title">Ihre Vorteile</h2>
+        <p class="services-trust-intro">Ich dokumentiere den Schaden vollständig und erstelle als Kfz Sachverständiger ein nachvollziehbares Gutachten als Grundlage für die Regulierung durch die Versicherung.</p>
+        <div class="services-trust-columns">
+          <div class="services-trust-group" aria-label="Qualität und Fachkompetenz">
+            <h3>Qualität &amp; Fachkompetenz</h3>
+            <ul class="services-trust-list">
+              <li>Unabhängige und neutrale Bewertung</li>
+              <li>Technisch fundierte Gutachten</li>
+              <li>Nachvollziehbare Dokumentation für die Regulierung</li>
+            </ul>
+          </div>
+          <div class="services-trust-group" aria-label="Service und Geschwindigkeit">
+            <h3>Service &amp; Geschwindigkeit</h3>
+            <ul class="services-trust-list">
+              <li>Schnelle Terminvergabe</li>
+              <li>Begutachtung in gant Stuttgart und Umgebung</li>
+              <li>Ich komme zu Ihnen vor Ort und unterstütze Sie bei der Abstimmung mit der Versicherung.</li>
+            </ul>
+          </div>
+          <div class="services-trust-group" aria-label="Kosten und Kundenvorteile">
+            <h3>Kosten &amp; Vorteile für Kunden</h3>
+            <ul class="services-trust-list">
+              <li>Für Sie entstehen keine Kosten, da ich direkt mit der Versicherung abrechne.</li>
+              <li>Auch bei einer Teilschuld zahlen Sie bei mir keinen Cent.</li>
+              <li>Ich ermittle den Wiederbeschaffungswert und bei Bedarf den Restwert inklusive verbindlicher Angebote.</li>
+              <li>Ich erstelle eine präzise Kalkulation inkl. aller Nebenkosten als Grundlage für eine Auszahlung oder eine reibungslose Reparatur.</li>
+            </ul>
           </div>
         </div>
       </div>
@@ -384,150 +483,19 @@ if (location.protocol !== "https:" && !isLocalPreviewHost) {
     </div>
   </section>
 
-  <!-- FAQ -->
-  <section class="section section-alt" id="faq">
+  <section class="section section-alt" id="weiterfuehrung">
     <div class="container">
-      <h2 class="section-title">Häufige Fragen an den Kfz-Sachverständigen</h2>
-      <p class="section-subtitle faq-intro">Hier finden Sie Antworten auf häufige Fragen rund um Unfallgutachten Stuttgart, Schadengutachten Stuttgart, Fahrzeugbewertung und Ihre Rechte als Geschädigter.</p>
-      <div class="faq-list" data-faq-accordion>
-        <article class="faq-item">
-          <h3>
-            <button class="faq-trigger" type="button" aria-expanded="false" aria-controls="faq-panel-1" id="faq-trigger-1">
-              <span class="faq-symbol" aria-hidden="true">+</span>
-              <span>Wer übernimmt die Kosten für ein Unfallgutachten?</span>
-            </button>
-          </h3>
-          <div class="faq-panel" id="faq-panel-1" role="region" aria-labelledby="faq-trigger-1" hidden>
-            <div class="faq-panel-inner">
-              <p>Bei einem unverschuldeten Unfall übernimmt in der Regel die Haftpflichtversicherung des Unfallverursachers die Kosten für das Gutachten. Für Sie als Geschädigter entstehen normalerweise keine Kosten. Ein Unfallgutachten gehört zum Schadenersatz und ist wichtig, um alle Positionen sauber zu ermitteln.</p>
-            </div>
-          </div>
+      <h2 class="section-title">Gut informiert nach dem Unfall</h2>
+      <div class="guide-cards" role="list">
+        <article class="guide-card" role="listitem">
+          <h3>Häufige Fragen</h3>
+          <p>Antworten zu Kosten, Ablauf und Ihren Rechten nach einem Unfall.</p>
+          <a class="btn btn-primary" href="/faq/">Zu den FAQ</a>
         </article>
-
-        <article class="faq-item">
-          <h3>
-            <button class="faq-trigger" type="button" aria-expanded="false" aria-controls="faq-panel-2" id="faq-trigger-2">
-              <span class="faq-symbol" aria-hidden="true">+</span>
-              <span>Darf ich selbst einen Kfz Gutachter auswählen?</span>
-            </button>
-          </h3>
-          <div class="faq-panel" id="faq-panel-2" role="region" aria-labelledby="faq-trigger-2" hidden>
-            <div class="faq-panel-inner">
-              <p>Ja. Als Geschädigter haben Sie das Recht, einen unabhängigen Kfz-Sachverständigen Ihrer Wahl zu beauftragen, dieser kann aber muss nicht in Stuttgart ansäßig sein. Sie müssen nicht den Gutachter akzeptieren, den die gegnerische Versicherung vorschlägt. Die Kosten werden von der Haftpflichtversicherung des Unfallverursachers übernommen. Sollte die Versicherung aus irgendwelchen Gründen die Gutachterkosten nicht oder nur teilweise übernehmen, verzichte ich auf jegliche Ansprüche Ihnen gegenüber. Darauf haben Sie mein Wort!</p>
-            </div>
-          </div>
-        </article>
-
-        <article class="faq-item">
-          <h3>
-            <button class="faq-trigger" type="button" aria-expanded="false" aria-controls="faq-panel-3" id="faq-trigger-3">
-              <span class="faq-symbol" aria-hidden="true">+</span>
-              <span>Muss ich den Gutachter der Versicherung akzeptieren?</span>
-            </button>
-          </h3>
-          <div class="faq-panel" id="faq-panel-3" role="region" aria-labelledby="faq-trigger-3" hidden>
-            <div class="faq-panel-inner">
-              <p>Nein. Sie sind nicht verpflichtet, den Gutachter der Versicherung zu akzeptieren. Als Geschädigter können Sie selbst entscheiden, welchen unabhängigen Kfz-Sachverständigen Sie beauftragen möchten. Dadurch wird der Schaden neutral und vollständig bewertet.</p>
-            </div>
-          </div>
-        </article>
-
-        <article class="faq-item">
-          <h3>
-            <button class="faq-trigger" type="button" aria-expanded="false" aria-controls="faq-panel-4" id="faq-trigger-4">
-              <span class="faq-symbol" aria-hidden="true">+</span>
-              <span>Ab welcher Schadenshöhe lohnt sich ein Schadengutachten?</span>
-            </button>
-          </h3>
-          <div class="faq-panel" id="faq-panel-4" role="region" aria-labelledby="faq-trigger-4" hidden>
-            <div class="faq-panel-inner">
-              <p>Ein Gutachten lohnt sich meist ab einer Schadenshöhe von etwa 700 bis 1000 Euro. Darunter spricht man häufig von einem Bagatellschaden. Bei höheren Schäden ist ein Schadengutachtenx sinnvoll, da darin Reparaturkosten, Wertminderung und weitere Ansprüche genau ermittelt werden.</p>
-            </div>
-          </div>
-        </article>
-
-        <article class="faq-item">
-          <h3>
-            <button class="faq-trigger" type="button" aria-expanded="false" aria-controls="faq-panel-5" id="faq-trigger-5">
-              <span class="faq-symbol" aria-hidden="true">+</span>
-              <span>Wie läuft die Erstellung eines Gutachtens ab?</span>
-            </button>
-          </h3>
-          <div class="faq-panel" id="faq-panel-5" role="region" aria-labelledby="faq-trigger-5" hidden>
-            <div class="faq-panel-inner">
-              <p>Nach der Terminvereinbarung wird das Fahrzeug besichtigt und der Schaden ausführlich dokumentiert. Dabei werden Fotos erstellt und alle relevanten Daten aufgenommen. Anschließend wird das Gutachten erstellt, in dem Reparaturkosten, Wertminderung und weitere Schadenspositionen aufgeführt sind. Das fertige Gutachten nach Unfall in Stuttgart können Sie anschließend bei der Versicherung einreichen.</p>
-            </div>
-          </div>
-        </article>
-
-        <article class="faq-item">
-          <h3>
-            <button class="faq-trigger" type="button" aria-expanded="false" aria-controls="faq-panel-6" id="faq-trigger-6">
-              <span class="faq-symbol" aria-hidden="true">+</span>
-              <span>Wie schnell bekomme ich mein Gutachten nach einem Unfall?</span>
-            </button>
-          </h3>
-          <div class="faq-panel" id="faq-panel-6" role="region" aria-labelledby="faq-trigger-6" hidden>
-            <div class="faq-panel-inner">
-              <p>In vielen Fällen kann ein Termin sehr kurzfristig vereinbart werden. Nach der Besichtigung des Fahrzeugs wird das Gutachten meist innerhalb von zwei bis drei Werktagen erstellt und Ihnen zur Verfügung gestellt. Im Raum Stuttgart-Heumaden und Stuttgart-Sillenbuch biete ich kurzfristige Termine an, komme aber auch gerne in andere Stadtteile oder in die umliegenden Ortschaften.</p>
-            </div>
-          </div>
-        </article>
-
-        <article class="faq-item">
-          <h3>
-            <button class="faq-trigger" type="button" aria-expanded="false" aria-controls="faq-panel-7" id="faq-trigger-7">
-              <span class="faq-symbol" aria-hidden="true">+</span>
-              <span>Kann ich mir den Unfallschaden auszahlen lassen?</span>
-            </button>
-          </h3>
-          <div class="faq-panel" id="faq-panel-7" role="region" aria-labelledby="faq-trigger-7" hidden>
-            <div class="faq-panel-inner">
-              <p>Ja. Sie haben grundsätzlich das Recht, sich den Schaden auf Basis des Gutachtens auszahlen zu lassen. Man spricht dabei von einer fiktiven Abrechnung. Sie entscheiden selbst, ob Sie das Fahrzeug reparieren lassen oder den Betrag auszahlen lassen.</p>
-            </div>
-          </div>
-        </article>
-
-        <article class="faq-item">
-          <h3>
-            <button class="faq-trigger" type="button" aria-expanded="false" aria-controls="faq-panel-8" id="faq-trigger-8">
-              <span class="faq-symbol" aria-hidden="true">+</span>
-              <span>Warum sollte ich einen unabhängigen Kfz-Sachverständigen beauftragen?</span>
-            </button>
-          </h3>
-          <div class="faq-panel" id="faq-panel-8" role="region" aria-labelledby="faq-trigger-8" hidden>
-            <div class="faq-panel-inner">
-              <p>Ein unabhängiger Kfz-Sachverständiger bewertet den Schaden neutral und ausschließlich auf Grundlage der technischen Fakten. Dadurch wird der Schaden vollständig erfasst und nachvollziehbar dokumentiert. Das Gutachten dient anschließend als Grundlage für die Regulierung durch die Versicherung.</p>
-            </div>
-          </div>
-        </article>
-
-        <article class="faq-item">
-          <h3>
-            <button class="faq-trigger" type="button" aria-expanded="false" aria-controls="faq-panel-9" id="faq-trigger-9">
-              <span class="faq-symbol" aria-hidden="true">+</span>
-              <span>Bekomme ich auch Geld, wenn ich das Auto nicht reparieren lasse?</span>
-            </button>
-          </h3>
-          <div class="faq-panel" id="faq-panel-9" role="region" aria-labelledby="faq-trigger-9" hidden>
-            <div class="faq-panel-inner">
-              <p>Ja. Auch wenn Sie das Fahrzeug nicht reparieren lassen, können Sie sich den Schaden auf Grundlage des Gutachtens auszahlen lassen. Dabei werden die im Gutachten ermittelten Netto-Reparaturkosten berücksichtigt und Ihnen von der gegnerischen Versicherung ausbezahlt.</p>
-            </div>
-          </div>
-        </article>
-
-        <article class="faq-item">
-          <h3>
-            <button class="faq-trigger" type="button" aria-expanded="false" aria-controls="faq-panel-10" id="faq-trigger-10">
-              <span class="faq-symbol" aria-hidden="true">+</span>
-              <span>Wird der Wert meines Fahrzeugs im Rahmen des Gutachtens mitbestimmt?</span>
-            </button>
-          </h3>
-          <div class="faq-panel" id="faq-panel-10" role="region" aria-labelledby="faq-trigger-10" hidden>
-            <div class="faq-panel-inner">
-              <p>Ja. Im Gutachten werden neben den Reparaturkosten auch Wiederbeschaffungswert, Restwert und Wertminderung des Fahrzeugs als Folge des Unfalls ermittelt. Nach einem Unfallschaden kann ein Fahrzeug trotz Reparatur an Wert verlieren. Ohne Unfallgutachten wird diese Wertminderung von der Versicherung oft nicht vollständig berücksichtigt.</p>
-            </div>
-          </div>
+        <article class="guide-card" role="listitem">
+          <h3>Ratgeber</h3>
+          <p>Wichtige Tipps und Hintergrundwissen für den richtigen Umgang mit Ihrem Schaden.</p>
+          <a class="btn btn-primary" href="/ratgeber/">Zum Ratgeber</a>
         </article>
       </div>
     </div>
@@ -619,6 +587,12 @@ if (location.protocol !== "https:" && !isLocalPreviewHost) {
   </div>
 
   <script src="js/main.js"></script>
+  <a href="#kontakt"
+     class="contact-fab"
+     aria-label="Kontakt aufnehmen"
+     title="Kontakt aufnehmen">
+    Kontakt aufnehmen
+  </a>
   <a href="https://wa.me/491608610203?text=Hallo%20Herr%20Br%C3%BCckers,%20ich%20interessiere%20mich%20f%C3%BCr%20ein%20Gutachten.%20K%C3%B6nnen%20Sie%20mich%20bitte%20kontaktieren%3F"
      class="whatsapp-fab"
      target="_blank"

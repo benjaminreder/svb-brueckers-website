@@ -302,12 +302,155 @@ function initRatgeberArticleSchema() {
   document.head.appendChild(script);
 }
 
+function initProcessSlider() {
+  var section = document.querySelector('[data-process-slider]');
+  if (!section) return;
+
+  var track = section.querySelector('[data-process-track]');
+  var prevButton = section.querySelector('[data-process-prev]');
+  var nextButton = section.querySelector('[data-process-next]');
+  var dotsContainer = document.querySelector('[data-process-dots]');
+  var mobileMediaQuery = window.matchMedia('(max-width: 768px)');
+  var cards = [];
+  var initialIndex = 0;
+
+  function isMobileProcessSlider() {
+    return mobileMediaQuery.matches;
+  }
+
+  function getCards() {
+    if (!track) return [];
+    var selector = isMobileProcessSlider()
+      ? '[data-process-card], .process-card-dummy'
+      : '[data-process-card]';
+    return Array.prototype.slice.call(track.querySelectorAll(selector));
+  }
+
+  if (!track || !dotsContainer) return;
+
+  dotsContainer.innerHTML = '';
+
+  function getMaxScroll() {
+    return Math.max(0, track.scrollWidth - track.clientWidth);
+  }
+
+  function getIndex() {
+    var trackCenter = track.scrollLeft + track.clientWidth / 2;
+    var closestIndex = 0;
+    var closestDistance = Number.POSITIVE_INFINITY;
+
+    cards.forEach(function (card, cardIndex) {
+      var cardCenter = card.offsetLeft + card.offsetWidth / 2;
+      var distance = Math.abs(cardCenter - trackCenter);
+
+      if (distance < closestDistance) {
+        closestDistance = distance;
+        closestIndex = cardIndex;
+      }
+    });
+
+    return closestIndex;
+  }
+
+  function scrollToIndex(index, behavior) {
+    var boundedIndex = Math.max(0, Math.min(cards.length - 1, index));
+    var targetCard = cards[boundedIndex];
+    if (!targetCard) return;
+
+    var rawTarget = targetCard.offsetLeft - (track.clientWidth - targetCard.offsetWidth) / 2;
+    var target = Math.min(Math.max(0, rawTarget), getMaxScroll());
+
+    if (cards.length <= 1) {
+      track.scrollTo({ left: 0, behavior: behavior || 'smooth' });
+      return;
+    }
+
+    track.scrollTo({ left: target, behavior: behavior || 'smooth' });
+  }
+
+  function updateActiveCard(index) {
+    cards.forEach(function (card, cardIndex) {
+      var isActive = cardIndex === index;
+      card.classList.toggle('is-active', isActive);
+      card.setAttribute('aria-current', isActive ? 'true' : 'false');
+    });
+  }
+
+  function updateControls() {
+    var index = getIndex();
+    var slidesCount = cards.length;
+
+    if (!slidesCount) return;
+
+    Array.prototype.forEach.call(dotsContainer.children, function (dot, dotIndex) {
+      var active = dotIndex === index;
+      dot.classList.toggle('is-active', active);
+      dot.setAttribute('aria-current', active ? 'true' : 'false');
+    });
+
+    updateActiveCard(index);
+
+    if (prevButton) prevButton.disabled = index === 0;
+    if (nextButton) nextButton.disabled = index >= slidesCount - 1;
+  }
+
+  function renderDots() {
+    cards = getCards();
+    var slidesCount = cards.length;
+    dotsContainer.innerHTML = '';
+
+    if (!slidesCount) return;
+
+    for (var i = 0; i < slidesCount; i += 1) {
+      var dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 'process-dot';
+      dot.setAttribute('aria-label', 'Zu Ansicht ' + (i + 1));
+      dot.addEventListener('click', (function (index) {
+        return function () {
+          scrollToIndex(index);
+        };
+      })(i));
+      dotsContainer.appendChild(dot);
+    }
+
+    updateControls();
+  }
+
+  if (prevButton) {
+    prevButton.addEventListener('click', function () {
+      scrollToIndex(Math.max(0, getIndex() - 1));
+    });
+  }
+
+  if (nextButton) {
+    nextButton.addEventListener('click', function () {
+      scrollToIndex(Math.min(cards.length - 1, getIndex() + 1));
+    });
+  }
+
+  track.addEventListener('scroll', updateControls, { passive: true });
+  window.addEventListener('resize', renderDots);
+  if (mobileMediaQuery.addEventListener) {
+    mobileMediaQuery.addEventListener('change', renderDots);
+  } else if (mobileMediaQuery.addListener) {
+    mobileMediaQuery.addListener(renderDots);
+  }
+
+  renderDots();
+  requestAnimationFrame(function () {
+    initialIndex = isMobileProcessSlider() ? 1 : 0;
+    scrollToIndex(initialIndex, 'auto');
+  });
+}
+
 function initPageFeatures() {
   initScrollRestorationFix();
   initFaqAccordion();
   initConsentAndMaps();
   initRatgeberBackButtons();
   initRatgeberArticleSchema();
+  initProcessSlider();
 }
 
 if (document.readyState === 'loading') {
