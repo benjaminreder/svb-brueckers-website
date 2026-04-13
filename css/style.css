@@ -2742,13 +2742,13 @@ img {
   }
 
   .hero-btn-primary {
-    background: #ff5000;
+    background: var(--accent);
     color: #fff;
     border: none;
   }
 
   .hero-btn-primary:hover {
-    background: #e64900;
+    background: var(--accent-hover);
     transform: translateY(-2px);
     box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
   }
