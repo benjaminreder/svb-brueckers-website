@@ -1847,6 +1847,14 @@ img {
   margin-bottom: 8px;
 }
 
+.article-longform {
+  margin-top: 40px;
+}
+
+.article-longform h2:first-of-type {
+  margin-top: 0;
+}
+
 .glossary-list {
   margin-top: 22px;
 }
