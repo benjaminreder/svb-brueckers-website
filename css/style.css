@@ -1094,6 +1094,102 @@ img {
   margin-top: 4px;
 }
 
+/* ---- USP Cards ---- */
+.usp-section {
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.usp-container {
+  max-width: 980px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.usp-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 22px 24px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  min-height: 88px;
+  width: 100%;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.usp-icon {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  border-radius: 50%;
+  background: #FF5000;
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.usp-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.usp-text h2 {
+  font-size: 18px;
+  line-height: 1.2;
+  color: #111;
+  font-weight: 700;
+}
+
+.usp-text p {
+  font-size: 14px;
+  line-height: 1.3;
+  color: #666;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .usp-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.08);
+  }
+}
+
+@media (min-width: 900px) {
+  .usp-container {
+    flex-direction: row;
+  }
+
+  .usp-card {
+    flex: 1 1 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .usp-card {
+    padding: 18px;
+  }
+
+  .usp-icon {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+  }
+
+  .usp-text h2 {
+    font-size: 17px;
+  }
+
+  .usp-text p {
+    font-size: 14px;
+  }
+}
+
 /* ---- Benefit Cards ---- */
 .benefit-card {
   background: var(--primary-light);
