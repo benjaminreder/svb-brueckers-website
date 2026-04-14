@@ -1095,74 +1095,36 @@ img {
 }
 
 /* ---- Benefit Cards ---- */
-.benefits-stack {
-  max-width: 980px;
-  margin: 0 auto;
-  padding: 0 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 22px;
-}
-
 .benefit-card {
-  background: #ffffff;
-  border-radius: 24px;
-  padding: 26px 28px;
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-  color: #111111;
-}
-
-.benefit-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.1);
-  border-color: rgba(255, 80, 0, 0.18);
+  background: var(--primary-light);
+  border-radius: var(--radius);
+  padding: 28px;
+  color: white;
 }
 
 .benefit-icon {
-  width: 58px;
-  height: 58px;
-  min-width: 58px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #FF5000 0%, #ff7a1a 100%);
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 8px 20px rgba(255, 80, 0, 0.22);
-  flex-shrink: 0;
-}
-
-.benefit-icon svg {
-  color: #ffffff;
-  width: 26px;
-  height: 26px;
-  stroke-width: 2.2;
-}
-
-.benefit-content {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
+  width: 48px;
+  height: 48px;
+  background: var(--accent);
+  border-radius: 10px;
+  margin-bottom: 16px;
 }
 
 .benefit-card h3 {
-  font-size: 30px;
-  line-height: 1.15;
+  font-family: var(--font-main);
+  font-size: var(--font-size-h3);
+  line-height: var(--line-height-h3);
   font-weight: 700;
-  color: #111111;
-  margin: 0;
+  margin-bottom: 8px;
 }
 
 .benefit-card p {
-  font-size: 18px;
-  line-height: 1.45;
-  font-weight: 400;
-  color: #5f6368;
-  margin: 0;
+  opacity: 0.85;
+  font-size: 0.98rem;
+  line-height: 1.6;
 }
 
 /* ---- Testimonials ---- */
@@ -2928,27 +2890,6 @@ img {
 
   .benefit-card {
     padding: 20px;
-    gap: 16px;
-    border-radius: 20px;
-  }
-
-  .benefit-icon {
-    width: 50px;
-    height: 50px;
-    min-width: 50px;
-  }
-
-  .benefit-icon svg {
-    width: 24px;
-    height: 24px;
-  }
-
-  .benefit-card h3 {
-    font-size: 24px;
-  }
-
-  .benefit-card p {
-    font-size: 16px;
   }
 
   .process-card {
