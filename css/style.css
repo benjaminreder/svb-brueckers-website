@@ -1096,8 +1096,10 @@ img {
 
 /* ---- USP Cards ---- */
 .usp-section {
-  margin: 40px auto;
+  margin: -92px auto 28px;
   padding: 0 20px;
+  position: relative;
+  z-index: 3;
 }
 
 .usp-container {
@@ -1105,19 +1107,19 @@ img {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 14px;
 }
 
 .usp-card {
-  background: #ffffff;
+  background: var(--primary);
   border-radius: 20px;
-  padding: 22px 24px;
+  padding: 16px 18px;
   display: flex;
   align-items: center;
-  gap: 18px;
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
-  min-height: 88px;
+  gap: 14px;
+  border: 2px solid var(--accent);
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.2);
+  min-height: 80px;
   width: 100%;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
@@ -1143,14 +1145,14 @@ img {
 .usp-text h2 {
   font-size: 18px;
   line-height: 1.2;
-  color: #111;
+  color: #fff;
   font-weight: 700;
 }
 
 .usp-text p {
   font-size: 14px;
   line-height: 1.3;
-  color: #666;
+  color: rgba(255, 255, 255, 0.9);
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -1163,6 +1165,7 @@ img {
 @media (min-width: 900px) {
   .usp-container {
     flex-direction: row;
+    gap: 12px;
   }
 
   .usp-card {
@@ -1171,8 +1174,18 @@ img {
 }
 
 @media (max-width: 768px) {
+  .usp-section {
+    margin-top: -70px;
+  }
+
+  .usp-container {
+    gap: 10px;
+  }
+
   .usp-card {
-    padding: 18px;
+    padding: 14px 15px;
+    gap: 10px;
+    min-height: 74px;
   }
 
   .usp-icon {
@@ -1186,7 +1199,7 @@ img {
   }
 
   .usp-text p {
-    font-size: 14px;
+    font-size: 13px;
   }
 }
 
