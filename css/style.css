@@ -1957,13 +1957,35 @@ img {
   color: #0f3e76;
 }
 
-.article-longform {
+.article-longform,
+.article-longversion {
   margin-top: 52px;
   padding: 6px 0 4px;
 }
 
-.article-longform > h2:first-child {
+.article-longform > h2:first-child,
+.article-longversion > h2:first-child {
   margin-top: 0;
+}
+
+.article-content > h2 + p,
+.article-longform h2 + p,
+.article-longversion h2 + p {
+  margin-top: 2px;
+}
+
+.article-content h2:not(:first-child) {
+  position: relative;
+}
+
+.article-content h2:not(:first-child)::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -30px;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(209, 223, 236, 0), rgba(209, 223, 236, 0.75) 20%, rgba(209, 223, 236, 0.75) 80%, rgba(209, 223, 236, 0));
 }
 
 .article-related-box {

@@ -35,15 +35,19 @@
 
   <main class="page-main">
     <section class="section" style="padding: 0;">
-      <div class="container article-content">
+      <div class="container article-content article-content--optimized">
+        <div class="article-progress" aria-hidden="true">
+          <span class="article-progress-bar" data-article-progress></span>
+        </div>
 
-        <h1 class="page-title">Kfz Gutachten nach Unfall – wann es sich wirklich lohnt</h1>
-
-        <p>Nach einem Unfall in Stuttgart stellt sich oft dieselbe Frage: Reicht ein Kostenvoranschlag oder ist ein Gutachten die bessere Entscheidung? In vielen Fällen entscheidet genau das darüber, ob Ihr Schaden vollständig reguliert wird oder ob Sie auf einem Teil der Kosten sitzen bleiben.</p>
+        <div class="article-hero">
+          <h1 class="page-title">Kfz Gutachten nach Unfall – wann es sich wirklich lohnt</h1>
+          <p class="article-lead article-lead-box">Nach einem Unfall in Stuttgart stellt sich oft dieselbe Frage: Reicht ein Kostenvoranschlag oder ist ein Gutachten die bessere Entscheidung? In vielen Fällen entscheidet genau das darüber, ob Ihr Schaden vollständig reguliert wird oder ob Sie auf einem Teil der Kosten sitzen bleiben.</p>
+        </div>
 
         <h2>Wann brauche ich ein Kfz-Gutachten?</h2>
         <p>Ein <strong>Kfz Gutachten nach Unfall</strong> ist immer dann sinnvoll, wenn der Schaden nicht eindeutig gering ist oder technische Folgeschäden möglich sind.</p>
-        <ul>
+        <ul class="article-highlight-box">
           <li>sichtbare Schäden an Stoßfänger, Kotflügel, Türen oder Felgen</li>
           <li>Verdacht auf verdeckte Schäden hinter der Karosserie</li>
           <li>unklare Reparaturkosten oder unterschiedliche Werkstatteinschätzungen</li>
@@ -66,8 +70,15 @@
 
         <h2>Fazit und nächste Schritte</h2>
         <p>Ein Gutachten lohnt sich immer dann, wenn Sie Klarheit und eine faire Regulierung möchten. Je präziser der Schaden erfasst ist, desto besser lassen sich Kürzungen vermeiden.</p>
-        <p>Weiterführend: <a href="/ratgeber/gutachter-versicherung-unabhaengig/">Versicherungsgutachter oder eigener Gutachter?</a>, <a href="/ratgeber/was-macht-ein-kfz-gutachten-aus/">welche Inhalte ein vollständiges Gutachten hat</a> und <a href="/ratgeber/streitpunkte-und-kuerzungsversuche/">typische Kürzungsversuche in der Praxis</a>.</p>
-        <p><strong>Sie möchten Ihren Schadenfall in Stuttgart kurz einschätzen lassen?</strong> Melden Sie sich unverbindlich – dann wissen Sie schnell, welche Schritte jetzt sinnvoll sind.</p>
+        <div class="article-related-box">
+          <p>Weiterführend:</p>
+          <div class="article-related-grid" aria-label="Ergänzende Artikel">
+            <a href="/ratgeber/gutachter-versicherung-unabhaengig/" class="article-related-card">Versicherungsgutachter oder eigener Gutachter?</a>
+            <a href="/ratgeber/was-macht-ein-kfz-gutachten-aus/" class="article-related-card">welche Inhalte ein vollständiges Gutachten hat</a>
+            <a href="/ratgeber/streitpunkte-und-kuerzungsversuche/" class="article-related-card">typische Kürzungsversuche in der Praxis</a>
+          </div>
+        </div>
+        <p class="article-highlight-box"><strong>Sie möchten Ihren Schadenfall in Stuttgart kurz einschätzen lassen?</strong> Melden Sie sich unverbindlich – dann wissen Sie schnell, welche Schritte jetzt sinnvoll sind.</p>
 
 
         <div class="article-cta-wrap" aria-label="Kontaktmöglichkeiten">
@@ -166,14 +177,52 @@
           <p>Bei einem unverschuldeten Unfall entsteht Ihnen in der Regel kein Kostenrisiko für das erforderliche Gutachten, da die gegnerische Versicherung diese Kosten übernimmt.</p>
 
           <h2>Häufige Fragen</h2>
-          <h3>Ist ein Gutachten immer besser als ein Kostenvoranschlag?</h3>
-          <p>Nicht in jedem Einzelfall. Bei vielen Unfällen bietet das Gutachten jedoch die deutlich bessere Absicherung, weil es mehr Schadenpositionen erfasst und verständlich dokumentiert.</p>
-          <h3>Wer entscheidet, ob ein Gutachten erstellt wird?</h3>
-          <p>Als Geschädigte oder Geschädigter dürfen Sie einen unabhängigen Gutachter Ihrer Wahl beauftragen.</p>
-          <h3>Kann die Versicherung ein Gutachten ablehnen?</h3>
-          <p>Bei berechtigtem Schaden und unverschuldetem Unfall sind Kfz-Gutachten ein üblicher und anerkannter Bestandteil der Regulierung.</p>
-          <h3>Was passiert, wenn der Schaden kleiner ist als erwartet?</h3>
-          <p>Auch dann bietet das Gutachten Sicherheit, weil verdeckte Schäden ausgeschlossen oder sauber dokumentiert werden können.</p>
+          <section class="faq-list article-faq-list" data-faq-accordion aria-label="Häufige Fragen">
+            <article class="faq-item">
+              <h3>
+                <button type="button" class="faq-trigger" aria-expanded="false">
+                  Ist ein Gutachten immer besser als ein Kostenvoranschlag?
+                  <span class="faq-symbol" aria-hidden="true">+</span>
+                </button>
+              </h3>
+              <div class="faq-panel" hidden>
+                <p>Nicht in jedem Einzelfall. Bei vielen Unfällen bietet das Gutachten jedoch die deutlich bessere Absicherung, weil es mehr Schadenpositionen erfasst und verständlich dokumentiert.</p>
+              </div>
+            </article>
+            <article class="faq-item">
+              <h3>
+                <button type="button" class="faq-trigger" aria-expanded="false">
+                  Wer entscheidet, ob ein Gutachten erstellt wird?
+                  <span class="faq-symbol" aria-hidden="true">+</span>
+                </button>
+              </h3>
+              <div class="faq-panel" hidden>
+                <p>Als Geschädigte oder Geschädigter dürfen Sie einen unabhängigen Gutachter Ihrer Wahl beauftragen.</p>
+              </div>
+            </article>
+            <article class="faq-item">
+              <h3>
+                <button type="button" class="faq-trigger" aria-expanded="false">
+                  Kann die Versicherung ein Gutachten ablehnen?
+                  <span class="faq-symbol" aria-hidden="true">+</span>
+                </button>
+              </h3>
+              <div class="faq-panel" hidden>
+                <p>Bei berechtigtem Schaden und unverschuldetem Unfall sind Kfz-Gutachten ein üblicher und anerkannter Bestandteil der Regulierung.</p>
+              </div>
+            </article>
+            <article class="faq-item">
+              <h3>
+                <button type="button" class="faq-trigger" aria-expanded="false">
+                  Was passiert, wenn der Schaden kleiner ist als erwartet?
+                  <span class="faq-symbol" aria-hidden="true">+</span>
+                </button>
+              </h3>
+              <div class="faq-panel" hidden>
+                <p>Auch dann bietet das Gutachten Sicherheit, weil verdeckte Schäden ausgeschlossen oder sauber dokumentiert werden können.</p>
+              </div>
+            </article>
+          </section>
 
           <h2>Fazit</h2>
           <p>Wenn Sie wissen möchten, <strong>wann sich ein Kfz-Gutachten lohnt</strong>, lautet die praxisnahe Antwort: in den meisten Fällen bereits dann, wenn die Schadenhöhe nicht eindeutig geringfügig ist. Ein vollständiges Gutachten schafft Klarheit, schützt vor finanziellen Nachteilen und stärkt Ihre Position in der Kommunikation mit der Versicherung.</p>
@@ -195,6 +244,20 @@
             </div>
           </div>
         </section>
+        <div class="article-mobile-sticky-cta" data-mobile-sticky-cta aria-label="Schneller Kontakt">
+          <a href="tel:+491759415528" class="btn article-icon-cta" aria-label="Jetzt anrufen">
+            <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24 11.7 11.7 0 0 0 3.68.59 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.3 21 3 13.7 3 4a1 1 0 0 1 1-1h3.47a1 1 0 0 1 1 1 11.7 11.7 0 0 0 .59 3.68 1 1 0 0 1-.24 1.01z" fill="currentColor"></path>
+            </svg>
+          </a>
+          <a href="/#kontakt" class="btn article-main-cta">Jetzt Kontakt aufnehmen</a>
+          <a href="https://wa.me/491608610203?text=Hallo%20Herr%20Br%C3%BCckers,%20ich%20interessiere%20mich%20f%C3%BCr%20ein%20Gutachten.%20K%C3%B6nnen%20Sie%20mich%20bitte%20kontaktieren?" class="btn article-icon-cta" aria-label="Kontakt per WhatsApp">
+            <svg width="22" height="22" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+              <path d="M16 3C8.82 3 3 8.82 3 16c0 2.28.59 4.51 1.7 6.47L3 29l6.75-1.64A12.9 12.9 0 0 0 16 29c7.18 0 13-5.82 13-13S23.18 3 16 3zm0 23.6c-1.98 0-3.92-.52-5.62-1.5l-.4-.23-4 .97.99-3.9-.26-.41a10.5 10.5 0 1 1 9.3 5.07zm5.76-7.9c-.31-.16-1.85-.91-2.13-1.01-.29-.11-.49-.16-.7.16-.21.31-.8 1.01-.98 1.22-.18.21-.36.24-.67.08-.31-.16-1.31-.48-2.49-1.52-.92-.82-1.54-1.83-1.72-2.14-.18-.31-.02-.48.14-.64.14-.14.31-.36.47-.54.16-.18.21-.31.31-.52.1-.21.05-.39-.03-.54-.08-.16-.7-1.69-.96-2.32-.25-.61-.5-.53-.7-.54h-.6c-.21 0-.54.08-.82.39-.28.31-1.08 1.06-1.08 2.58s1.11 2.98 1.26 3.19c.16.21 2.17 3.3 5.25 4.63.73.31 1.31.49 1.75.62.73.23 1.39.2 1.91.12.58-.09 1.85-.76 2.11-1.49.26-.74.26-1.37.18-1.5-.08-.13-.29-.2-.6-.36z" fill="currentColor"></path>
+            </svg>
+          </a>
+        </div>
+
       </div>
     </section>
   </main>

@@ -35,20 +35,25 @@
 
   <main class="page-main">
     <section class="section" style="padding: 0;">
-      <div class="container article-content">
+      <div class="container article-content article-content--optimized">
+        <div class="article-progress" aria-hidden="true">
+          <span class="article-progress-bar" data-article-progress></span>
+        </div>
 
-        <h1 class="page-title">Versicherungsgutachter oder eigener Gutachter – was ist für Geschädigte sinnvoll?</h1>
+        <div class="article-hero">
+          <h1 class="page-title">Versicherungsgutachter oder eigener Gutachter – was ist für Geschädigte sinnvoll?</h1>
 
-        <p>Nach einem unverschuldeten Unfall meldet sich häufig schnell die gegnerische Versicherung und bietet einen eigenen Gutachter an. Das wirkt unkompliziert, ist für Geschädigte aber nicht immer die beste Lösung.</p>
+          <p class="article-lead article-lead-box">Nach einem unverschuldeten Unfall meldet sich häufig schnell die gegnerische Versicherung und bietet einen eigenen Gutachter an. Das wirkt unkompliziert, ist für Geschädigte aber nicht immer die beste Lösung.</p>
+        </div>
 
         <h2>Der entscheidende Unterschied</h2>
-        <p><strong>Ein Versicherungsgutachter arbeitet im Auftrag der Versicherung. Ich arbeite als unabhängiger Kfz-Gutachter im Auftrag des Geschädigten.</strong></p>
+        <p class="article-highlight-box"><strong>Ein Versicherungsgutachter arbeitet im Auftrag der Versicherung. Ich arbeite als unabhängiger Kfz-Gutachter im Auftrag des Geschädigten.</strong></p>
 
         <h2>Warum dieser Unterschied so wichtig ist</h2>
         <p>In einem Gutachten geht es um konkrete Geldpositionen: Reparaturkosten, Wertminderung, Nutzungsausfall, Restwert und Wiederbeschaffungswert. Schon kleine Abweichungen können die Auszahlung deutlich reduzieren.</p>
 
         <h2>Typische Punkte, bei denen es oft Streit gibt</h2>
-        <ul>
+        <ul class="article-highlight-box">
           <li>zu niedrig kalkulierte Reparaturkosten</li>
           <li>nicht oder nur teilweise berücksichtigte Wertminderung</li>
           <li>Diskussionen über UPE-Aufschläge und Verbringungskosten</li>
@@ -60,8 +65,15 @@
 
         <h2>Fazit: Unabhängigkeit schützt vor finanziellen Nachteilen</h2>
         <p>Wer seine Ansprüche vollständig durchsetzen möchte, braucht eine belastbare Schadenfeststellung im eigenen Interesse. Ein unabhängiges Gutachten sorgt für Transparenz und verbessert Ihre Verhandlungsposition gegenüber der Versicherung.</p>
-        <p>Passend dazu: <a href="/ratgeber/wann-sich-ein-gutachten-lohnt/">wann ein Gutachten nach Unfall sinnvoll ist</a>, <a href="/ratgeber/was-macht-ein-kfz-gutachten-aus/">was ein gutes Kfz-Gutachten enthalten sollte</a> und <a href="/ratgeber/streitpunkte-und-kuerzungsversuche/">welche Kürzungspunkte besonders häufig sind</a>.</p>
-        <p><strong>Wenn Sie nach einem Unfall in Stuttgart Orientierung brauchen:</strong> Eine kurze Ersteinschätzung hilft oft, früh die richtigen Entscheidungen zu treffen.</p>
+        <div class="article-related-box">
+          <p>Passend dazu:</p>
+          <div class="article-related-grid" aria-label="Ergänzende Artikel">
+            <a href="/ratgeber/wann-sich-ein-gutachten-lohnt/" class="article-related-card">wann ein Gutachten nach Unfall sinnvoll ist</a>
+            <a href="/ratgeber/was-macht-ein-kfz-gutachten-aus/" class="article-related-card">was ein gutes Kfz-Gutachten enthalten sollte</a>
+            <a href="/ratgeber/streitpunkte-und-kuerzungsversuche/" class="article-related-card">welche Kürzungspunkte besonders häufig sind</a>
+          </div>
+        </div>
+        <p class="article-highlight-box"><strong>Wenn Sie nach einem Unfall in Stuttgart Orientierung brauchen:</strong> Eine kurze Ersteinschätzung hilft oft, früh die richtigen Entscheidungen zu treffen.</p>
 
 
         <div class="article-cta-wrap" aria-label="Kontaktmöglichkeiten">
@@ -140,14 +152,52 @@
           <p>So erhalten Sie ein belastbares Unfallgutachten Stuttgart, das sowohl technisch als auch regulatorisch überzeugt.</p>
 
           <h2>Häufige Fragen zur Gutachterwahl</h2>
-          <h3>Muss ich den Versicherungsgutachter akzeptieren?</h3>
-          <p>Nein. Sie dürfen einen eigenen Gutachter nach Unfall beauftragen, wenn Sie unverschuldet geschädigt wurden.</p>
-          <h3>Wer trägt die Kosten für das Gutachten?</h3>
-          <p>Bei eindeutiger Haftung des Unfallverursachers übernimmt üblicherweise die gegnerische Versicherung die Kosten des erforderlichen Gutachtens.</p>
-          <h3>Ist ein unabhängiger Gutachter wirklich neutral?</h3>
-          <p>Ja. Kfz-Sachverständige sind fachlich zur objektiven und nachvollziehbaren Bewertung verpflichtet. Unabhängig bedeutet, dass das Gutachten nicht in den internen Prozess der Versicherung eingebunden ist.</p>
-          <h3>Kann ich später noch ein weiteres Gutachten einholen?</h3>
-          <p>Grundsätzlich ist ein Vergleich möglich. In der Praxis ist es jedoch sinnvoll, frühzeitig auf ein vollständiges, unabhängiges Gutachten zu setzen, damit keine relevanten Positionen verloren gehen.</p>
+          <section class="faq-list article-faq-list" data-faq-accordion aria-label="Häufige Fragen zur Gutachterwahl">
+            <article class="faq-item">
+              <h3>
+                <button type="button" class="faq-trigger" aria-expanded="false">
+                  Muss ich den Versicherungsgutachter akzeptieren?
+                  <span class="faq-symbol" aria-hidden="true">+</span>
+                </button>
+              </h3>
+              <div class="faq-panel" hidden>
+                <p>Nein. Sie dürfen einen eigenen Gutachter nach Unfall beauftragen, wenn Sie unverschuldet geschädigt wurden.</p>
+              </div>
+            </article>
+            <article class="faq-item">
+              <h3>
+                <button type="button" class="faq-trigger" aria-expanded="false">
+                  Wer trägt die Kosten für das Gutachten?
+                  <span class="faq-symbol" aria-hidden="true">+</span>
+                </button>
+              </h3>
+              <div class="faq-panel" hidden>
+                <p>Bei eindeutiger Haftung des Unfallverursachers übernimmt üblicherweise die gegnerische Versicherung die Kosten des erforderlichen Gutachtens.</p>
+              </div>
+            </article>
+            <article class="faq-item">
+              <h3>
+                <button type="button" class="faq-trigger" aria-expanded="false">
+                  Ist ein unabhängiger Gutachter wirklich neutral?
+                  <span class="faq-symbol" aria-hidden="true">+</span>
+                </button>
+              </h3>
+              <div class="faq-panel" hidden>
+                <p>Ja. Kfz-Sachverständige sind fachlich zur objektiven und nachvollziehbaren Bewertung verpflichtet. Unabhängig bedeutet, dass das Gutachten nicht in den internen Prozess der Versicherung eingebunden ist.</p>
+              </div>
+            </article>
+            <article class="faq-item">
+              <h3>
+                <button type="button" class="faq-trigger" aria-expanded="false">
+                  Kann ich später noch ein weiteres Gutachten einholen?
+                  <span class="faq-symbol" aria-hidden="true">+</span>
+                </button>
+              </h3>
+              <div class="faq-panel" hidden>
+                <p>Grundsätzlich ist ein Vergleich möglich. In der Praxis ist es jedoch sinnvoll, frühzeitig auf ein vollständiges, unabhängiges Gutachten zu setzen, damit keine relevanten Positionen verloren gehen.</p>
+              </div>
+            </article>
+          </section>
 
           <h2>Fazit: Warum ein eigener Gutachter die bessere Entscheidung ist</h2>
           <p>Wenn Sie nach einem Unfall in Stuttgart auf Sicherheit, Transparenz und vollständige Anspruchssicherung setzen möchten, ist die Entscheidung für ein unabhängiges Kfz Gutachten meist der richtige Weg. Sie behalten die Kontrolle über den Prozess, schaffen eine belastbare Grundlage für die Regulierung und verringern das Risiko unnötiger Kürzungen.</p>
@@ -169,6 +219,16 @@
             </div>
           </div>
         </section>
+        <div class="article-mobile-sticky-cta" data-mobile-sticky-cta aria-label="Schneller Kontakt">
+          <a href="tel:+491759415528" class="btn article-icon-cta" aria-label="Jetzt anrufen">
+            <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24 11.7 11.7 0 0 0 3.68.59 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.3 21 3 13.7 3 4a1 1 0 0 1 1-1h3.47a1 1 0 0 1 1 1 11.7 11.7 0 0 0 .59 3.68 1 1 0 0 1-.24 1.01z" fill="currentColor"></path></svg>
+          </a>
+          <a href="/#kontakt" class="btn article-main-cta">Jetzt Kontakt aufnehmen</a>
+          <a href="https://wa.me/491608610203?text=Hallo%20Herr%20Br%C3%BCckers,%20ich%20interessiere%20mich%20f%C3%BCr%20ein%20Gutachten.%20K%C3%B6nnen%20Sie%20mich%20bitte%20kontaktieren?" class="btn article-icon-cta" aria-label="Kontakt per WhatsApp">
+            <svg width="22" height="22" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="M16 3C8.82 3 3 8.82 3 16c0 2.28.59 4.51 1.7 6.47L3 29l6.75-1.64A12.9 12.9 0 0 0 16 29c7.18 0 13-5.82 13-13S23.18 3 16 3zm0 23.6c-1.98 0-3.92-.52-5.62-1.5l-.4-.23-4 .97.99-3.9-.26-.41a10.5 10.5 0 1 1 9.3 5.07zm5.76-7.9c-.31-.16-1.85-.91-2.13-1.01-.29-.11-.49-.16-.7.16-.21.31-.8 1.01-.98 1.22-.18.21-.36.24-.67.08-.31-.16-1.31-.48-2.49-1.52-.92-.82-1.54-1.83-1.72-2.14-.18-.31-.02-.48.14-.64.14-.14.31-.36.47-.54.16-.18.21-.31.31-.52.1-.21.05-.39-.03-.54-.08-.16-.7-1.69-.96-2.32-.25-.61-.5-.53-.7-.54h-.6c-.21 0-.54.08-.82.39-.28.31-1.08 1.06-1.08 2.58s1.11 2.98 1.26 3.19c.16.21 2.17 3.3 5.25 4.63.73.31 1.31.49 1.75.62.73.23 1.39.2 1.91.12.58-.09 1.85-.76 2.11-1.49.26-.74.26-1.37.18-1.5-.08-.13-.29-.2-.6-.36z" fill="currentColor"></path></svg>
+          </a>
+        </div>
+
       </div>
     </section>
   </main>

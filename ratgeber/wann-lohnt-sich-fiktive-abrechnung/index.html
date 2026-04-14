@@ -35,14 +35,19 @@
 
   <main class="page-main">
     <section class="section" style="padding: 0;">
-      <div class="container article-content">
+      <div class="container article-content article-content--optimized">
+        <div class="article-progress" aria-hidden="true">
+          <span class="article-progress-bar" data-article-progress></span>
+        </div>
 
-        <h1 class="page-title">Wann lohnt sich die fiktive Abrechnung nach einem Unfall?</h1>
+        <div class="article-hero">
+          <h1 class="page-title">Wann lohnt sich die fiktive Abrechnung nach einem Unfall?</h1>
 
-        <p>Die fiktive Abrechnung lohnt sich vor allem, wenn Sie flexibel bleiben möchten und den Schaden nicht sofort in einer Werkstatt reparieren lassen wollen. Wichtig ist dabei, dass Ihre Ansprüche vollständig dokumentiert sind.</p>
+          <p class="article-lead article-lead-box">Die fiktive Abrechnung lohnt sich vor allem, wenn Sie flexibel bleiben möchten und den Schaden nicht sofort in einer Werkstatt reparieren lassen wollen. Wichtig ist dabei, dass Ihre Ansprüche vollständig dokumentiert sind.</p>
+        </div>
 
         <h2>Typische Fälle, in denen sie sinnvoll sein kann</h2>
-        <ul>
+        <ul class="article-highlight-box">
           <li>Sie möchten selbst über Zeitpunkt und Umfang der Reparatur entscheiden.</li>
           <li>Sie organisieren die Instandsetzung günstiger in Eigenregie.</li>
           <li>Sie benötigen zunächst Liquidität statt eines sofortigen Werkstatttermins.</li>
@@ -56,15 +61,22 @@
         </ul>
 
         <h2>Versicherungsgutachter oder unabhängiger Gutachter?</h2>
-        <p><strong>Gerade bei fiktiver Abrechnung zählt die Perspektive: Versicherungsgutachter handeln im Interesse der Versicherung, ich handle als unabhängiger Kfz-Gutachter im Interesse des Geschädigten.</strong></p>
+        <p class="article-highlight-box"><strong>Gerade bei fiktiver Abrechnung zählt die Perspektive: Versicherungsgutachter handeln im Interesse der Versicherung, ich handle als unabhängiger Kfz-Gutachter im Interesse des Geschädigten.</strong></p>
 
         <h2>Worauf Sie bei der Auszahlung achten sollten</h2>
         <p>Damit die Abrechnung nicht zu niedrig ausfällt, braucht es eine präzise und vollständige Schadenfeststellung. Ein unabhängiges Gutachten verbessert die Grundlage für eine faire Regulierung deutlich.</p>
 
         <h2>Fazit</h2>
         <p>Fiktive Abrechnung kann finanziell attraktiv sein – aber nur mit sauberer Vorbereitung. Wer früh auf ein unabhängiges Gutachten setzt, vermeidet häufiger spätere Kürzungen.</p>
-        <p>Ergänzend lesen: <a href="/ratgeber/fiktive-abrechnung-was-ist-das/">fiktive Abrechnung einfach erklärt</a>, <a href="/ratgeber/gutachter-versicherung-unabhaengig/">Versicherungsgutachter oder eigener Gutachter</a> und <a href="/ratgeber/streitpunkte-und-kuerzungsversuche/">typische Streitpunkte in der Regulierung</a>.</p>
-        <p><strong>Sie möchten einschätzen, ob fiktive Abrechnung in Ihrem Fall sinnvoll ist?</strong> Eine kurze Beratung gibt Ihnen schnell Klarheit.</p>
+        <div class="article-related-box">
+          <p>Ergänzend lesen:</p>
+          <div class="article-related-grid" aria-label="Ergänzende Artikel">
+            <a href="/ratgeber/fiktive-abrechnung-was-ist-das/" class="article-related-card">fiktive Abrechnung einfach erklärt</a>
+            <a href="/ratgeber/gutachter-versicherung-unabhaengig/" class="article-related-card">Versicherungsgutachter oder eigener Gutachter</a>
+            <a href="/ratgeber/streitpunkte-und-kuerzungsversuche/" class="article-related-card">typische Streitpunkte in der Regulierung</a>
+          </div>
+        </div>
+        <p class="article-highlight-box"><strong>Sie möchten einschätzen, ob fiktive Abrechnung in Ihrem Fall sinnvoll ist?</strong> Eine kurze Beratung gibt Ihnen schnell Klarheit.</p>
 
 
         <div class="article-cta-wrap" aria-label="Kontaktmöglichkeiten">
@@ -144,14 +156,52 @@
           <p>Bei einem unverschuldeten Unfall werden die Kosten für das Gutachten in der Regel von der gegnerischen Versicherung getragen.</p>
 
           <h2>Häufige Fragen zur fiktiven Abrechnung</h2>
-          <h3>Kann ich nach der Auszahlung später doch noch reparieren?</h3>
-          <p>Ja. Eine spätere Reparatur ist möglich. Die Mehrwertsteuer wird allerdings grundsätzlich nur erstattet, wenn sie durch eine tatsächliche Reparaturrechnung nachgewiesen wird.</p>
-          <h3>Darf ich mit dem beschädigten Fahrzeug weiterfahren?</h3>
-          <p>Ja, sofern keine Beeinträchtigung der Verkehrssicherheit vorliegt. Bei sicherheitsrelevanten Schäden sollte die Nutzung bis zur Instandsetzung vermieden werden.</p>
-          <h3>Ist die fiktive Abrechnung nach Unfall ein Sonderfall?</h3>
-          <p>Nein. Sie ist ein etablierter Bestandteil der Schadenregulierung und wird in vielen Fällen genutzt, wenn eine Auszahlung wirtschaftlich sinnvoller ist als die sofortige Reparatur.</p>
-          <h3>Geht bei der fiktiven Abrechnung automatisch Geld verloren?</h3>
-          <p>Nicht zwingend. Mit einem vollständigen und unabhängigen Gutachten lassen sich alle relevanten Positionen nachvollziehbar ansetzen und berechtigte Ansprüche besser sichern.</p>
+          <section class="faq-list article-faq-list" data-faq-accordion aria-label="Häufige Fragen zur fiktiven Abrechnung">
+            <article class="faq-item">
+              <h3>
+                <button type="button" class="faq-trigger" aria-expanded="false">
+                  Kann ich nach der Auszahlung später doch noch reparieren?
+                  <span class="faq-symbol" aria-hidden="true">+</span>
+                </button>
+              </h3>
+              <div class="faq-panel" hidden>
+                <p>Ja. Eine spätere Reparatur ist möglich. Die Mehrwertsteuer wird allerdings grundsätzlich nur erstattet, wenn sie durch eine tatsächliche Reparaturrechnung nachgewiesen wird.</p>
+              </div>
+            </article>
+            <article class="faq-item">
+              <h3>
+                <button type="button" class="faq-trigger" aria-expanded="false">
+                  Darf ich mit dem beschädigten Fahrzeug weiterfahren?
+                  <span class="faq-symbol" aria-hidden="true">+</span>
+                </button>
+              </h3>
+              <div class="faq-panel" hidden>
+                <p>Ja, sofern keine Beeinträchtigung der Verkehrssicherheit vorliegt. Bei sicherheitsrelevanten Schäden sollte die Nutzung bis zur Instandsetzung vermieden werden.</p>
+              </div>
+            </article>
+            <article class="faq-item">
+              <h3>
+                <button type="button" class="faq-trigger" aria-expanded="false">
+                  Ist die fiktive Abrechnung nach Unfall ein Sonderfall?
+                  <span class="faq-symbol" aria-hidden="true">+</span>
+                </button>
+              </h3>
+              <div class="faq-panel" hidden>
+                <p>Nein. Sie ist ein etablierter Bestandteil der Schadenregulierung und wird in vielen Fällen genutzt, wenn eine Auszahlung wirtschaftlich sinnvoller ist als die sofortige Reparatur.</p>
+              </div>
+            </article>
+            <article class="faq-item">
+              <h3>
+                <button type="button" class="faq-trigger" aria-expanded="false">
+                  Geht bei der fiktiven Abrechnung automatisch Geld verloren?
+                  <span class="faq-symbol" aria-hidden="true">+</span>
+                </button>
+              </h3>
+              <div class="faq-panel" hidden>
+                <p>Nicht zwingend. Mit einem vollständigen und unabhängigen Gutachten lassen sich alle relevanten Positionen nachvollziehbar ansetzen und berechtigte Ansprüche besser sichern.</p>
+              </div>
+            </article>
+          </section>
 
           <h2>Fazit: Wann sich die fiktive Abrechnung wirklich lohnt</h2>
           <p>Wann lohnt sich fiktive Abrechnung konkret? Immer dann, wenn Sie flexibel bleiben möchten, der Schaden wirtschaftlich klug gesteuert werden soll und eine fundierte Datengrundlage vorliegt. Die Frage Reparatur oder Auszahlung sollte nicht aus dem Bauch heraus beantwortet werden, sondern auf Basis eines professionellen Gutachtens.</p>
@@ -165,6 +215,12 @@
             <a href="tel:+491759415528" class="btn article-side-cta">Telefon</a>
           </div>
         </div>
+        <div class="article-mobile-sticky-cta" data-mobile-sticky-cta aria-label="Schneller Kontakt">
+          <a href="tel:+491759415528" class="btn article-icon-cta" aria-label="Jetzt anrufen"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24 11.7 11.7 0 0 0 3.68.59 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.3 21 3 13.7 3 4a1 1 0 0 1 1-1h3.47a1 1 0 0 1 1 1 11.7 11.7 0 0 0 .59 3.68 1 1 0 0 1-.24 1.01z" fill="currentColor"></path></svg></a>
+          <a href="/#kontakt" class="btn article-main-cta">Jetzt Kontakt aufnehmen</a>
+          <a href="https://wa.me/491608610203?text=Hallo%20Herr%20Br%C3%BCckers,%20ich%20interessiere%20mich%20f%C3%BCr%20ein%20Gutachten.%20K%C3%B6nnen%20Sie%20mich%20bitte%20kontaktieren?" class="btn article-icon-cta" aria-label="Kontakt per WhatsApp"><svg width="22" height="22" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="M16 3C8.82 3 3 8.82 3 16c0 2.28.59 4.51 1.7 6.47L3 29l6.75-1.64A12.9 12.9 0 0 0 16 29c7.18 0 13-5.82 13-13S23.18 3 16 3zm0 23.6c-1.98 0-3.92-.52-5.62-1.5l-.4-.23-4 .97.99-3.9-.26-.41a10.5 10.5 0 1 1 9.3 5.07zm5.76-7.9c-.31-.16-1.85-.91-2.13-1.01-.29-.11-.49-.16-.7.16-.21.31-.8 1.01-.98 1.22-.18.21-.36.24-.67.08-.31-.16-1.31-.48-2.49-1.52-.92-.82-1.54-1.83-1.72-2.14-.18-.31-.02-.48.14-.64.14-.14.31-.36.47-.54.16-.18.21-.31.31-.52.1-.21.05-.39-.03-.54-.08-.16-.7-1.69-.96-2.32-.25-.61-.5-.53-.7-.54h-.6c-.21 0-.54.08-.82.39-.28.31-1.08 1.06-1.08 2.58s1.11 2.98 1.26 3.19c.16.21 2.17 3.3 5.25 4.63.73.31 1.31.49 1.75.62.73.23 1.39.2 1.91.12.58-.09 1.85-.76 2.11-1.49.26-.74.26-1.37.18-1.5-.08-.13-.29-.2-.6-.36z" fill="currentColor"></path></svg></a>
+        </div>
+
       </div>
     </section>
   </main>
