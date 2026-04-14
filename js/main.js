@@ -302,6 +302,56 @@ function initRatgeberArticleSchema() {
   document.head.appendChild(script);
 }
 
+function initArticleReadingProgress() {
+  var progressBar = document.querySelector('[data-article-progress]');
+  var article = document.querySelector('.article-content');
+  if (!progressBar || !article) return;
+
+  function updateProgress() {
+    var viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+    var articleTop = article.offsetTop;
+    var articleHeight = article.offsetHeight;
+    var maxScrollable = Math.max(1, articleHeight - viewportHeight);
+    var progressRaw = (window.scrollY - articleTop) / maxScrollable;
+    var progress = Math.min(1, Math.max(0, progressRaw));
+    progressBar.style.width = String(progress * 100) + '%';
+  }
+
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  window.addEventListener('resize', updateProgress);
+  updateProgress();
+}
+
+function initMobileStickyArticleCta() {
+  var stickyCta = document.querySelector('[data-mobile-sticky-cta]');
+  if (!stickyCta) return;
+
+  var mobileMediaQuery = window.matchMedia('(max-width: 768px)');
+
+  function syncStickyVisibility() {
+    if (!mobileMediaQuery.matches) {
+      stickyCta.classList.remove('is-visible');
+      return;
+    }
+
+    if (window.scrollY > 420) {
+      stickyCta.classList.add('is-visible');
+    } else {
+      stickyCta.classList.remove('is-visible');
+    }
+  }
+
+  window.addEventListener('scroll', syncStickyVisibility, { passive: true });
+  window.addEventListener('resize', syncStickyVisibility);
+  if (mobileMediaQuery.addEventListener) {
+    mobileMediaQuery.addEventListener('change', syncStickyVisibility);
+  } else if (mobileMediaQuery.addListener) {
+    mobileMediaQuery.addListener(syncStickyVisibility);
+  }
+
+  syncStickyVisibility();
+}
+
 function initProcessSlider() {
   var section = document.querySelector('[data-process-slider]');
   if (!section) return;
@@ -450,6 +500,8 @@ function initPageFeatures() {
   initConsentAndMaps();
   initRatgeberBackButtons();
   initRatgeberArticleSchema();
+  initArticleReadingProgress();
+  initMobileStickyArticleCta();
   initProcessSlider();
 }
 
