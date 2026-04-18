@@ -1176,7 +1176,8 @@ img {
 
 @media (max-width: 768px) {
   .usp-section {
-    margin-top: -8px;
+    margin-top: 30px;
+    margin-bottom: 10px;
     padding: 0 16px;
   }
 
@@ -1184,56 +1185,56 @@ img {
     width: 100%;
     max-width: 320px;
     margin: 0 auto;
-    gap: 12px;
+    gap: 9px;
   }
 
   .usp-card {
-    min-height: 88px;
+    min-height: 72px;
     height: auto;
-    border-radius: 17px;
-    padding: 11px 16px;
-    gap: 11px;
+    border-radius: 15px;
+    padding: 8px 13px;
+    gap: 9px;
     background:
-      linear-gradient(138deg, rgba(66, 128, 214, 0.1) 4%, rgba(32, 79, 145, 0.2) 38%, rgba(14, 42, 83, 0.86) 100%),
-      linear-gradient(180deg, rgba(10, 24, 49, 0.7) 0%, rgba(11, 26, 52, 0.94) 100%);
-    border: 1.5px solid rgba(255, 255, 255, 0.62);
+      linear-gradient(145deg, rgba(100, 164, 245, 0.16) 0%, rgba(44, 109, 191, 0.2) 36%, rgba(16, 54, 106, 0.9) 100%),
+      linear-gradient(172deg, rgba(10, 25, 50, 0.78) 0%, rgba(9, 23, 47, 0.94) 100%);
+    border: 1px solid rgba(248, 252, 255, 0.52);
     box-shadow:
-      0 12px 26px rgba(6, 17, 36, 0.28),
+      0 7px 18px rgba(7, 21, 43, 0.2),
       inset 0 1px 0 rgba(255, 255, 255, 0.08);
     align-items: center;
   }
 
   .usp-icon {
-    width: 38px;
-    height: 38px;
-    min-width: 38px;
+    width: 34px;
+    height: 34px;
+    min-width: 34px;
     border-radius: 0;
     background: transparent;
   }
 
   .usp-icon img {
-    width: 30px;
-    height: 30px;
+    width: 26px;
+    height: 26px;
   }
 
   .usp-text {
-    gap: 3px;
+    gap: 2px;
   }
 
   .usp-title {
-    font-size: 1.01rem;
+    font-size: 0.98rem;
     font-weight: 700;
-    line-height: 1.17;
+    line-height: 1.14;
   }
 
   .usp-subtext {
-    font-size: 0.82rem;
-    line-height: 1.24;
+    font-size: 0.79rem;
+    line-height: 1.18;
     color: rgba(255, 255, 255, 0.83);
   }
 
   .usp-section + .section {
-    padding-top: 44px;
+    padding-top: 42px;
   }
 }
 
