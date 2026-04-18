@@ -173,20 +173,22 @@ img {
   place-content: center;
   gap: 1px;
   text-align: center;
-  color: #fff;
+  color: rgba(255, 250, 242, 0.98);
   font-weight: 650;
-  line-height: 1.04;
+  line-height: 1.06;
   font-size: clamp(1.15rem, 1.75vw, 1.75rem);
-  letter-spacing: 0.018em;
-  text-shadow: 0 1px 3px rgba(15, 23, 42, 0.3);
+  letter-spacing: 0.014em;
+  text-shadow: 0 1px 2px rgba(26, 20, 14, 0.28);
   background:
-    radial-gradient(circle at 46% 34%, rgba(255, 198, 120, 0.3) 0%, rgba(255, 198, 120, 0) 44%),
-    linear-gradient(152deg, #ffb258 6%, #f08b31 48%, #d96a17 100%);
-  border: 1px solid rgba(255, 255, 255, 0.42);
+    radial-gradient(circle at 30% 26%, rgba(255, 243, 211, 0.95) 0%, rgba(255, 219, 150, 0.62) 22%, rgba(244, 153, 61, 0.45) 48%, rgba(216, 110, 28, 0.8) 74%, rgba(171, 75, 14, 0.92) 100%),
+    conic-gradient(from 205deg at 50% 50%, #e07b33 0deg, #f3a351 120deg, #cd661f 245deg, #e07b33 360deg);
+  border: 1px solid rgba(255, 246, 231, 0.44);
   box-shadow:
-    0 16px 30px rgba(15, 23, 42, 0.28),
-    0 0 0 6px rgba(227, 132, 53, 0.15);
-  clip-path: polygon(50% 0%, 58.5% 10%, 69.5% 4.6%, 74.5% 16.2%, 86.4% 14.6%, 84.7% 26.8%, 95.4% 30%, 89.4% 40.2%, 100% 50%, 89.4% 59.8%, 95.4% 70%, 84.7% 73.2%, 86.4% 85.4%, 74.5% 83.8%, 69.5% 95.4%, 58.5% 90%, 50% 100%, 41.5% 90%, 30.5% 95.4%, 25.5% 83.8%, 13.6% 85.4%, 15.3% 73.2%, 4.6% 70%, 10.6% 59.8%, 0% 50%, 10.6% 40.2%, 4.6% 30%, 15.3% 26.8%, 13.6% 14.6%, 25.5% 16.2%, 30.5% 4.6%, 41.5% 10%);
+    0 14px 24px rgba(15, 23, 42, 0.22),
+    0 5px 10px rgba(95, 40, 8, 0.2),
+    inset 0 2px 7px rgba(255, 246, 229, 0.36),
+    inset 0 -6px 12px rgba(124, 47, 8, 0.24);
+  clip-path: polygon(50% 0%, 58% 9%, 70% 5.5%, 75% 16.5%, 86% 14%, 84% 26%, 95% 31%, 88.5% 41%, 100% 50%, 88.5% 59%, 95% 69%, 84% 74%, 86% 86%, 75% 83.5%, 70% 94.5%, 58% 91%, 50% 100%, 42% 91%, 30% 94.5%, 25% 83.5%, 14% 86%, 16% 74%, 5% 69%, 11.5% 59%, 0% 50%, 11.5% 41%, 5% 31%, 16% 26%, 14% 14%, 25% 16.5%, 30% 5.5%, 42% 9%);
   transform: rotate(-5deg);
   isolation: isolate;
 }
@@ -196,43 +198,30 @@ img {
   position: relative;
   z-index: 2;
   font-size: 0.72em;
-  font-weight: 560;
-  line-height: 1.08;
+  font-weight: 620;
+  line-height: 1.12;
 }
 
 .hero-cost-badge span:nth-child(2) {
-  opacity: 0.96;
+  opacity: 0.98;
 }
 
 .hero-cost-badge span:last-child {
-  margin-top: 2px;
-  font-size: 1em;
-  font-weight: 760;
-  letter-spacing: 0.014em;
-}
-
-.hero-cost-badge::before,
-.hero-cost-badge::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  clip-path: inherit;
-  pointer-events: none;
+  margin-top: 0;
+  font-size: 0.72em;
+  font-weight: 620;
+  letter-spacing: 0.01em;
 }
 
 .hero-cost-badge::before {
-  inset: 7%;
-  background:
-    radial-gradient(circle at 35% 24%, rgba(255, 255, 255, 0.36), rgba(255, 255, 255, 0) 58%),
-    radial-gradient(circle at 58% 64%, rgba(255, 247, 228, 0.14), rgba(255, 247, 228, 0) 62%);
-  z-index: 1;
-}
-
-.hero-cost-badge::after {
-  inset: 6.3%;
-  border: 1.5px solid rgba(255, 242, 215, 0.5);
-  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.3), inset 0 -3px 8px rgba(153, 69, 12, 0.2);
-  opacity: 0.92;
+  content: "";
+  position: absolute;
+  inset: 6.5%;
+  clip-path: inherit;
+  pointer-events: none;
+  border: 1px solid rgba(255, 242, 215, 0.38);
+  background: radial-gradient(circle at 32% 25%, rgba(255, 255, 255, 0.26), rgba(255, 255, 255, 0) 56%);
+  opacity: 0.9;
   z-index: 1;
 }
 
@@ -1753,6 +1742,12 @@ img {
   display: flex;
   flex-direction: column;
   gap: 24px;
+}
+
+#kontakt-formular .contact-info-quick {
+  justify-content: center;
+  gap: 20px;
+  padding: 10px 0;
 }
 
 .contact-item {
