@@ -1217,9 +1217,6 @@ img {
     color: rgba(255, 255, 255, 0.83);
   }
 
-  .usp-section + .section {
-    padding-top: 42px;
-  }
 }
 
 @media (max-width: 768px) and (hover: none) {
@@ -1232,9 +1229,6 @@ img {
   }
 }
 
-.usp-section + .section {
-  padding-top: 40px;
-}
 
 @media (min-width: 992px) {
   .usp-section {
@@ -1327,11 +1321,28 @@ img {
     color: rgba(255, 255, 255, 0.74);
   }
 
-  .usp-section + .section {
-    padding-top: 48px;
+}
+
+
+.usp-section + .section {
+  padding-top: 0;
+}
+
+.usp-section + .section .process-section {
+  margin-top: -54px;
+}
+
+@media (max-width: 768px) {
+  .usp-section + .section .process-section {
+    margin-top: 20px;
   }
 }
 
+@media (min-width: 992px) {
+  .usp-section + .section .process-section {
+    margin-top: 2px;
+  }
+}
 @media (hover: hover) and (pointer: fine) and (min-width: 992px) {
   .usp-card:hover {
     transform: translateY(-3px);
