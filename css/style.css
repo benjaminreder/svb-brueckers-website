@@ -171,12 +171,12 @@ img {
   aspect-ratio: 1 / 1;
   display: grid;
   place-content: center;
-  gap: 2px;
-  padding: 7% 11% 8%;
+  gap: 3px;
+  padding: 8% 12% 9%;
   text-align: center;
   color: rgba(255, 250, 242, 0.99);
   font-weight: 640;
-  line-height: 1.08;
+  line-height: 1.12;
   font-size: clamp(1.2rem, 1.85vw, 1.9rem);
   letter-spacing: 0.012em;
   text-shadow: 0 1px 2px rgba(26, 20, 14, 0.24);
@@ -189,7 +189,7 @@ img {
     0 5px 10px rgba(95, 40, 8, 0.16),
     inset 0 2px 6px rgba(255, 244, 221, 0.3),
     inset 0 -5px 11px rgba(118, 44, 7, 0.22);
-  clip-path: polygon(50% 0%, 57% 10%, 68% 4%, 71% 16%, 82% 11%, 80% 23%, 92% 21%, 85% 32%, 98% 35%, 88% 44%, 100% 50%, 88% 56%, 98% 65%, 85% 68%, 92% 79%, 80% 77%, 82% 89%, 71% 84%, 68% 96%, 57% 90%, 50% 100%, 43% 90%, 32% 96%, 29% 84%, 18% 89%, 20% 77%, 8% 79%, 15% 68%, 2% 65%, 12% 56%, 0% 50%, 12% 44%, 2% 35%, 15% 32%, 8% 21%, 20% 23%, 18% 11%, 29% 16%, 32% 4%, 43% 10%);
+  clip-path: polygon(50% 0%, 57% 14%, 75% 7%, 71% 23%, 90% 18%, 82% 34%, 100% 50%, 82% 66%, 90% 82%, 71% 77%, 75% 93%, 57% 86%, 50% 100%, 43% 86%, 25% 93%, 29% 77%, 10% 82%, 18% 66%, 0% 50%, 18% 34%, 10% 18%, 29% 23%, 25% 7%, 43% 14%);
   transform: rotate(-5deg);
   isolation: isolate;
 }
@@ -198,9 +198,9 @@ img {
   display: block;
   position: relative;
   z-index: 2;
-  font-size: 0.8em;
+  font-size: 0.9em;
   font-weight: 630;
-  line-height: 1.1;
+  line-height: 1.12;
 }
 
 .hero-cost-badge span:nth-child(2) {
