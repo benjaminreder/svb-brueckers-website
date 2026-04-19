@@ -115,9 +115,38 @@ if (location.protocol !== "https:" && !isLocalPreviewHost) {
   <section class="hero">
     <div class="hero-overlay"></div>
     <div class="hero-cost-badge" aria-label="Hinweis Kostenfreiheit">
-      <span>Für Sie</span>
-      <span>immer</span>
-      <span>kostenfrei*</span>
+      <svg class="hero-cost-badge-svg" viewBox="0 0 200 200" role="img" aria-label="Für Sie immer kostenfrei*">
+        <defs>
+          <radialGradient id="heroBadgeGradient" cx="38%" cy="30%" r="72%">
+            <stop offset="0%" stop-color="#ffd59a"></stop>
+            <stop offset="34%" stop-color="#f3a14c"></stop>
+            <stop offset="70%" stop-color="#e1802e"></stop>
+            <stop offset="100%" stop-color="#bc571c"></stop>
+          </radialGradient>
+          <radialGradient id="heroBadgeInnerGlow" cx="38%" cy="28%" r="72%">
+            <stop offset="0%" stop-color="rgba(255,255,255,0.55)"></stop>
+            <stop offset="45%" stop-color="rgba(255,255,255,0.14)"></stop>
+            <stop offset="100%" stop-color="rgba(255,255,255,0)"></stop>
+          </radialGradient>
+          <filter id="heroBadgeDropShadow" x="-25%" y="-25%" width="150%" height="150%">
+            <feDropShadow dx="0" dy="4.5" stdDeviation="4.5" flood-color="#1b2434" flood-opacity="0.28"></feDropShadow>
+            <feDropShadow dx="0" dy="1.6" stdDeviation="1.7" flood-color="#8c3d11" flood-opacity="0.2"></feDropShadow>
+          </filter>
+        </defs>
+        <polygon
+          class="hero-cost-badge-shape"
+          points="100.000,4.000 115.217,23.499 136.738,11.308 143.334,35.145 167.882,32.118 164.855,56.666 188.692,63.262 176.501,84.783 196.000,100.000 176.501,115.217 188.692,136.738 164.855,143.334 167.882,167.882 143.334,164.855 136.738,188.692 115.217,176.501 100.000,196.000 84.783,176.501 63.262,188.692 56.666,164.855 32.118,167.882 35.145,143.334 11.308,136.738 23.499,115.217 4.000,100.000 23.499,84.783 11.308,63.262 35.145,56.666 32.118,32.118 56.666,35.145 63.262,11.308 84.783,23.499"
+        ></polygon>
+        <polygon
+          class="hero-cost-badge-highlight"
+          points="100.000,4.000 115.217,23.499 136.738,11.308 143.334,35.145 167.882,32.118 164.855,56.666 188.692,63.262 176.501,84.783 196.000,100.000 176.501,115.217 188.692,136.738 164.855,143.334 167.882,167.882 143.334,164.855 136.738,188.692 115.217,176.501 100.000,196.000 84.783,176.501 63.262,188.692 56.666,164.855 32.118,167.882 35.145,143.334 11.308,136.738 23.499,115.217 4.000,100.000 23.499,84.783 11.308,63.262 35.145,56.666 32.118,32.118 56.666,35.145 63.262,11.308 84.783,23.499"
+        ></polygon>
+        <text class="hero-cost-badge-text" x="100" y="84" text-anchor="middle">
+          <tspan x="100" dy="0">Für Sie</tspan>
+          <tspan x="100" dy="1.26em">immer</tspan>
+          <tspan x="100" dy="1.26em">kostenfrei*</tspan>
+        </text>
+      </svg>
     </div>
     <div class="container hero-content">
       <span class="hero-badge">INGENIEUR- UND <br>SACHVERSTÄNDIGENBÜRO <br>BRÜCKERS</span>
