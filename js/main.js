@@ -788,6 +788,122 @@ function initProcessSlider() {
   });
 }
 
+
+function init130Rechner() {
+  var calculator = document.querySelector('[data-130-calculator]');
+  if (!calculator) return;
+
+  var wbwInput = calculator.querySelector('[data-calc-input="wbw"]');
+  var repairInput = calculator.querySelector('[data-calc-input="repair"]');
+  var restInput = calculator.querySelector('[data-calc-input="rest"]');
+  var warning = calculator.querySelector('[data-calc-warning]');
+  var result = calculator.querySelector('[data-calc-result]');
+  var percentTarget = calculator.querySelector('[data-calc-percent]');
+  var payoutTarget = calculator.querySelector('[data-calc-payout]');
+  var statusBox = calculator.querySelector('[data-calc-status]');
+  var statusText = statusBox ? statusBox.querySelector('.calculator-status-text') : null;
+
+  if (!wbwInput || !repairInput || !restInput || !warning || !result || !percentTarget || !payoutTarget || !statusBox || !statusText) {
+    return;
+  }
+
+  function formatEuro(value) {
+    return new Intl.NumberFormat('de-DE', {
+      style: 'currency',
+      currency: 'EUR',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0
+    }).format(value);
+  }
+
+  function parseValue(input) {
+    if (!input.value.trim()) return null;
+    var parsed = Number(input.value);
+    if (!Number.isFinite(parsed)) return null;
+    if (parsed < 0) return null;
+    return parsed;
+  }
+
+  function setWarning(message) {
+    if (message) {
+      warning.hidden = false;
+      warning.textContent = message;
+    } else {
+      warning.hidden = true;
+      warning.textContent = '';
+    }
+  }
+
+  function setInvalidState(message) {
+    result.classList.add('is-invalid');
+    statusBox.className = 'calculator-status calculator-status--invalid';
+    statusText.textContent = 'Bitte Eingaben prüfen.';
+    setWarning(message);
+  }
+
+  function setStatusByPercent(percent) {
+    if (percent <= 74) {
+      statusBox.className = 'calculator-status calculator-status--safe';
+      statusText.textContent = 'Sie können beruhigt reparieren lassen.';
+      return;
+    }
+
+    if (percent <= 130) {
+      statusBox.className = 'calculator-status calculator-status--sensitive';
+      statusText.textContent = 'Es liegt ein wirtschaftlich sensibler Bereich vor. Restwert und weitere Voraussetzungen müssen beachtet werden. Eine Reparatur kann unter bestimmten Voraussetzungen weiterhin möglich sein.';
+      return;
+    }
+
+    statusBox.className = 'calculator-status calculator-status--critical';
+    statusText.textContent = 'Die Versicherung ist grundsätzlich nicht verpflichtet, die Reparaturkosten vollständig zu übernehmen.';
+  }
+
+  function update() {
+    var wbw = parseValue(wbwInput);
+    var repair = parseValue(repairInput);
+    var rest = parseValue(restInput);
+
+    result.classList.remove('is-invalid');
+
+    if (wbw === null || repair === null || rest === null) {
+      setInvalidState('Bitte geben Sie in alle Felder gültige, positive Zahlen ein.');
+      percentTarget.textContent = '–';
+      payoutTarget.textContent = '–';
+      return;
+    }
+
+    if (wbw === 0) {
+      setInvalidState('Der Wiederbeschaffungswert muss größer als 0 sein, damit eine Berechnung möglich ist.');
+      percentTarget.textContent = '–';
+      payoutTarget.textContent = '–';
+      return;
+    }
+
+    if (rest > wbw) {
+      setInvalidState('Bitte prüfen Sie Ihre Eingaben. Der Restwert liegt über dem Wiederbeschaffungswert.');
+      percentTarget.textContent = ((repair / wbw) * 100).toFixed(1).replace('.', ',') + ' %';
+      payoutTarget.textContent = '–';
+      return;
+    }
+
+    setWarning('');
+
+    var percent = (repair / wbw) * 100;
+    var payout = wbw - rest;
+
+    percentTarget.textContent = percent.toFixed(1).replace('.', ',') + ' %';
+    payoutTarget.textContent = formatEuro(payout);
+    setStatusByPercent(percent);
+  }
+
+  [wbwInput, repairInput, restInput].forEach(function (input) {
+    input.addEventListener('input', update);
+    input.addEventListener('blur', update);
+  });
+
+  update();
+}
+
 function initPageFeatures() {
   initScrollRestorationFix();
   initConsentAndMaps();
@@ -803,6 +919,7 @@ function initPageFeatures() {
   initArticleReadingProgress();
   initMobileStickyArticleCta();
   initProcessSlider();
+  init130Rechner();
 }
 
 if (document.readyState === 'loading') {

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unser 130%-Rechner: Reparaturkosten vs. Wiederbeschaffungswert | SVB Brückers</title>
+  <meta name="description" content="Interaktiver 130%-Rechner: Reparaturkosten, Wiederbeschaffungswert und Restwert schnell prüfen. Verständliche Orientierung zur 130%-Regel inkl. Kontaktoptionen.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://svb-brueckers.de/ratgeber/130-prozent-rechner/">
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="icon" type="image/x-icon" href="../../images/favicon.ico">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://svb-brueckers.de/"},
+      {"@type": "ListItem", "position": 2, "name": "Ratgeber", "item": "https://svb-brueckers.de/ratgeber/"},
+      {"@type": "ListItem", "position": 3, "name": "Unser 130%-Rechner", "item": "https://svb-brueckers.de/ratgeber/130-prozent-rechner/"}
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "130%-Rechner von SVB Brückers",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Web",
+    "url": "https://svb-brueckers.de/ratgeber/130-prozent-rechner/",
+    "description": "Online-Rechner zur Orientierung bei der 130%-Regel auf Basis von Wiederbeschaffungswert, Reparaturkosten und Restwert.",
+    "inLanguage": "de-DE",
+    "publisher": {
+      "@type": "Organization",
+      "name": "SVB Brückers"
+    }
+  }
+  </script>
+</head>
+<body>
+  <header class="header" id="top">
+    <div class="container header-inner">
+      <a href="/" class="logo">
+        <img src="../../images/svb-brueckers-logo.webp" alt="Logo von SVB Brückers" width="36" height="36" class="logo-img">
+        <span class="logo-text">SVB Brückers</span>
+      </a>
+      <button class="menu-toggle" aria-label="Menü öffnen" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav" id="nav">
+        <a href="/#leistungen" onclick="closeMenu()">Leistungen</a>
+        <a href="/#ueber-mich" onclick="closeMenu()">Über mich</a>
+        <a href="/#einzugsgebiet" onclick="closeMenu()">Einzugsgebiet</a>
+        <a href="/#vorteile" onclick="closeMenu()">Vorteile</a>
+        <a href="/#referenzen" onclick="closeMenu()">Referenzen</a>
+        <a href="/faq/" onclick="closeMenu()">FAQ</a>
+        <a href="/ratgeber/" onclick="closeMenu()">Ratgeber</a>
+        <a href="/#kontakt" onclick="closeMenu()">Kontakt</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-main">
+    <section class="section" style="padding: 0;">
+      <div class="container article-content article-content--optimized calculator-page">
+        <nav class="article-breadcrumbs" aria-label="Breadcrumb">
+          <a href="/">Startseite</a>
+          <span aria-hidden="true">/</span>
+          <a href="/ratgeber/">Ratgeber</a>
+          <span aria-hidden="true">/</span>
+          <span aria-current="page">Unser 130%-Rechner</span>
+        </nav>
+
+        <h1 class="page-title">Unser 130%-Rechner</h1>
+        <p class="calculator-intro">Mit unserem 130%-Rechner erhalten Sie eine erste Orientierung, wie sich Reparaturkosten im Verhältnis zum Wiederbeschaffungswert einordnen lassen. Grundlage sind Wiederbeschaffungswert, Reparaturkosten und Restwert. Bitte beachten Sie: Der Rechner ersetzt keine individuelle Begutachtung – die konkrete Regulierung hängt immer vom Gutachten und dem Einzelfall ab.</p>
+
+        <section class="calculator-tool" aria-labelledby="rechner-bereich" data-130-calculator>
+          <h2 id="rechner-bereich">Rechner</h2>
+          <form class="calculator-form" novalidate>
+            <div class="calculator-field">
+              <label for="wbw">Wiederbeschaffungswert</label>
+              <div class="calculator-input-wrap">
+                <span class="calculator-currency" aria-hidden="true">€</span>
+                <input id="wbw" name="wbw" type="number" min="0" step="100" value="5000" inputmode="decimal" required data-calc-input="wbw">
+              </div>
+              <p class="calculator-help">Der Wiederbeschaffungswert ist der Betrag, den Sie brauchen, um sich ein vergleichbares Fahrzeug zu kaufen.</p>
+            </div>
+
+            <div class="calculator-field">
+              <label for="repair">Reparaturkosten (inklusive Mehrwertsteuer)</label>
+              <div class="calculator-input-wrap">
+                <span class="calculator-currency" aria-hidden="true">€</span>
+                <input id="repair" name="repair" type="number" min="0" step="100" value="3500" inputmode="decimal" required data-calc-input="repair">
+              </div>
+              <p class="calculator-help">Die Reparaturkosten ergeben sich aus unserem Gutachten.</p>
+            </div>
+
+            <div class="calculator-field">
+              <label for="rest">Restwert</label>
+              <div class="calculator-input-wrap">
+                <span class="calculator-currency" aria-hidden="true">€</span>
+                <input id="rest" name="rest" type="number" min="0" step="50" value="500" inputmode="decimal" required data-calc-input="rest">
+              </div>
+              <p class="calculator-help">Der Restwert ist der Betrag, den ein Restwertaufkäufer bzw. Restwertverwerter für Ihr Fahrzeug bezahlen würde.</p>
+            </div>
+          </form>
+
+          <p class="calculator-warning" role="status" aria-live="polite" data-calc-warning hidden></p>
+
+          <section class="calculator-result" aria-labelledby="ergebnis-title" data-calc-result>
+            <h3 id="ergebnis-title">Ergebnis</h3>
+            <dl class="calculator-result-grid">
+              <div>
+                <dt>Prozentsatz</dt>
+                <dd data-calc-percent>70 %</dd>
+              </div>
+              <div>
+                <dt>Auszahlung bei wirtschaftlichem Totalschaden</dt>
+                <dd data-calc-payout>4.500 €</dd>
+              </div>
+            </dl>
+            <p class="calculator-result-note">(Der Betrag ergibt sich aus der Differenz von Wiederbeschaffungswert abzüglich Restwert.)</p>
+
+            <div class="calculator-meter" aria-label="Prozent-Einordnung">
+              <div class="calculator-meter-segment segment-safe">0–74%</div>
+              <div class="calculator-meter-segment segment-sensitive">75–130%</div>
+              <div class="calculator-meter-segment segment-critical">&gt;130%</div>
+            </div>
+
+            <div class="calculator-status" data-calc-status>
+              <p class="calculator-status-label">Status</p>
+              <p class="calculator-status-text">Sie können beruhigt reparieren lassen.</p>
+            </div>
+          </section>
+        </section>
+
+        <section class="calculator-legend" aria-labelledby="erklaerung-legende">
+          <h2 id="erklaerung-legende">Erklärung / Legende</h2>
+          <ul>
+            <li>Von 0 bis 74% können Sie beruhigt reparieren lassen.</li>
+            <li>Ab 75% müssen Restwertangebote eingeholt werden. Liegt das Ergebnis bis 130%, kann eine Reparatur unter bestimmten Voraussetzungen möglich sein.</li>
+            <li>Über 130% ist die Versicherung in der Regel nicht verpflichtet, die Reparatur zu bezahlen.</li>
+          </ul>
+        </section>
+
+        <section class="calculator-trust" aria-labelledby="fachhinweis-title">
+          <h2 id="fachhinweis-title">Wichtiger Hinweis</h2>
+          <p>Der Rechner dient nur zur ersten Orientierung. Maßgeblich ist immer das konkrete Gutachten. Ob die 130%-Regel im Einzelfall greift, hängt von weiteren Voraussetzungen ab.</p>
+        </section>
+
+        <div class="article-cta-wrap" aria-label="Kontaktmöglichkeiten">
+          <div class="article-cta-group article-cta-group--extended">
+            <a href="/#kontakt" class="btn article-main-cta">Jetzt Kontakt aufnehmen</a>
+            <a href="https://wa.me/491608610203?text=Hallo%20Herr%20Br%C3%BCckers,%20ich%20habe%20eine%20Frage%20zum%20130%25-Rechner%20und%20meinem%20Schadenfall." class="btn article-side-cta" aria-label="Kontakt per WhatsApp">WhatsApp</a>
+            <a href="tel:+491759415528" class="btn article-side-cta" aria-label="Jetzt anrufen">Telefon</a>
+          </div>
+        </div>
+
+        <a href="/ratgeber/" class="ratgeber-back-button ratgeber-back-button--bottom" aria-label="Zurück zur Ratgeber-Übersicht">← Zurück zum Ratgeber</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer footer--article">
+    <div class="container footer-inner footer-inner--article">
+      <div class="footer-brand-wrap">
+        <div class="footer-brand">
+          <img src="../../images/svb-brueckers-logo.webp" alt="Logo von SVB Brückers" width="36" height="36" class="logo-img">
+          <span class="logo-text">SVB Brückers</span>
+        </div>
+        <p class="footer-trust">Unabhängige Kfz-Gutachten im Raum Stuttgart – schnell, transparent und verlässlich.</p>
+      </div>
+      <nav class="footer-links footer-links--primary" aria-label="Schnellzugriff">
+        <a href="/">Startseite</a>
+        <a href="/ratgeber/">Ratgeber</a>
+        <a href="/#kontakt">Kontakt</a>
+        <a href="tel:+491759415528">Telefon</a>
+      </nav>
+      <nav class="footer-links footer-links--legal" aria-label="Rechtliches">
+        <a href="/impressum.html">Impressum</a>
+        <a href="/datenschutz.html">Datenschutz</a>
+        <button type="button" class="footer-settings-link" data-open-cookie-settings>Cookie-Einstellungen</button>
+      </nav>
+      <p class="footer-copy">&copy; 2026 Ingenieurbüro Brückers. Alle Rechte vorbehalten.</p>
+    </div>
+  </footer>
+
+  <script src="../../js/main.js"></script>
+</body>
+</html>
