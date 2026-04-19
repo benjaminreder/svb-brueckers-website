@@ -2067,6 +2067,12 @@ img {
   outline-offset: 2px;
 }
 
+@media (min-width: 901px) {
+  .ratgeber-card--calculator-last {
+    grid-column: 1 / 2;
+  }
+}
+
 @media (max-width: 900px) {
   .article-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
