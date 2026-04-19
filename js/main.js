@@ -238,6 +238,23 @@ function isRatgeberArticlePage() {
   return path.startsWith('/ratgeber/') && path !== '/ratgeber/' && path !== '/ratgeber/index.html';
 }
 
+function isOptimizedRatgeberPage() {
+  var normalizedPath = getNormalizedRatgeberPath();
+  var optimizedPages = {
+    '/ratgeber/streitpunkte-und-kuerzungsversuche/': true,
+    '/ratgeber/wildunfall-was-tun/': true,
+    '/ratgeber/kfz-gutachten-leasingrueckgabe/': true,
+    '/ratgeber/dauer-gutachten-auszahlung/': true,
+    '/ratgeber/totalschaden-bedeutung-auszahlung/': true,
+    '/ratgeber/bagatellschaden-definition/': true
+  };
+  return Boolean(optimizedPages[normalizedPath]);
+}
+
+function getNormalizedRatgeberPath() {
+  return window.location.pathname.replace(/index\.html$/, '');
+}
+
 function initRatgeberBackButtons() {
   if (!isRatgeberArticlePage()) return;
 
@@ -267,6 +284,283 @@ function initRatgeberBackButtons() {
       article.appendChild(bottomButton);
     }
   }
+}
+
+function initRatgeberArticleLayoutEnhancements() {
+  if (!isOptimizedRatgeberPage()) return;
+
+  var article = document.querySelector('.article-content');
+  var title = article ? article.querySelector('h1.page-title') : null;
+  if (!article || !title) return;
+
+  article.classList.add('article-content--optimized');
+
+  if (!document.querySelector('.article-progress')) {
+    var progress = document.createElement('div');
+    progress.className = 'article-progress';
+    progress.setAttribute('aria-hidden', 'true');
+    progress.innerHTML = '<span class="article-progress-bar" data-article-progress></span>';
+    document.body.insertBefore(progress, document.body.firstChild);
+  }
+
+  if (!article.querySelector('.article-hero')) {
+    var firstCta = article.querySelector('.article-cta-wrap');
+    var hero = document.createElement('section');
+    hero.className = 'article-hero';
+
+    var current = title;
+    while (current && current !== firstCta) {
+      var next = current.nextElementSibling;
+      hero.appendChild(current);
+      current = next;
+    }
+
+    article.insertBefore(hero, firstCta || article.firstChild);
+  }
+
+  var lead = article.querySelector('.article-hero > p');
+  if (lead) {
+    lead.classList.add('article-lead', 'article-lead-box');
+  }
+
+  var firstCompactList = article.querySelector('.article-hero ul, .article-hero ol');
+  if (firstCompactList && !firstCompactList.parentElement.classList.contains('article-highlight-box')) {
+    var compactBox = document.createElement('div');
+    compactBox.className = 'article-highlight-box';
+    firstCompactList.parentElement.insertBefore(compactBox, firstCompactList);
+    compactBox.appendChild(firstCompactList);
+  }
+
+  var ctaHint = Array.prototype.find.call(article.querySelectorAll('p'), function (paragraph) {
+    return paragraph.querySelector('strong') && paragraph.textContent.indexOf('Kontakt') !== -1;
+  });
+  if (ctaHint) {
+    ctaHint.classList.add('article-highlight-box');
+  }
+}
+
+function initRatgeberRelatedLinks() {
+  if (!isOptimizedRatgeberPage()) return;
+
+  var article = document.querySelector('.article-content');
+  if (!article) return;
+
+  var recommendationMap = {
+    '/ratgeber/streitpunkte-und-kuerzungsversuche/': [
+      ['/ratgeber/dauer-gutachten-auszahlung/', 'Wie lange dauert ein Gutachten und wann kommt die Auszahlung?'],
+      ['/ratgeber/totalschaden-bedeutung-auszahlung/', 'Totalschaden: Bedeutung, Berechnung und Auszahlung verständlich erklärt'],
+      ['/ratgeber/bagatellschaden-definition/', 'Bagatellschaden: Definition, Grenze und wann ein Gutachten sinnvoll ist']
+    ],
+    '/ratgeber/wildunfall-was-tun/': [
+      ['/ratgeber/bagatellschaden-definition/', 'Bagatellschaden: Definition, Grenze und wann ein Gutachten sinnvoll ist'],
+      ['/ratgeber/dauer-gutachten-auszahlung/', 'Wie lange dauert ein Gutachten und wann kommt die Auszahlung?'],
+      ['/ratgeber/streitpunkte-und-kuerzungsversuche/', 'Versicherung kürzt nach Unfall – typische Streitpunkte verständlich erklärt']
+    ],
+    '/ratgeber/kfz-gutachten-leasingrueckgabe/': [
+      ['/ratgeber/bagatellschaden-definition/', 'Bagatellschaden: Definition, Grenze und wann ein Gutachten sinnvoll ist'],
+      ['/ratgeber/dauer-gutachten-auszahlung/', 'Wie lange dauert ein Gutachten und wann kommt die Auszahlung?'],
+      ['/ratgeber/streitpunkte-und-kuerzungsversuche/', 'Versicherung kürzt nach Unfall – typische Streitpunkte verständlich erklärt']
+    ],
+    '/ratgeber/dauer-gutachten-auszahlung/': [
+      ['/ratgeber/streitpunkte-und-kuerzungsversuche/', 'Versicherung kürzt nach Unfall – typische Streitpunkte verständlich erklärt'],
+      ['/ratgeber/totalschaden-bedeutung-auszahlung/', 'Totalschaden: Bedeutung, Berechnung und Auszahlung verständlich erklärt'],
+      ['/ratgeber/wildunfall-was-tun/', 'Wildunfall: Was tun – und wann ein Gutachten sinnvoll ist']
+    ],
+    '/ratgeber/totalschaden-bedeutung-auszahlung/': [
+      ['/ratgeber/dauer-gutachten-auszahlung/', 'Wie lange dauert ein Gutachten und wann kommt die Auszahlung?'],
+      ['/ratgeber/streitpunkte-und-kuerzungsversuche/', 'Versicherung kürzt nach Unfall – typische Streitpunkte verständlich erklärt'],
+      ['/ratgeber/bagatellschaden-definition/', 'Bagatellschaden: Definition, Grenze und wann ein Gutachten sinnvoll ist']
+    ],
+    '/ratgeber/bagatellschaden-definition/': [
+      ['/ratgeber/wildunfall-was-tun/', 'Wildunfall: Was tun – und wann ein Gutachten sinnvoll ist'],
+      ['/ratgeber/kfz-gutachten-leasingrueckgabe/', 'Kfz-Gutachten vor Leasingrückgabe: Wann sinnvoll, was wird geprüft?'],
+      ['/ratgeber/wann-sich-ein-gutachten-lohnt/', 'Wann lohnt sich ein Gutachten nach dem Unfall?']
+    ]
+  };
+
+  Array.prototype.forEach.call(article.querySelectorAll('p'), function (paragraph) {
+    if (paragraph.dataset.relatedEnhanced === 'true') return;
+    var text = paragraph.textContent.trim();
+    if (text.indexOf('Passend dazu:') !== 0 && text.indexOf('Weiterlesen:') !== 0 && text.indexOf('Ergänzend lesen:') !== 0) return;
+
+    var links = paragraph.querySelectorAll('a');
+    if (!links.length) return;
+
+    var box = document.createElement('section');
+    box.className = 'article-related-box';
+
+    var heading = document.createElement('p');
+    heading.textContent = text.split(':')[0] + ':';
+    box.appendChild(heading);
+
+    var grid = document.createElement('div');
+    grid.className = 'article-related-grid';
+
+    Array.prototype.forEach.call(links, function (link) {
+      var card = document.createElement('a');
+      card.className = 'article-related-card';
+      card.href = link.href;
+      card.textContent = link.textContent;
+      grid.appendChild(card);
+    });
+
+    box.appendChild(grid);
+    paragraph.replaceWith(box);
+  });
+
+  if (!article.querySelector('[data-additional-recommendations]')) {
+    var additionalLinks = recommendationMap[getNormalizedRatgeberPath()] || [];
+    if (additionalLinks.length) {
+      var recommendations = document.createElement('section');
+      recommendations.className = 'article-related-box';
+      recommendations.dataset.additionalRecommendations = 'true';
+
+      var recommendationsTitle = document.createElement('p');
+      recommendationsTitle.textContent = 'Ebenfalls lesenswert';
+      recommendations.appendChild(recommendationsTitle);
+
+      var recommendationsGrid = document.createElement('div');
+      recommendationsGrid.className = 'article-related-grid';
+      additionalLinks.forEach(function (entry) {
+        var recommendationLink = document.createElement('a');
+        recommendationLink.className = 'article-related-card';
+        recommendationLink.href = entry[0];
+        recommendationLink.textContent = entry[1];
+        recommendationsGrid.appendChild(recommendationLink);
+      });
+      recommendations.appendChild(recommendationsGrid);
+
+      var bottomCta = article.querySelector('.article-cta-wrap--bottom') || article.querySelectorAll('.article-cta-wrap')[1];
+      if (bottomCta) {
+        article.insertBefore(recommendations, bottomCta);
+      } else {
+        article.appendChild(recommendations);
+      }
+    }
+  }
+}
+
+function initRatgeberFaqConversion() {
+  if (!isOptimizedRatgeberPage()) return;
+
+  var article = document.querySelector('.article-content');
+  if (!article) return;
+
+  var faqHeading = Array.prototype.find.call(article.querySelectorAll('h2'), function (heading) {
+    return heading.textContent.trim().indexOf('Häufige Fragen') === 0;
+  });
+
+  if (!faqHeading || faqHeading.nextElementSibling && faqHeading.nextElementSibling.matches('[data-faq-accordion]')) {
+    return;
+  }
+
+  var wrapper = document.createElement('div');
+  wrapper.className = 'article-faq-list faq-list';
+  wrapper.setAttribute('data-faq-accordion', '');
+  wrapper.setAttribute('role', 'region');
+  wrapper.setAttribute('aria-label', faqHeading.textContent.trim());
+
+  var cursor = faqHeading.nextElementSibling;
+  while (cursor && cursor.tagName !== 'H2') {
+    if (cursor.tagName === 'H3') {
+      var question = cursor;
+      var answer = question.nextElementSibling;
+      if (answer && answer.tagName === 'P') {
+        var item = document.createElement('article');
+        item.className = 'faq-item';
+
+        var trigger = document.createElement('button');
+        trigger.type = 'button';
+        trigger.className = 'faq-trigger';
+        trigger.setAttribute('aria-expanded', 'false');
+        trigger.innerHTML = '<span>' + question.textContent + '</span><span class="faq-symbol" aria-hidden="true">+</span>';
+
+        var panel = document.createElement('div');
+        panel.className = 'faq-panel';
+        var answerParagraph = document.createElement('p');
+        answerParagraph.innerHTML = answer.innerHTML;
+        panel.appendChild(answerParagraph);
+
+        item.appendChild(trigger);
+        item.appendChild(panel);
+        wrapper.appendChild(item);
+
+        var afterAnswer = answer.nextElementSibling;
+        question.remove();
+        answer.remove();
+        cursor = afterAnswer;
+        continue;
+      }
+    }
+    var next = cursor.nextElementSibling;
+    cursor.remove();
+    cursor = next;
+  }
+
+  faqHeading.insertAdjacentElement('afterend', wrapper);
+}
+
+function initRatgeberBreadcrumbsAndSchemas() {
+  if (!isOptimizedRatgeberPage()) return;
+
+  var article = document.querySelector('.article-content');
+  var title = article ? article.querySelector('h1.page-title') : null;
+  if (!article || !title) return;
+
+  if (!article.querySelector('.article-breadcrumbs')) {
+    var breadcrumbs = document.createElement('nav');
+    breadcrumbs.className = 'article-breadcrumbs';
+    breadcrumbs.setAttribute('aria-label', 'Breadcrumb');
+    breadcrumbs.innerHTML = '<a href=\"/\">Startseite</a><span aria-hidden=\"true\">/</span><a href=\"/ratgeber/\">Ratgeber</a><span aria-hidden=\"true\">/</span><span>' + title.textContent + '</span>';
+    article.insertBefore(breadcrumbs, article.firstChild);
+  }
+
+  if (!document.querySelector('script[data-breadcrumb-schema]')) {
+    var breadcrumbSchema = {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Startseite', item: 'https://svb-brueckers.de/' },
+        { '@type': 'ListItem', position: 2, name: 'Ratgeber', item: 'https://svb-brueckers.de/ratgeber/' },
+        { '@type': 'ListItem', position: 3, name: title.textContent.trim(), item: window.location.href }
+      ]
+    };
+    var breadcrumbScript = document.createElement('script');
+    breadcrumbScript.type = 'application/ld+json';
+    breadcrumbScript.dataset.breadcrumbSchema = 'true';
+    breadcrumbScript.textContent = JSON.stringify(breadcrumbSchema);
+    document.head.appendChild(breadcrumbScript);
+  }
+}
+
+function initMiddleBackButton() {
+  if (!isOptimizedRatgeberPage()) return;
+  var article = document.querySelector('.article-content');
+  if (!article || article.querySelector('.ratgeber-back-button--middle')) return;
+
+  var firstCta = article.querySelector('.article-cta-wrap');
+  if (!firstCta) return;
+
+  var middleButton = document.createElement('a');
+  middleButton.href = '/ratgeber/';
+  middleButton.className = 'ratgeber-back-button ratgeber-back-button--middle';
+  middleButton.textContent = '← Zurück zum Ratgeber';
+  firstCta.insertAdjacentElement('afterend', middleButton);
+}
+
+function initStickyCtaClone() {
+  if (!isOptimizedRatgeberPage()) return;
+  if (document.querySelector('[data-mobile-sticky-cta]')) return;
+
+  var sourceGroup = document.querySelector('.article-cta-wrap .article-cta-group');
+  if (!sourceGroup) return;
+
+  var sticky = document.createElement('div');
+  sticky.className = 'article-mobile-sticky-cta';
+  sticky.setAttribute('data-mobile-sticky-cta', '');
+  sticky.setAttribute('aria-label', 'Schnelle Kontaktmöglichkeiten');
+  sticky.innerHTML = sourceGroup.innerHTML;
+  document.body.appendChild(sticky);
 }
 
 function initRatgeberArticleSchema() {
@@ -496,9 +790,15 @@ function initProcessSlider() {
 
 function initPageFeatures() {
   initScrollRestorationFix();
-  initFaqAccordion();
   initConsentAndMaps();
+  initRatgeberArticleLayoutEnhancements();
+  initRatgeberRelatedLinks();
+  initRatgeberFaqConversion();
+  initRatgeberBreadcrumbsAndSchemas();
   initRatgeberBackButtons();
+  initMiddleBackButton();
+  initStickyCtaClone();
+  initFaqAccordion();
   initRatgeberArticleSchema();
   initArticleReadingProgress();
   initMobileStickyArticleCta();
