@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mein 130%-Rechner: Reparaturkosten vs. Wiederbeschaffungswert | SVB Brückers</title>
-  <meta name="description" content="Interaktiver 130%-Rechner: Reparaturkosten, Wiederbeschaffungswert und Restwert schnell prüfen. Verständliche Orientierung zur 130%-Regel inkl. Kontaktoptionen.">
+  <title>Kostenrechner: Lohnt sich die Reparatur? | SVB Brückers</title>
+  <meta name="description" content="Kostenrechner zur 130%-Regel: Reparaturkosten, Wiederbeschaffungswert und Restwert direkt vergleichen und den Schadenfall besser einordnen.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://svb-brueckers.de/ratgeber/130-prozent-rechner/">
   <link rel="stylesheet" href="../../css/style.css">
@@ -16,7 +16,7 @@
     "itemListElement": [
       {"@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://svb-brueckers.de/"},
       {"@type": "ListItem", "position": 2, "name": "Ratgeber", "item": "https://svb-brueckers.de/ratgeber/"},
-      {"@type": "ListItem", "position": 3, "name": "Mein 130%-Rechner", "item": "https://svb-brueckers.de/ratgeber/130-prozent-rechner/"}
+      {"@type": "ListItem", "position": 3, "name": "Kostenrechner: Lohnt sich die Reparatur?", "item": "https://svb-brueckers.de/ratgeber/130-prozent-rechner/"}
     ]
   }
   </script>
@@ -24,7 +24,7 @@
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "130%-Rechner von SVB Brückers",
+    "name": "Kostenrechner: Lohnt sich die Reparatur?",
     "applicationCategory": "FinanceApplication",
     "operatingSystem": "Web",
     "url": "https://svb-brueckers.de/ratgeber/130-prozent-rechner/",
@@ -68,52 +68,61 @@
           <span aria-hidden="true">/</span>
           <a href="/ratgeber/">Ratgeber</a>
           <span aria-hidden="true">/</span>
-          <span aria-current="page">Mein 130%-Rechner</span>
+          <span aria-current="page">Kostenrechner: Lohnt sich die Reparatur?</span>
         </nav>
 
-        <h1 class="page-title">Mein 130%-Rechner</h1>
-        <p class="calculator-intro">Mit meinem 130%-Rechner erhalten Sie eine erste Orientierung, wie sich Reparaturkosten im Verhältnis zum Wiederbeschaffungswert einordnen lassen. Grundlage sind Wiederbeschaffungswert, Reparaturkosten und Restwert. Bitte beachten Sie: Der Rechner ersetzt keine individuelle Begutachtung – die konkrete Regulierung hängt immer vom Gutachten und dem Einzelfall ab.</p>
+        <h1 class="page-title">Kostenrechner: Lohnt sich die Reparatur?</h1>
+        <p class="calculator-intro">Dieser Kostenrechner zeigt Ihnen auf einen Blick, wie sich Reparaturkosten im Verhältnis zum Wiederbeschaffungswert einordnen lassen. Grundlage sind Wiederbeschaffungswert, Reparaturkosten und Restwert. Die Berechnung dient als Orientierung und ersetzt keine individuelle Begutachtung im Einzelfall.</p>
 
         <section class="calculator-tool" aria-labelledby="rechner-bereich" data-130-calculator>
           <h2 id="rechner-bereich">Rechner</h2>
           <form class="calculator-form" novalidate>
             <div class="calculator-field">
-              <label for="wbw">Wiederbeschaffungswert</label>
+              <div class="calculator-field-head">
+                <label for="wbw">Wiederbeschaffungswert</label>
+                <output class="calculator-live-value" for="wbw wbw-range" data-calc-live="wbw">5.000 €</output>
+              </div>
               <div class="calculator-input-wrap">
                 <span class="calculator-currency" aria-hidden="true">€</span>
-                <input id="wbw" name="wbw" type="number" min="0" step="100" value="5000" inputmode="decimal" required data-calc-input="wbw">
+                <input id="wbw" name="wbw" type="number" min="0" max="40000" step="100" value="5000" inputmode="decimal" required data-calc-input="wbw">
               </div>
               <div class="calculator-range-wrap">
                 <label for="wbw-range" class="sr-only">Wiederbeschaffungswert per Schieberegler einstellen</label>
-                <input id="wbw-range" name="wbw-range" type="range" min="0" max="100000" step="100" value="5000" data-calc-range="wbw">
+                <input id="wbw-range" name="wbw-range" type="range" min="0" max="40000" step="100" value="5000" data-calc-range="wbw">
               </div>
               <p class="calculator-help">Der Wiederbeschaffungswert ist der Betrag, den Sie brauchen, um sich ein vergleichbares Fahrzeug zu kaufen.</p>
             </div>
 
             <div class="calculator-field">
-              <label for="repair">Reparaturkosten (inklusive Mehrwertsteuer)</label>
+              <div class="calculator-field-head">
+                <label for="repair">Reparaturkosten (inklusive Mehrwertsteuer)</label>
+                <output class="calculator-live-value" for="repair repair-range" data-calc-live="repair">3.500 €</output>
+              </div>
               <div class="calculator-input-wrap">
                 <span class="calculator-currency" aria-hidden="true">€</span>
-                <input id="repair" name="repair" type="number" min="0" step="100" value="3500" inputmode="decimal" required data-calc-input="repair">
+                <input id="repair" name="repair" type="number" min="0" max="50000" step="100" value="3500" inputmode="decimal" required data-calc-input="repair">
               </div>
               <div class="calculator-range-wrap">
                 <label for="repair-range" class="sr-only">Reparaturkosten per Schieberegler einstellen</label>
-                <input id="repair-range" name="repair-range" type="range" min="0" max="130000" step="100" value="3500" data-calc-range="repair">
+                <input id="repair-range" name="repair-range" type="range" min="0" max="50000" step="100" value="3500" data-calc-range="repair">
               </div>
-              <p class="calculator-help">Die Reparaturkosten ergeben sich aus meinem Gutachten.</p>
+              <p class="calculator-help">Die Reparaturkosten ergeben sich aus dem Gutachten.</p>
             </div>
 
             <div class="calculator-field">
-              <label for="rest">Restwert</label>
+              <div class="calculator-field-head">
+                <label for="rest">Restwert</label>
+                <output class="calculator-live-value" for="rest rest-range" data-calc-live="rest">500 €</output>
+              </div>
               <div class="calculator-input-wrap">
                 <span class="calculator-currency" aria-hidden="true">€</span>
-                <input id="rest" name="rest" type="number" min="0" step="50" value="500" inputmode="decimal" required data-calc-input="rest">
+                <input id="rest" name="rest" type="number" min="0" max="40000" step="100" value="500" inputmode="decimal" required data-calc-input="rest">
               </div>
               <div class="calculator-range-wrap">
                 <label for="rest-range" class="sr-only">Restwert per Schieberegler einstellen</label>
-                <input id="rest-range" name="rest-range" type="range" min="0" max="100000" step="50" value="500" data-calc-range="rest">
+                <input id="rest-range" name="rest-range" type="range" min="0" max="40000" step="100" value="500" data-calc-range="rest">
               </div>
-              <p class="calculator-help">Der Restwert ist der Betrag, den ein Restwertaufkäufer bzw. Restwertverwerter für Ihr Fahrzeug bezahlen würde.</p>
+              <p class="calculator-help">Der Restwert ist der Betrag, den ein Restwertaufkäufer für Ihr Fahrzeug bezahlen würde.</p>
             </div>
           </form>
 
@@ -142,7 +151,12 @@
             <div class="calculator-status" data-calc-status>
               <p class="calculator-status-label">Status</p>
               <p class="calculator-status-text">Sie können beruhigt reparieren lassen.</p>
-              <p class="calculator-status-highlight">In diesem Bereich ist in der Regel auch eine Auszahlung auf Gutachtenbasis möglich.</p>
+              <p class="calculator-status-highlight">In diesem Bereich ist auch eine Auszahlung auf Gutachtenbasis (Reparaturwert) möglich.</p>
+              <p class="calculator-status-detail">Wenn Sie unsicher sind, welcher Weg wirtschaftlich sinnvoller ist, beraten wir Sie gerne persönlich.</p>
+              <div class="calculator-conversion">
+                <p class="calculator-conversion-text">Sie möchten wissen, was in Ihrem konkreten Fall sinnvoll ist?</p>
+                <a href="/#kontakt" class="btn calculator-conversion-btn">Jetzt unverbindlich prüfen lassen</a>
+              </div>
             </div>
           </section>
         </section>
@@ -151,8 +165,8 @@
           <h2 id="erklaerung-legende">Erklärung / Legende</h2>
           <ul>
             <li>Von 0 bis 74% können Sie beruhigt reparieren lassen.</li>
-            <li>Ab 75% müssen Restwertangebote eingeholt werden. Liegt das Ergebnis bis 130%, kann eine Reparatur unter bestimmten Voraussetzungen möglich sein.</li>
-            <li>Über 130% ist die Versicherung in der Regel nicht verpflichtet, die Reparatur zu bezahlen.</li>
+            <li>Ab 75% befinden Sie sich im Bereich der 130%-Regel. Eine Reparatur ist unter bestimmten Voraussetzungen weiterhin möglich.</li>
+            <li>Über 130% ist die Versicherung nicht verpflichtet, die Reparatur zu bezahlen.</li>
           </ul>
         </section>
 
@@ -164,7 +178,7 @@
         <div class="article-cta-wrap" aria-label="Kontaktmöglichkeiten">
           <div class="article-cta-group article-cta-group--extended">
             <a href="/#kontakt" class="btn article-main-cta">Jetzt Kontakt aufnehmen</a>
-            <a href="https://wa.me/491608610203?text=Hallo%20Herr%20Br%C3%BCckers,%20ich%20habe%20eine%20Frage%20zum%20130%25-Rechner%20und%20meinem%20Schadenfall." class="btn article-side-cta" aria-label="Kontakt per WhatsApp">WhatsApp</a>
+            <a href="https://wa.me/491608610203?text=Hallo%20Herr%20Br%C3%BCckers,%20ich%20habe%20eine%20Frage%20zum%20Kostenrechner%20und%20meinem%20Schadenfall." class="btn article-side-cta" aria-label="Kontakt per WhatsApp">WhatsApp</a>
             <a href="tel:+491759415528" class="btn article-side-cta" aria-label="Jetzt anrufen">Telefon</a>
           </div>
         </div>

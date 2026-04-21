@@ -803,11 +803,15 @@ function init130Rechner() {
   var result = calculator.querySelector('[data-calc-result]');
   var percentTarget = calculator.querySelector('[data-calc-percent]');
   var payoutTarget = calculator.querySelector('[data-calc-payout]');
+  var wbwLive = calculator.querySelector('[data-calc-live="wbw"]');
+  var repairLive = calculator.querySelector('[data-calc-live="repair"]');
+  var restLive = calculator.querySelector('[data-calc-live="rest"]');
   var statusBox = calculator.querySelector('[data-calc-status]');
   var statusText = statusBox ? statusBox.querySelector('.calculator-status-text') : null;
   var statusHighlight = statusBox ? statusBox.querySelector('.calculator-status-highlight') : null;
+  var statusDetail = statusBox ? statusBox.querySelector('.calculator-status-detail') : null;
 
-  if (!wbwInput || !repairInput || !restInput || !wbwRange || !repairRange || !restRange || !warning || !result || !percentTarget || !payoutTarget || !statusBox || !statusText || !statusHighlight) {
+  if (!wbwInput || !repairInput || !restInput || !wbwRange || !repairRange || !restRange || !warning || !result || !percentTarget || !payoutTarget || !wbwLive || !repairLive || !restLive || !statusBox || !statusText || !statusHighlight || !statusDetail) {
     return;
   }
 
@@ -828,6 +832,11 @@ function init130Rechner() {
     return parsed;
   }
 
+  function clampValue(value, min, max) {
+    if (!Number.isFinite(value)) return min;
+    return Math.min(max, Math.max(min, value));
+  }
+
   function setWarning(message) {
     if (message) {
       warning.hidden = false;
@@ -843,6 +852,7 @@ function init130Rechner() {
     statusBox.className = 'calculator-status calculator-status--invalid';
     statusText.textContent = 'Bitte Eingaben prüfen.';
     statusHighlight.textContent = 'Für eine verlässliche Einschätzung werden gültige Werte für Wiederbeschaffungswert, Reparaturkosten und Restwert benötigt.';
+    statusDetail.textContent = '';
     setWarning(message);
   }
 
@@ -850,36 +860,45 @@ function init130Rechner() {
     if (percent <= 74) {
       statusBox.className = 'calculator-status calculator-status--safe';
       statusText.textContent = 'Sie können beruhigt reparieren lassen.';
-      statusHighlight.textContent = 'In diesem Bereich ist in der Regel auch eine Auszahlung auf Gutachtenbasis beziehungsweise des Reparaturwertes möglich.';
+      statusHighlight.textContent = 'In diesem Bereich ist auch eine Auszahlung auf Gutachtenbasis (Reparaturwert) möglich.';
+      statusDetail.textContent = 'Wenn Sie unsicher sind, welcher Weg wirtschaftlich sinnvoller ist, beraten wir Sie gerne persönlich.';
       return;
     }
 
     if (percent <= 130) {
       statusBox.className = 'calculator-status calculator-status--sensitive';
-      statusText.textContent = 'Es liegt ein wirtschaftlich sensibler Bereich vor. Restwert und weitere Voraussetzungen müssen beachtet werden. Eine Reparatur kann unter bestimmten Voraussetzungen weiterhin möglich sein.';
-      statusHighlight.textContent = 'Auch in diesem Bereich kann eine Auszahlung auf Gutachtenbasis möglich sein. Maßgeblich sind die konkreten Werte und die Regulierung im Einzelfall.';
+      statusText.textContent = 'Sie befinden sich im Bereich der 130%-Regel.';
+      statusHighlight.textContent = 'Eine Reparatur ist unter bestimmten Voraussetzungen weiterhin möglich. Auch eine Auszahlung auf Gutachtenbasis ist möglich.';
+      statusDetail.textContent = 'Hier kommt es auf die konkrete Bewertung des Schadens an. Wir prüfen Ihren Fall individuell und zeigen Ihnen die beste Lösung.';
       return;
     }
 
     statusBox.className = 'calculator-status calculator-status--critical';
-    statusText.textContent = 'Die Versicherung ist grundsätzlich nicht verpflichtet, die Reparaturkosten vollständig zu übernehmen.';
-    statusHighlight.textContent = 'In diesem Bereich steht meist nicht mehr die Reparatur, sondern eher die Abrechnung auf Totalschadenbasis im Vordergrund (Wiederbeschaffungswert abzüglich Restwert).';
+    statusText.textContent = 'Die Reparaturkosten liegen über der 130%-Grenze.';
+    statusHighlight.textContent = 'Die Versicherung ist nicht verpflichtet, die Reparatur zu bezahlen. In diesem Fall erfolgt die Abrechnung auf Totalschadenbasis (Wiederbeschaffungswert minus Restwert).';
+    statusDetail.textContent = 'Wir unterstützen Sie dabei, den optimalen Auszahlungsbetrag durchzusetzen.';
   }
 
   function syncRangeToInput(input, range) {
     var value = Number(input.value);
-    if (!Number.isFinite(value)) return;
     var min = Number(range.min);
     var max = Number(range.max);
-    if (value < min) value = min;
-    if (value > max) value = max;
+    value = clampValue(value, min, max);
+    input.value = String(value);
     range.value = String(value);
+  }
+
+  function updateLiveValues() {
+    wbwLive.textContent = formatEuro(Number(wbwInput.value) || 0);
+    repairLive.textContent = formatEuro(Number(repairInput.value) || 0);
+    restLive.textContent = formatEuro(Number(restInput.value) || 0);
   }
 
   function update() {
     var wbw = parseValue(wbwInput);
     var repair = parseValue(repairInput);
     var rest = parseValue(restInput);
+    updateLiveValues();
 
     result.classList.remove('is-invalid');
 
@@ -898,7 +917,7 @@ function init130Rechner() {
     }
 
     if (rest > wbw) {
-      setInvalidState('Bitte prüfen Sie Ihre Eingaben. Der Restwert liegt über dem Wiederbeschaffungswert.');
+      setInvalidState('Bitte prüfen Sie Ihre Eingaben – der Restwert liegt über dem Wiederbeschaffungswert.');
       percentTarget.textContent = ((repair / wbw) * 100).toFixed(1).replace('.', ',') + ' %';
       payoutTarget.textContent = '–';
       return;
