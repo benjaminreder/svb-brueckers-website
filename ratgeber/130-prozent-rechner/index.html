@@ -141,14 +141,12 @@
 
             <div class="calculator-box-grid">
               <article class="calculator-box calculator-box--hero">
-                <p class="calculator-box-kicker">Box 1</p>
                 <h4>Ihr Ergebnis</h4>
                 <p class="calculator-percent" data-calc-percent>70,0 %</p>
                 <p class="calculator-status-title" data-calc-status-title>Klar im Reparaturbereich</p>
               </article>
 
               <article class="calculator-box calculator-box--repair" data-calc-status>
-                <p class="calculator-box-kicker">Box 2</p>
                 <h4>Reparaturbasis</h4>
                 <p class="calculator-box-text" data-calc-repair>
                   Die Reparatur liegt deutlich innerhalb des Fahrzeugwerts. Sie können das Fahrzeug wirtschaftlich sinnvoll reparieren lassen.
@@ -156,7 +154,6 @@
               </article>
 
               <article class="calculator-box calculator-box--fictive">
-                <p class="calculator-box-kicker">Box 3</p>
                 <h4>Auszahlung ohne Reparatur</h4>
                 <p class="calculator-box-text" data-calc-fictive>
                   Wenn Sie sich den Schaden auszahlen lassen möchten, ist für Ihre Auszahlung der niedrigere Betrag aus Reparaturkosten netto und Wiederbeschaffungswert abzüglich Restwert maßgeblich.
@@ -171,21 +168,21 @@
               </article>
 
               <article class="calculator-box calculator-box--comparison">
-                <p class="calculator-box-kicker">Box 4</p>
-                <h4>So setzt sich Ihre mögliche Auszahlung zusammen</h4>
+                <h4>Vergleich Ihrer möglichen Auszahlung</h4>
                 <div class="calculator-compare-grid">
-                  <div class="calculator-compare-item" data-calc-compare="netRepair">
+                  <div class="calculator-compare-item is-neutral" data-calc-compare="netRepair">
                     <p class="calculator-compare-label">Reparaturkosten netto</p>
                     <p class="calculator-compare-value" data-calc-net-repair>2.941 €</p>
-                    <p class="calculator-compare-tag" data-calc-compare-tag="netRepair" hidden>Für Ihre Auszahlung maßgeblich</p>
+                    <p class="calculator-compare-secondary-note" data-calc-secondary-note="netRepair" hidden>Dieser Betrag ist hier nicht maßgeblich.</p>
                   </div>
-                  <div class="calculator-compare-item" data-calc-compare="totalBasis">
+                  <div class="calculator-compare-item is-neutral" data-calc-compare="totalBasis">
                     <p class="calculator-compare-label">Wiederbeschaffungswert abzüglich Restwert</p>
                     <p class="calculator-compare-value" data-calc-total-payout>4.500 €</p>
-                    <p class="calculator-compare-tag" data-calc-compare-tag="totalBasis" hidden>Für Ihre Auszahlung maßgeblich</p>
+                    <p class="calculator-compare-secondary-note" data-calc-secondary-note="totalBasis" hidden>Dieser Betrag ist hier nicht maßgeblich.</p>
                   </div>
                 </div>
-                <p class="calculator-box-note">Für die fiktive Abrechnung ist der niedrigere dieser beiden Beträge maßgeblich.</p>
+                <p class="calculator-box-note">Maßgeblich für Ihre Auszahlung ohne Reparatur ist der niedrigere dieser beiden Beträge.</p>
+                <p class="calculator-box-note">Der markierte Betrag ist der Betrag, den Sie sich in diesem Fall auszahlen lassen können.</p>
               </article>
             </div>
 

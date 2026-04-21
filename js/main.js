@@ -817,8 +817,8 @@ function init130Rechner() {
   var marker = calculator.querySelector('[data-calc-marker]');
   var compareNet = calculator.querySelector('[data-calc-compare="netRepair"]');
   var compareTotal = calculator.querySelector('[data-calc-compare="totalBasis"]');
-  var compareNetTag = calculator.querySelector('[data-calc-compare-tag="netRepair"]');
-  var compareTotalTag = calculator.querySelector('[data-calc-compare-tag="totalBasis"]');
+  var compareNetSecondaryNote = calculator.querySelector('[data-calc-secondary-note="netRepair"]');
+  var compareTotalSecondaryNote = calculator.querySelector('[data-calc-secondary-note="totalBasis"]');
 
   var zones = {
     safe: calculator.querySelector('[data-calc-zone="safe"]'),
@@ -827,7 +827,7 @@ function init130Rechner() {
     critical: calculator.querySelector('[data-calc-zone="critical"]')
   };
 
-  if (!wbwInput || !repairInput || !restInput || !wbwRange || !repairRange || !restRange || !warning || !result || !percentTarget || !netRepairTarget || !totalPayoutTarget || !fictivePayoutTarget || !wbwLive || !repairLive || !restLive || !statusBox || !statusTitle || !statusRepair || !statusFictive || !fictiveNote || !cta || !marker || !compareNet || !compareTotal || !compareNetTag || !compareTotalTag || !zones.safe || !zones.positive || !zones.rule || !zones.critical) {
+  if (!wbwInput || !repairInput || !restInput || !wbwRange || !repairRange || !restRange || !warning || !result || !percentTarget || !netRepairTarget || !totalPayoutTarget || !fictivePayoutTarget || !wbwLive || !repairLive || !restLive || !statusBox || !statusTitle || !statusRepair || !statusFictive || !fictiveNote || !cta || !marker || !compareNet || !compareTotal || !compareNetSecondaryNote || !compareTotalSecondaryNote || !zones.safe || !zones.positive || !zones.rule || !zones.critical) {
     return;
   }
 
@@ -942,18 +942,48 @@ function init130Rechner() {
     updateActiveZone(config.zone);
   }
 
-  function markRelevantPayout(key) {
-    compareNet.classList.remove('is-relevant');
-    compareTotal.classList.remove('is-relevant');
-    compareNetTag.hidden = true;
-    compareTotalTag.hidden = true;
+  function removePayoutEnhancements(item) {
+    item.classList.remove('is-highlighted');
+    item.classList.add('is-neutral');
+    var badge = item.querySelector('.payout-badge');
+    var payoutTitle = item.querySelector('.calculator-compare-payout-title');
+    if (badge) badge.remove();
+    if (payoutTitle) payoutTitle.remove();
+  }
+
+  function addPayoutEnhancements(item) {
+    item.classList.remove('is-neutral');
+    item.classList.add('is-highlighted');
+
+    var label = item.querySelector('.calculator-compare-label');
+    if (!label) return;
+
+    var payoutTitle = document.createElement('p');
+    payoutTitle.className = 'calculator-compare-payout-title';
+    payoutTitle.textContent = 'Ihr auszahlbarer Betrag';
+    label.insertAdjacentElement('afterend', payoutTitle);
+
+    var badge = document.createElement('p');
+    badge.className = 'payout-badge';
+    badge.textContent = 'Diesen Betrag können Sie sich auszahlen lassen';
+    item.appendChild(badge);
+  }
+
+  function markRelevantPayout(key, netRepair, totalBasis) {
+    var delta = Math.abs(netRepair - totalBasis);
+    var threshold = Math.max(300, (Math.min(netRepair, totalBasis) || 0) * 0.1);
+
+    removePayoutEnhancements(compareNet);
+    removePayoutEnhancements(compareTotal);
+    compareNetSecondaryNote.hidden = true;
+    compareTotalSecondaryNote.hidden = true;
 
     if (key === 'netRepair') {
-      compareNet.classList.add('is-relevant');
-      compareNetTag.hidden = false;
+      addPayoutEnhancements(compareNet);
+      if (totalBasis > netRepair && delta >= threshold) compareTotalSecondaryNote.hidden = false;
     } else if (key === 'totalBasis') {
-      compareTotal.classList.add('is-relevant');
-      compareTotalTag.hidden = false;
+      addPayoutEnhancements(compareTotal);
+      if (netRepair > totalBasis && delta >= threshold) compareNetSecondaryNote.hidden = false;
     }
   }
 
@@ -986,7 +1016,7 @@ function init130Rechner() {
     netRepairTarget.textContent = '–';
     totalPayoutTarget.textContent = '–';
     fictivePayoutTarget.textContent = '–';
-    markRelevantPayout(null);
+    markRelevantPayout(null, 0, 0);
     setWarning(message);
   }
 
@@ -1034,7 +1064,7 @@ function init130Rechner() {
     fictivePayoutTarget.textContent = 'Maßgebliche Auszahlung ohne Reparatur: ' + formatEuro(fictivePayout);
 
     setStatus(statusContent[statusKey]);
-    markRelevantPayout(relevantKey);
+    markRelevantPayout(relevantKey, netRepair, totalBasis);
   }
 
   [

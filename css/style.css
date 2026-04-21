@@ -2930,12 +2930,19 @@ img {
   border-radius: 12px;
   border: 1px solid #d7e3ef;
   background: #fff;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
 }
 
-.calculator-compare-item.is-relevant {
+.calculator-compare-item.is-highlighted {
   border-color: #d66d1f;
   background: #fff7ef;
-  box-shadow: 0 8px 18px rgba(214, 109, 31, 0.14);
+  box-shadow: 0 10px 24px rgba(214, 109, 31, 0.16);
+}
+
+.calculator-compare-item.is-neutral {
+  border-color: #d7e3ef;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
 }
 
 .calculator-compare-label {
@@ -2951,15 +2958,37 @@ img {
   color: #1b324d;
 }
 
-.calculator-compare-tag {
+.calculator-compare-item.is-highlighted .calculator-compare-value {
+  margin-top: 8px;
+  font-size: clamp(1.35rem, 5.8vw, 1.62rem);
+  font-weight: 800;
+}
+
+.calculator-compare-payout-title {
   margin: 8px 0 0;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: #a65319;
+}
+
+.payout-badge {
+  margin: 10px 0 0;
   display: inline-block;
   border-radius: 999px;
-  padding: 5px 10px;
-  font-size: 0.76rem;
+  padding: 7px 11px;
+  max-width: 100%;
+  font-size: 0.78rem;
+  line-height: 1.25;
   font-weight: 700;
   color: #fff;
   background: #d66d1f;
+}
+
+.calculator-compare-secondary-note {
+  margin: 8px 0 0;
+  font-size: 0.8rem;
+  color: #6b7f95;
 }
 
 .calculator-status--safe { background: #eef8f0; border-color: #c9e4ce; }
@@ -2986,6 +3015,17 @@ img {
   border-color: transparent;
 }
 .calculator-conversion-btn:hover { transform: translateY(-1px); }
+.calculator-box .btn,
+.calculator-box .btn:visited,
+.calculator-box .btn:hover,
+.calculator-box .btn:focus,
+.calculator-box .btn:active,
+.calculator-box .btn-primary,
+.calculator-box .cta-button,
+.calculator-box a.btn,
+.calculator-box button.btn {
+  color: #fff !important;
+}
 
 
 .calculator-legend,
@@ -4051,6 +4091,15 @@ img {
 
   .calculator-box {
     padding: 14px;
+  }
+
+  .payout-badge {
+    font-size: 0.73rem;
+    padding: 6px 10px;
+  }
+
+  .calculator-compare-grid {
+    gap: 12px;
   }
 
   .calculator-page .article-cta-group--extended {
