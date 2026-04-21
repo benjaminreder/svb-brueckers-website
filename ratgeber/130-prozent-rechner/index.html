@@ -83,6 +83,10 @@
                 <span class="calculator-currency" aria-hidden="true">€</span>
                 <input id="wbw" name="wbw" type="number" min="0" step="100" value="5000" inputmode="decimal" required data-calc-input="wbw">
               </div>
+              <div class="calculator-range-wrap">
+                <label for="wbw-range" class="sr-only">Wiederbeschaffungswert per Schieberegler einstellen</label>
+                <input id="wbw-range" name="wbw-range" type="range" min="0" max="100000" step="100" value="5000" data-calc-range="wbw">
+              </div>
               <p class="calculator-help">Der Wiederbeschaffungswert ist der Betrag, den Sie brauchen, um sich ein vergleichbares Fahrzeug zu kaufen.</p>
             </div>
 
@@ -92,6 +96,10 @@
                 <span class="calculator-currency" aria-hidden="true">€</span>
                 <input id="repair" name="repair" type="number" min="0" step="100" value="3500" inputmode="decimal" required data-calc-input="repair">
               </div>
+              <div class="calculator-range-wrap">
+                <label for="repair-range" class="sr-only">Reparaturkosten per Schieberegler einstellen</label>
+                <input id="repair-range" name="repair-range" type="range" min="0" max="130000" step="100" value="3500" data-calc-range="repair">
+              </div>
               <p class="calculator-help">Die Reparaturkosten ergeben sich aus meinem Gutachten.</p>
             </div>
 
@@ -100,6 +108,10 @@
               <div class="calculator-input-wrap">
                 <span class="calculator-currency" aria-hidden="true">€</span>
                 <input id="rest" name="rest" type="number" min="0" step="50" value="500" inputmode="decimal" required data-calc-input="rest">
+              </div>
+              <div class="calculator-range-wrap">
+                <label for="rest-range" class="sr-only">Restwert per Schieberegler einstellen</label>
+                <input id="rest-range" name="rest-range" type="range" min="0" max="100000" step="50" value="500" data-calc-range="rest">
               </div>
               <p class="calculator-help">Der Restwert ist der Betrag, den ein Restwertaufkäufer bzw. Restwertverwerter für Ihr Fahrzeug bezahlen würde.</p>
             </div>
@@ -130,6 +142,7 @@
             <div class="calculator-status" data-calc-status>
               <p class="calculator-status-label">Status</p>
               <p class="calculator-status-text">Sie können beruhigt reparieren lassen.</p>
+              <p class="calculator-status-highlight">In diesem Bereich ist in der Regel auch eine Auszahlung auf Gutachtenbasis möglich.</p>
             </div>
           </section>
         </section>

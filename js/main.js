@@ -796,14 +796,18 @@ function init130Rechner() {
   var wbwInput = calculator.querySelector('[data-calc-input="wbw"]');
   var repairInput = calculator.querySelector('[data-calc-input="repair"]');
   var restInput = calculator.querySelector('[data-calc-input="rest"]');
+  var wbwRange = calculator.querySelector('[data-calc-range="wbw"]');
+  var repairRange = calculator.querySelector('[data-calc-range="repair"]');
+  var restRange = calculator.querySelector('[data-calc-range="rest"]');
   var warning = calculator.querySelector('[data-calc-warning]');
   var result = calculator.querySelector('[data-calc-result]');
   var percentTarget = calculator.querySelector('[data-calc-percent]');
   var payoutTarget = calculator.querySelector('[data-calc-payout]');
   var statusBox = calculator.querySelector('[data-calc-status]');
   var statusText = statusBox ? statusBox.querySelector('.calculator-status-text') : null;
+  var statusHighlight = statusBox ? statusBox.querySelector('.calculator-status-highlight') : null;
 
-  if (!wbwInput || !repairInput || !restInput || !warning || !result || !percentTarget || !payoutTarget || !statusBox || !statusText) {
+  if (!wbwInput || !repairInput || !restInput || !wbwRange || !repairRange || !restRange || !warning || !result || !percentTarget || !payoutTarget || !statusBox || !statusText || !statusHighlight) {
     return;
   }
 
@@ -838,6 +842,7 @@ function init130Rechner() {
     result.classList.add('is-invalid');
     statusBox.className = 'calculator-status calculator-status--invalid';
     statusText.textContent = 'Bitte Eingaben prüfen.';
+    statusHighlight.textContent = 'Für eine verlässliche Einschätzung werden gültige Werte für Wiederbeschaffungswert, Reparaturkosten und Restwert benötigt.';
     setWarning(message);
   }
 
@@ -845,17 +850,30 @@ function init130Rechner() {
     if (percent <= 74) {
       statusBox.className = 'calculator-status calculator-status--safe';
       statusText.textContent = 'Sie können beruhigt reparieren lassen.';
+      statusHighlight.textContent = 'In diesem Bereich ist in der Regel auch eine Auszahlung auf Gutachtenbasis beziehungsweise des Reparaturwertes möglich.';
       return;
     }
 
     if (percent <= 130) {
       statusBox.className = 'calculator-status calculator-status--sensitive';
       statusText.textContent = 'Es liegt ein wirtschaftlich sensibler Bereich vor. Restwert und weitere Voraussetzungen müssen beachtet werden. Eine Reparatur kann unter bestimmten Voraussetzungen weiterhin möglich sein.';
+      statusHighlight.textContent = 'Auch in diesem Bereich kann eine Auszahlung auf Gutachtenbasis möglich sein. Maßgeblich sind die konkreten Werte und die Regulierung im Einzelfall.';
       return;
     }
 
     statusBox.className = 'calculator-status calculator-status--critical';
     statusText.textContent = 'Die Versicherung ist grundsätzlich nicht verpflichtet, die Reparaturkosten vollständig zu übernehmen.';
+    statusHighlight.textContent = 'In diesem Bereich steht meist nicht mehr die Reparatur, sondern eher die Abrechnung auf Totalschadenbasis im Vordergrund (Wiederbeschaffungswert abzüglich Restwert).';
+  }
+
+  function syncRangeToInput(input, range) {
+    var value = Number(input.value);
+    if (!Number.isFinite(value)) return;
+    var min = Number(range.min);
+    var max = Number(range.max);
+    if (value < min) value = min;
+    if (value > max) value = max;
+    range.value = String(value);
   }
 
   function update() {
@@ -896,9 +914,25 @@ function init130Rechner() {
     setStatusByPercent(percent);
   }
 
-  [wbwInput, repairInput, restInput].forEach(function (input) {
-    input.addEventListener('input', update);
-    input.addEventListener('blur', update);
+  [
+    { input: wbwInput, range: wbwRange },
+    { input: repairInput, range: repairRange },
+    { input: restInput, range: restRange }
+  ].forEach(function (pair) {
+    pair.range.addEventListener('input', function () {
+      pair.input.value = pair.range.value;
+      update();
+    });
+
+    pair.input.addEventListener('input', function () {
+      syncRangeToInput(pair.input, pair.range);
+      update();
+    });
+
+    pair.input.addEventListener('blur', function () {
+      syncRangeToInput(pair.input, pair.range);
+      update();
+    });
   });
 
   update();
