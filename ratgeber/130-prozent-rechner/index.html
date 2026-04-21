@@ -130,21 +130,6 @@
 
           <section class="calculator-result" aria-labelledby="ergebnis-title" data-calc-result>
             <h3 id="ergebnis-title">Ergebnis</h3>
-            <dl class="calculator-result-grid">
-              <div>
-                <dt>Prozentsatz (Reparaturkosten / Wiederbeschaffungswert)</dt>
-                <dd data-calc-percent>70,0 %</dd>
-              </div>
-              <div>
-                <dt>Auszahlung bei Totalschadenbasis</dt>
-                <dd data-calc-payout>4.500 €</dd>
-              </div>
-              <div>
-                <dt>Reparaturkosten netto</dt>
-                <dd data-calc-net-repair>2.941 €</dd>
-              </div>
-            </dl>
-            <p class="calculator-result-note">Totalschadenbasis bedeutet: Wiederbeschaffungswert minus Restwert.</p>
 
             <div class="calculator-meter" aria-label="Prozent-Einordnung">
               <div class="calculator-meter-segment segment-safe" data-calc-zone="safe">0–75 %</div>
@@ -154,33 +139,59 @@
               <div class="calculator-meter-marker" data-calc-marker aria-hidden="true"></div>
             </div>
 
-            <div class="calculator-status" data-calc-status>
-              <p class="calculator-status-label">Bereich / Status</p>
-              <h4 class="calculator-status-title" data-calc-status-title>Wirtschaftlich klar im Reparaturbereich</h4>
-              <p class="calculator-status-text" data-calc-status-text>Sie befinden sich deutlich unter dem Wiederbeschaffungswert. Eine Reparatur ist wirtschaftlich sinnvoll und problemlos möglich.</p>
-              <ul class="calculator-status-list">
-                <li data-calc-repair>Sie können das Fahrzeug reparieren lassen.</li>
-                <li data-calc-fictive>Sie können sich die Reparaturkosten fiktiv auszahlen lassen. In diesem Fall wird der Nettobetrag ersetzt. Mehrwertsteuer wird nur erstattet, wenn sie tatsächlich angefallen ist.</li>
-                <li data-calc-actual>Bei tatsächlicher Reparatur kann die Mehrwertsteuer entsprechend der konkreten Rechnung berücksichtigt werden.</li>
-              </ul>
-              <p class="calculator-status-highlight" data-calc-payout-note>Mögliche fiktive Auszahlung: Reparaturkosten netto</p>
-              <p class="calculator-status-detail" data-calc-status-detail>Die konkrete Regulierung hängt von den Feststellungen im Gutachten ab.</p>
-              <div class="calculator-conversion">
-                <a href="/#kontakt" class="btn calculator-conversion-btn" data-calc-cta>Jetzt Gutachten anfragen</a>
-              </div>
+            <div class="calculator-box-grid">
+              <article class="calculator-box calculator-box--hero">
+                <p class="calculator-box-kicker">Box 1</p>
+                <h4>Ihr Ergebnis</h4>
+                <p class="calculator-percent" data-calc-percent>70,0 %</p>
+                <p class="calculator-status-title" data-calc-status-title>Klar im Reparaturbereich</p>
+              </article>
+
+              <article class="calculator-box calculator-box--repair" data-calc-status>
+                <p class="calculator-box-kicker">Box 2</p>
+                <h4>Reparaturbasis</h4>
+                <p class="calculator-box-text" data-calc-repair>
+                  Die Reparatur liegt deutlich innerhalb des Fahrzeugwerts. Sie können das Fahrzeug wirtschaftlich sinnvoll reparieren lassen.
+                </p>
+              </article>
+
+              <article class="calculator-box calculator-box--fictive">
+                <p class="calculator-box-kicker">Box 3</p>
+                <h4>Auszahlung ohne Reparatur</h4>
+                <p class="calculator-box-text" data-calc-fictive>
+                  Wenn Sie sich den Schaden auszahlen lassen möchten, ist für Ihre Auszahlung der niedrigere Betrag aus Reparaturkosten netto und Wiederbeschaffungswert abzüglich Restwert maßgeblich.
+                </p>
+                <p class="calculator-fictive-payout" data-calc-fictive-payout>2.941 €</p>
+                <p class="calculator-box-footnote">
+                  <strong>Fachbegriff:</strong> Maßgebliche fiktive Auszahlung
+                </p>
+                <p class="calculator-box-note" data-calc-fictive-note>
+                  Damit wird für Sie direkt sichtbar, welcher Betrag bei einer Auszahlung ohne Reparatur maßgeblich ist.
+                </p>
+              </article>
+
+              <article class="calculator-box calculator-box--comparison">
+                <p class="calculator-box-kicker">Box 4</p>
+                <h4>So setzt sich Ihre mögliche Auszahlung zusammen</h4>
+                <div class="calculator-compare-grid">
+                  <div class="calculator-compare-item" data-calc-compare="netRepair">
+                    <p class="calculator-compare-label">Reparaturkosten netto</p>
+                    <p class="calculator-compare-value" data-calc-net-repair>2.941 €</p>
+                    <p class="calculator-compare-tag" data-calc-compare-tag="netRepair" hidden>Für Ihre Auszahlung maßgeblich</p>
+                  </div>
+                  <div class="calculator-compare-item" data-calc-compare="totalBasis">
+                    <p class="calculator-compare-label">Wiederbeschaffungswert abzüglich Restwert</p>
+                    <p class="calculator-compare-value" data-calc-total-payout>4.500 €</p>
+                    <p class="calculator-compare-tag" data-calc-compare-tag="totalBasis" hidden>Für Ihre Auszahlung maßgeblich</p>
+                  </div>
+                </div>
+                <p class="calculator-box-note">Für die fiktive Abrechnung ist der niedrigere dieser beiden Beträge maßgeblich.</p>
+              </article>
             </div>
 
-            <div class="calculator-payout-boxes">
-              <article class="calculator-payout-box">
-                <h4>Mögliche Auszahlung bei fiktiver Abrechnung</h4>
-                <p class="calculator-payout-value" data-calc-fictive-payout>2.941 €</p>
-              </article>
-              <article class="calculator-payout-box">
-                <h4>Mögliche Auszahlung bei Totalschadenbasis</h4>
-                <p class="calculator-payout-value" data-calc-total-payout>4.500 €</p>
-              </article>
+            <div class="calculator-conversion">
+              <a href="/#kontakt" class="btn calculator-conversion-btn" data-calc-cta>Jetzt Gutachten anfragen</a>
             </div>
-            <p class="calculator-payout-note">Die tatsächliche Abrechnung hängt immer vom konkreten Schadenfall und der Art der Regulierung ab.</p>
           </section>
         </section>
 
@@ -196,7 +207,7 @@
 
         <section class="calculator-trust" aria-labelledby="fachhinweis-title">
           <h2 id="fachhinweis-title">Wichtiger Hinweis</h2>
-          <p>Dieser Rechner dient der ersten Orientierung und ersetzt keine rechtliche oder gutachterliche Einzelfallprüfung. Maßgeblich sind stets die konkreten Feststellungen im Gutachten und die Regulierung im Einzelfall.</p>
+          <p>Dieser Rechner dient der ersten Orientierung. Maßgeblich sind stets die konkreten Feststellungen im Gutachten sowie die Regulierung im Einzelfall.</p>
         </section>
 
         <div class="article-cta-wrap" aria-label="Kontaktmöglichkeiten">

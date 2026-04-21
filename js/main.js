@@ -802,23 +802,24 @@ function init130Rechner() {
   var warning = calculator.querySelector('[data-calc-warning]');
   var result = calculator.querySelector('[data-calc-result]');
   var percentTarget = calculator.querySelector('[data-calc-percent]');
-  var payoutTarget = calculator.querySelector('[data-calc-payout]');
   var netRepairTarget = calculator.querySelector('[data-calc-net-repair]');
-  var fictivePayoutTarget = calculator.querySelector('[data-calc-fictive-payout]');
   var totalPayoutTarget = calculator.querySelector('[data-calc-total-payout]');
+  var fictivePayoutTarget = calculator.querySelector('[data-calc-fictive-payout]');
   var wbwLive = calculator.querySelector('[data-calc-live="wbw"]');
   var repairLive = calculator.querySelector('[data-calc-live="repair"]');
   var restLive = calculator.querySelector('[data-calc-live="rest"]');
   var statusBox = calculator.querySelector('[data-calc-status]');
   var statusTitle = calculator.querySelector('[data-calc-status-title]');
-  var statusText = calculator.querySelector('[data-calc-status-text]');
   var statusRepair = calculator.querySelector('[data-calc-repair]');
   var statusFictive = calculator.querySelector('[data-calc-fictive]');
-  var statusActual = calculator.querySelector('[data-calc-actual]');
-  var statusPayoutNote = calculator.querySelector('[data-calc-payout-note]');
-  var statusDetail = calculator.querySelector('[data-calc-status-detail]');
+  var fictiveNote = calculator.querySelector('[data-calc-fictive-note]');
   var cta = calculator.querySelector('[data-calc-cta]');
   var marker = calculator.querySelector('[data-calc-marker]');
+  var compareNet = calculator.querySelector('[data-calc-compare="netRepair"]');
+  var compareTotal = calculator.querySelector('[data-calc-compare="totalBasis"]');
+  var compareNetTag = calculator.querySelector('[data-calc-compare-tag="netRepair"]');
+  var compareTotalTag = calculator.querySelector('[data-calc-compare-tag="totalBasis"]');
+
   var zones = {
     safe: calculator.querySelector('[data-calc-zone="safe"]'),
     positive: calculator.querySelector('[data-calc-zone="positive"]'),
@@ -826,68 +827,53 @@ function init130Rechner() {
     critical: calculator.querySelector('[data-calc-zone="critical"]')
   };
 
-  if (!wbwInput || !repairInput || !restInput || !wbwRange || !repairRange || !restRange || !warning || !result || !percentTarget || !payoutTarget || !netRepairTarget || !fictivePayoutTarget || !totalPayoutTarget || !wbwLive || !repairLive || !restLive || !statusBox || !statusTitle || !statusText || !statusRepair || !statusFictive || !statusActual || !statusPayoutNote || !statusDetail || !cta || !marker || !zones.safe || !zones.positive || !zones.rule || !zones.critical) {
+  if (!wbwInput || !repairInput || !restInput || !wbwRange || !repairRange || !restRange || !warning || !result || !percentTarget || !netRepairTarget || !totalPayoutTarget || !fictivePayoutTarget || !wbwLive || !repairLive || !restLive || !statusBox || !statusTitle || !statusRepair || !statusFictive || !fictiveNote || !cta || !marker || !compareNet || !compareTotal || !compareNetTag || !compareTotalTag || !zones.safe || !zones.positive || !zones.rule || !zones.critical) {
     return;
   }
 
   var statusContent = {
     safe: {
-      className: 'calculator-status calculator-status--safe',
-      title: 'Wirtschaftlich klar im Reparaturbereich',
-      text: 'Sie befinden sich deutlich unter dem Wiederbeschaffungswert. Eine Reparatur ist wirtschaftlich sinnvoll und in der Regel problemlos möglich.',
-      repair: 'Sie können das Fahrzeug reparieren lassen.',
-      fictive: 'Sie können sich die Reparaturkosten fiktiv auszahlen lassen. In diesem Fall wird der Nettobetrag ersetzt. Mehrwertsteuer wird nur erstattet, wenn sie tatsächlich angefallen ist.',
-      actual: 'Bei tatsächlicher Reparatur wird die Mehrwertsteuer im Rahmen der konkreten Rechnung berücksichtigt.',
-      payoutNote: 'Mögliche fiktive Auszahlung: Reparaturkosten netto',
-      detail: 'Wenn Sie möchten, prüfen wir Ihr Gutachten und zeigen Ihnen den sinnvollsten Abrechnungsweg.',
+      className: 'calculator-box calculator-box--repair calculator-status--safe',
+      title: 'Klar im Reparaturbereich',
+      repair: 'Die Reparatur liegt deutlich innerhalb des Fahrzeugwerts. Sie können das Fahrzeug wirtschaftlich sinnvoll reparieren lassen.',
+      fictive: 'Wenn Sie sich den Schaden auszahlen lassen möchten, ist für Ihre Auszahlung der niedrigere Betrag aus Reparaturkosten netto und Wiederbeschaffungswert abzüglich Restwert maßgeblich.',
+      fictiveNote: 'Damit wird für Sie direkt sichtbar, welcher Betrag bei einer Auszahlung ohne Reparatur maßgeblich ist.',
       cta: 'Jetzt Gutachten anfragen',
       zone: 'safe'
     },
     positive: {
-      className: 'calculator-status calculator-status--positive',
-      title: 'Reparatur weiterhin wirtschaftlich möglich',
-      text: 'Sie befinden sich noch innerhalb des Wiederbeschaffungswerts. Eine Reparatur ist weiterhin wirtschaftlich möglich.',
-      repair: 'Sie können das Fahrzeug reparieren lassen.',
-      fictive: 'Auch in diesem Bereich ist eine fiktive Abrechnung möglich. Dabei werden die Reparaturkosten netto ersetzt. Die Mehrwertsteuer wird nur bei tatsächlicher Reparatur erstattet.',
-      actual: 'Je näher die Reparaturkosten am Wiederbeschaffungswert liegen, desto wichtiger ist eine saubere gutachterliche Bewertung.',
-      payoutNote: 'Mögliche fiktive Auszahlung: Reparaturkosten netto',
-      detail: 'Eine fachlich präzise Bewertung schafft hier die nötige Sicherheit für Ihre Entscheidung.',
-      cta: 'Gutachten prüfen lassen',
+      className: 'calculator-box calculator-box--repair calculator-status--positive',
+      title: 'Reparatur weiterhin möglich',
+      repair: 'Die Reparatur liegt noch innerhalb des Wiederbeschaffungswerts. Eine Reparatur ist weiterhin wirtschaftlich möglich.',
+      fictive: 'Auch hier ist für eine Auszahlung ohne Reparatur der niedrigere Betrag aus Reparaturkosten netto und Wiederbeschaffungswert abzüglich Restwert maßgeblich.',
+      fictiveNote: 'Je näher die Reparaturkosten am Wiederbeschaffungswert liegen, desto wichtiger ist eine saubere gutachterliche Bewertung.',
+      cta: 'Schaden prüfen lassen',
       zone: 'positive'
     },
     rule: {
-      className: 'calculator-status calculator-status--rule',
+      className: 'calculator-box calculator-box--repair calculator-status--rule',
       title: 'Bereich der 130%-Regel',
-      text: 'Die Reparaturkosten liegen über dem Wiederbeschaffungswert, aber noch innerhalb der 130%-Grenze. Eine Reparatur kann unter bestimmten Voraussetzungen dennoch ersatzfähig sein.',
-      repair: 'Die Reparaturkosten können in diesem Bereich in voller Höhe ersetzt werden, wenn das Fahrzeug fachgerecht und entsprechend den Vorgaben instand gesetzt wird.',
-      fictive: 'Eine Auszahlung der vollen Reparaturkosten ist in diesem Bereich nur bei tatsächlicher fachgerechter Reparatur möglich. Wenn Sie fiktiv abrechnen, richtet sich die Auszahlung nach Wiederbeschaffungswert abzüglich Restwert.',
-      actual: 'Voraussetzung ist regelmäßig eine fachgerechte Reparatur sowie die weitere Nutzung des Fahrzeugs.',
-      payoutNote: 'Mögliche Auszahlung bei fiktiver Abrechnung: Wiederbeschaffungswert minus Restwert',
-      detail: 'Gerade in dieser Zone ist eine fundierte Prüfung des Gutachtens besonders wichtig.',
-      cta: 'Anspruch jetzt prüfen lassen',
+      repair: 'Die Reparaturkosten liegen über dem Wiederbeschaffungswert. Eine vollständige Erstattung der Reparaturkosten kommt nur in Betracht, wenn das Fahrzeug fachgerecht entsprechend dem Gutachten repariert wird.',
+      fictive: 'Wenn Sie sich den Schaden ohne Reparatur auszahlen lassen möchten, ist für Ihre Auszahlung der niedrigere Betrag aus Reparaturkosten netto und Wiederbeschaffungswert abzüglich Restwert maßgeblich.',
+      fictiveNote: 'Damit sehen Sie direkt, welcher Betrag ohne Reparatur in Ihrem Fall wirtschaftlich maßgeblich ist. Wenn Sie nicht fachgerecht reparieren und auf Reparaturbasis abrechnen, ist ebenfalls der niedrigere Betrag für die Auszahlung maßgeblich.',
+      cta: 'Reparaturbasis prüfen lassen',
       zone: 'rule'
     },
     critical: {
-      className: 'calculator-status calculator-status--critical',
+      className: 'calculator-box calculator-box--repair calculator-status--critical',
       title: 'Wirtschaftlicher Totalschaden',
-      text: 'Die Reparaturkosten überschreiten die 130%-Grenze. In diesem Bereich ist eine Reparatur wirtschaftlich in der Regel nicht mehr erstattungsfähig.',
-      repair: 'Eine Erstattung der Reparaturkosten ist regelmäßig nicht mehr möglich.',
-      fictive: 'Die Abrechnung erfolgt auf Totalschadenbasis. Maßgeblich ist der Wiederbeschaffungswert abzüglich Restwert.',
-      actual: 'Auch bei tatsächlicher Reparatur bleibt für die Regulierung grundsätzlich die Totalschadenbasis maßgeblich.',
-      payoutNote: 'Mögliche Auszahlung: Wiederbeschaffungswert minus Restwert',
-      detail: 'Wir helfen Ihnen, die Totalschadenabrechnung sauber zu prüfen und Ihre Ansprüche durchzusetzen.',
+      repair: 'Die Reparaturkosten überschreiten die 130%-Grenze. Eine Reparatur ist wirtschaftlich in der Regel nicht mehr erstattungsfähig.',
+      fictive: 'Wenn Sie sich den Schaden auszahlen lassen, ist für Ihre Auszahlung der niedrigere Betrag maßgeblich. In diesem Bereich ist das regelmäßig der Wiederbeschaffungswert abzüglich Restwert.',
+      fictiveNote: 'Wenn Sie sich den Schaden auszahlen lassen, ist in Ihrem Fall dieser Betrag maßgeblich.',
       cta: 'Totalschaden prüfen lassen',
       zone: 'critical'
     },
     invalid: {
-      className: 'calculator-status calculator-status--invalid',
+      className: 'calculator-box calculator-box--repair calculator-status--invalid',
       title: 'Bitte Eingaben prüfen',
-      text: 'Für eine verlässliche Einschätzung sind gültige Werte nötig.',
       repair: 'Geben Sie Wiederbeschaffungswert, Reparaturkosten und Restwert als positive Zahlen ein.',
-      fictive: 'Der Rechner zeigt die Abrechnungsfolgen erst nach vollständigen und plausiblen Eingaben.',
-      actual: '',
-      payoutNote: 'Mögliche Auszahlung: –',
-      detail: '',
+      fictive: 'Dann zeigt der Rechner sofort, welche Auszahlung ohne Reparatur in Ihrem Fall maßgeblich ist.',
+      fictiveNote: '',
       cta: 'Jetzt Gutachten anfragen',
       zone: null
     }
@@ -897,9 +883,16 @@ function init130Rechner() {
     return new Intl.NumberFormat('de-DE', {
       style: 'currency',
       currency: 'EUR',
-      minimumFractionDigits: 0,
-      maximumFractionDigits: 0
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
     }).format(value);
+  }
+
+  function formatPercent(value) {
+    return new Intl.NumberFormat('de-DE', {
+      minimumFractionDigits: 1,
+      maximumFractionDigits: 1
+    }).format(value) + ' %';
   }
 
   function parseValue(input) {
@@ -916,26 +909,8 @@ function init130Rechner() {
   }
 
   function setWarning(message) {
-    if (message) {
-      warning.hidden = false;
-      warning.textContent = message;
-    } else {
-      warning.hidden = true;
-      warning.textContent = '';
-    }
-  }
-
-  function setStatus(config) {
-    statusBox.className = config.className;
-    statusTitle.textContent = config.title;
-    statusText.textContent = config.text;
-    statusRepair.textContent = config.repair;
-    statusFictive.textContent = config.fictive;
-    statusActual.textContent = config.actual;
-    statusPayoutNote.textContent = config.payoutNote;
-    statusDetail.textContent = config.detail;
-    cta.textContent = config.cta;
-    updateActiveZone(config.zone);
+    warning.hidden = !message;
+    warning.textContent = message || '';
   }
 
   function updateActiveZone(zoneName) {
@@ -955,6 +930,31 @@ function init130Rechner() {
     var x = segmentRect.left - meterRect.left + (segmentRect.width / 2) - 8;
     var y = segmentRect.top - meterRect.top - 6;
     marker.style.transform = 'translate(' + x + 'px, ' + y + 'px)';
+  }
+
+  function setStatus(config) {
+    statusBox.className = config.className;
+    statusTitle.textContent = config.title;
+    statusRepair.textContent = config.repair;
+    statusFictive.textContent = config.fictive;
+    fictiveNote.textContent = config.fictiveNote;
+    cta.textContent = config.cta;
+    updateActiveZone(config.zone);
+  }
+
+  function markRelevantPayout(key) {
+    compareNet.classList.remove('is-relevant');
+    compareTotal.classList.remove('is-relevant');
+    compareNetTag.hidden = true;
+    compareTotalTag.hidden = true;
+
+    if (key === 'netRepair') {
+      compareNet.classList.add('is-relevant');
+      compareNetTag.hidden = false;
+    } else if (key === 'totalBasis') {
+      compareTotal.classList.add('is-relevant');
+      compareTotalTag.hidden = false;
+    }
   }
 
   function syncRangeToInput(input, range) {
@@ -983,10 +983,10 @@ function init130Rechner() {
     result.classList.add('is-invalid');
     setStatus(statusContent.invalid);
     percentTarget.textContent = '–';
-    payoutTarget.textContent = '–';
     netRepairTarget.textContent = '–';
-    fictivePayoutTarget.textContent = '–';
     totalPayoutTarget.textContent = '–';
+    fictivePayoutTarget.textContent = '–';
+    markRelevantPayout(null);
     setWarning(message);
   }
 
@@ -1010,25 +1010,31 @@ function init130Rechner() {
 
     if (rest > wbw) {
       setInvalidState('Bitte prüfen Sie Ihre Eingaben – der Restwert darf den Wiederbeschaffungswert nicht überschreiten.');
-      percentTarget.textContent = ((repair / wbw) * 100).toFixed(1).replace('.', ',') + ' %';
+      percentTarget.textContent = formatPercent((repair / wbw) * 100);
       return;
     }
 
     setWarning('');
 
     var percent = (repair / wbw) * 100;
-    var totalPayout = wbw - rest;
     var netRepair = repair / 1.19;
-    var fictivePayout = percent <= 100 ? netRepair : totalPayout;
+    var totalBasis = wbw - rest;
+    var fictivePayout = Math.min(netRepair, totalBasis);
+    var relevantKey = netRepair <= totalBasis ? 'netRepair' : 'totalBasis';
     var statusKey = getStatusKey(percent);
 
-    percentTarget.textContent = percent.toFixed(1).replace('.', ',') + ' %';
-    payoutTarget.textContent = formatEuro(totalPayout);
+    if (percent > 130) {
+      fictivePayout = totalBasis;
+      relevantKey = 'totalBasis';
+    }
+
+    percentTarget.textContent = formatPercent(percent);
     netRepairTarget.textContent = formatEuro(netRepair);
-    fictivePayoutTarget.textContent = formatEuro(fictivePayout);
-    totalPayoutTarget.textContent = formatEuro(totalPayout);
+    totalPayoutTarget.textContent = formatEuro(totalBasis);
+    fictivePayoutTarget.textContent = 'Maßgebliche Auszahlung ohne Reparatur: ' + formatEuro(fictivePayout);
 
     setStatus(statusContent[statusKey]);
+    markRelevantPayout(relevantKey);
   }
 
   [
