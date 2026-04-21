@@ -132,47 +132,71 @@
             <h3 id="ergebnis-title">Ergebnis</h3>
             <dl class="calculator-result-grid">
               <div>
-                <dt>Prozentsatz</dt>
-                <dd data-calc-percent>70 %</dd>
+                <dt>Prozentsatz (Reparaturkosten / Wiederbeschaffungswert)</dt>
+                <dd data-calc-percent>70,0 %</dd>
               </div>
               <div>
-                <dt>Auszahlung bei wirtschaftlichem Totalschaden</dt>
+                <dt>Auszahlung bei Totalschadenbasis</dt>
                 <dd data-calc-payout>4.500 €</dd>
               </div>
+              <div>
+                <dt>Reparaturkosten netto</dt>
+                <dd data-calc-net-repair>2.941 €</dd>
+              </div>
             </dl>
-            <p class="calculator-result-note">(Der Betrag ergibt sich aus der Differenz von Wiederbeschaffungswert abzüglich Restwert.)</p>
+            <p class="calculator-result-note">Totalschadenbasis bedeutet: Wiederbeschaffungswert minus Restwert.</p>
 
             <div class="calculator-meter" aria-label="Prozent-Einordnung">
-              <div class="calculator-meter-segment segment-safe">0–74%</div>
-              <div class="calculator-meter-segment segment-sensitive">75–130%</div>
-              <div class="calculator-meter-segment segment-critical">&gt;130%</div>
+              <div class="calculator-meter-segment segment-safe" data-calc-zone="safe">0–75 %</div>
+              <div class="calculator-meter-segment segment-positive" data-calc-zone="positive">&gt;75–100 %</div>
+              <div class="calculator-meter-segment segment-rule" data-calc-zone="rule">&gt;100–130 %</div>
+              <div class="calculator-meter-segment segment-critical" data-calc-zone="critical">&gt;130 %</div>
+              <div class="calculator-meter-marker" data-calc-marker aria-hidden="true"></div>
             </div>
 
             <div class="calculator-status" data-calc-status>
-              <p class="calculator-status-label">Status</p>
-              <p class="calculator-status-text">Sie können beruhigt reparieren lassen.</p>
-              <p class="calculator-status-highlight">In diesem Bereich ist auch eine Auszahlung auf Gutachtenbasis (Reparaturwert) möglich.</p>
-              <p class="calculator-status-detail">Wenn Sie unsicher sind, welcher Weg wirtschaftlich sinnvoller ist, beraten wir Sie gerne persönlich.</p>
+              <p class="calculator-status-label">Bereich / Status</p>
+              <h4 class="calculator-status-title" data-calc-status-title>Wirtschaftlich klar im Reparaturbereich</h4>
+              <p class="calculator-status-text" data-calc-status-text>Sie befinden sich deutlich unter dem Wiederbeschaffungswert. Eine Reparatur ist wirtschaftlich sinnvoll und problemlos möglich.</p>
+              <ul class="calculator-status-list">
+                <li data-calc-repair>Sie können das Fahrzeug reparieren lassen.</li>
+                <li data-calc-fictive>Sie können sich die Reparaturkosten fiktiv auszahlen lassen. In diesem Fall wird der Nettobetrag ersetzt. Mehrwertsteuer wird nur erstattet, wenn sie tatsächlich angefallen ist.</li>
+                <li data-calc-actual>Bei tatsächlicher Reparatur kann die Mehrwertsteuer entsprechend der konkreten Rechnung berücksichtigt werden.</li>
+              </ul>
+              <p class="calculator-status-highlight" data-calc-payout-note>Mögliche fiktive Auszahlung: Reparaturkosten netto</p>
+              <p class="calculator-status-detail" data-calc-status-detail>Die konkrete Regulierung hängt von den Feststellungen im Gutachten ab.</p>
               <div class="calculator-conversion">
-                <p class="calculator-conversion-text">Sie möchten wissen, was in Ihrem konkreten Fall sinnvoll ist?</p>
-                <a href="/#kontakt" class="btn calculator-conversion-btn">Jetzt unverbindlich prüfen lassen</a>
+                <a href="/#kontakt" class="btn calculator-conversion-btn" data-calc-cta>Jetzt Gutachten anfragen</a>
               </div>
             </div>
+
+            <div class="calculator-payout-boxes">
+              <article class="calculator-payout-box">
+                <h4>Mögliche Auszahlung bei fiktiver Abrechnung</h4>
+                <p class="calculator-payout-value" data-calc-fictive-payout>2.941 €</p>
+              </article>
+              <article class="calculator-payout-box">
+                <h4>Mögliche Auszahlung bei Totalschadenbasis</h4>
+                <p class="calculator-payout-value" data-calc-total-payout>4.500 €</p>
+              </article>
+            </div>
+            <p class="calculator-payout-note">Die tatsächliche Abrechnung hängt immer vom konkreten Schadenfall und der Art der Regulierung ab.</p>
           </section>
         </section>
 
         <section class="calculator-legend" aria-labelledby="erklaerung-legende">
           <h2 id="erklaerung-legende">Erklärung / Legende</h2>
           <ul>
-            <li>Von 0 bis 74% können Sie beruhigt reparieren lassen.</li>
-            <li>Ab 75% befinden Sie sich im Bereich der 130%-Regel. Eine Reparatur ist unter bestimmten Voraussetzungen weiterhin möglich.</li>
-            <li>Über 130% ist die Versicherung nicht verpflichtet, die Reparatur zu bezahlen.</li>
+            <li>0–75%: klare wirtschaftliche Reparaturzone.</li>
+            <li>&gt;75–100%: weiter im Reparaturbereich; fiktive Abrechnung bleibt möglich (netto).</li>
+            <li>&gt;100–130%: 130%-Regel kann bei tatsächlicher fachgerechter Reparatur greifen.</li>
+            <li>&gt;130%: Abrechnung auf Totalschadenbasis (Wiederbeschaffungswert minus Restwert).</li>
           </ul>
         </section>
 
         <section class="calculator-trust" aria-labelledby="fachhinweis-title">
           <h2 id="fachhinweis-title">Wichtiger Hinweis</h2>
-          <p>Der Rechner dient nur zur ersten Orientierung. Maßgeblich ist immer das konkrete Gutachten. Ob die 130%-Regel im Einzelfall greift, hängt von weiteren Voraussetzungen ab.</p>
+          <p>Dieser Rechner dient der ersten Orientierung und ersetzt keine rechtliche oder gutachterliche Einzelfallprüfung. Maßgeblich sind stets die konkreten Feststellungen im Gutachten und die Regulierung im Einzelfall.</p>
         </section>
 
         <div class="article-cta-wrap" aria-label="Kontaktmöglichkeiten">
