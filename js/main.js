@@ -837,7 +837,7 @@ function init130Rechner() {
       title: 'Klar im Reparaturbereich',
       repair: 'Die Reparatur liegt deutlich innerhalb des Fahrzeugwerts. Sie können das Fahrzeug wirtschaftlich sinnvoll reparieren lassen.',
       fictive: 'Wenn Sie sich den Schaden auszahlen lassen möchten, ist für Ihre Auszahlung der niedrigere Betrag aus Reparaturkosten netto und Wiederbeschaffungswert abzüglich Restwert maßgeblich.',
-      fictiveNote: 'Damit wird für Sie direkt sichtbar, welcher Betrag bei einer Auszahlung ohne Reparatur maßgeblich ist.',
+      fictiveNote: 'Wenn Sie den Schaden nicht oder selbst reparieren möchten, können Sie auf Basis des Gutachtens abrechnen und erhalten diesen Betrag von der Versicherung.',
       cta: 'Jetzt Kontakt aufnehmen',
       zone: 'safe'
     },
@@ -846,7 +846,7 @@ function init130Rechner() {
       title: 'Reparatur weiterhin möglich',
       repair: 'Die Reparatur liegt noch innerhalb des Wiederbeschaffungswerts. Eine Reparatur ist weiterhin wirtschaftlich möglich.',
       fictive: 'Auch hier ist für eine Auszahlung ohne Reparatur der niedrigere Betrag aus Reparaturkosten netto und Wiederbeschaffungswert abzüglich Restwert maßgeblich.',
-      fictiveNote: 'Je näher die Reparaturkosten am Wiederbeschaffungswert liegen, desto wichtiger ist eine saubere gutachterliche Bewertung.',
+      fictiveNote: 'Wenn Sie den Schaden nicht oder selbst reparieren möchten, können Sie auf Basis des Gutachtens abrechnen und erhalten diesen Betrag von der Versicherung.',
       cta: 'Jetzt Kontakt aufnehmen',
       zone: 'positive'
     },
@@ -855,7 +855,7 @@ function init130Rechner() {
       title: 'Bereich der 130%-Regel',
       repair: 'Die Reparaturkosten liegen über dem Wiederbeschaffungswert. Eine vollständige Erstattung der Reparaturkosten kommt nur in Betracht, wenn das Fahrzeug fachgerecht entsprechend dem Gutachten repariert wird.',
       fictive: 'Wenn Sie sich den Schaden ohne Reparatur auszahlen lassen möchten, ist für Ihre Auszahlung der niedrigere Betrag aus Reparaturkosten netto und Wiederbeschaffungswert abzüglich Restwert maßgeblich.',
-      fictiveNote: 'Damit sehen Sie direkt, welcher Betrag ohne Reparatur in Ihrem Fall wirtschaftlich maßgeblich ist. Wenn Sie nicht fachgerecht reparieren und auf Reparaturbasis abrechnen, ist ebenfalls der niedrigere Betrag für die Auszahlung maßgeblich.',
+      fictiveNote: 'Wenn Sie den Schaden nicht oder selbst reparieren möchten, können Sie auf Basis des Gutachtens abrechnen und erhalten diesen Betrag von der Versicherung.',
       cta: 'Jetzt Kontakt aufnehmen',
       zone: 'rule'
     },
@@ -864,7 +864,7 @@ function init130Rechner() {
       title: 'Wirtschaftlicher Totalschaden',
       repair: 'Die Reparaturkosten überschreiten die 130%-Grenze. Eine Reparatur ist wirtschaftlich in der Regel nicht mehr erstattungsfähig.',
       fictive: 'Wenn Sie sich den Schaden auszahlen lassen, ist für Ihre Auszahlung der niedrigere Betrag maßgeblich. In diesem Bereich ist das regelmäßig der Wiederbeschaffungswert abzüglich Restwert.',
-      fictiveNote: 'Wenn Sie sich den Schaden auszahlen lassen, ist in Ihrem Fall dieser Betrag maßgeblich.',
+      fictiveNote: 'Wenn Sie den Schaden nicht oder selbst reparieren möchten, können Sie auf Basis des Gutachtens abrechnen und erhalten diesen Betrag von der Versicherung.',
       cta: 'Jetzt Kontakt aufnehmen',
       zone: 'critical'
     },
