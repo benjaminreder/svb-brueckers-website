@@ -601,23 +601,14 @@ if (location.protocol !== "https:" && !isLocalPreviewHost) {
   <section class="section section-alt" id="weiterfuehrung">
     <div class="container">
       <h2 class="section-title">Gut informiert nach dem Unfall</h2>
-      <div class="main-guide-filter" data-main-guide-filter>
-        <label for="main-guide-select" class="sr-only">Bereich auswählen</label>
-        <select id="main-guide-select" class="main-guide-filter-select" data-guide-filter-select>
-          <option value="all">Alle</option>
-          <option value="faq">FAQ</option>
-          <option value="ratgeber">Ratgeber</option>
-        </select>
-        <button type="button" class="btn btn-primary main-guide-filter-reset" data-guide-filter-reset>Zurücksetzen</button>
-      </div>
-      <div class="guide-cards" role="list" data-guide-cards>
-        <article class="guide-card" role="listitem" data-guide-category="faq">
+      <div class="guide-cards" role="list">
+        <article class="guide-card" role="listitem">
           <!-- Nur Teaser: kein FAQ-Markup, da keine direkten Fragen mit Antworten vorhanden sind. -->
           <h3>Häufige Fragen</h3>
           <p>Antworten zu Kosten, Ablauf und Ihren Rechten nach einem Unfall.</p>
           <a class="btn btn-primary" href="/faq/">Zu den FAQ</a>
         </article>
-        <article class="guide-card" role="listitem" data-guide-category="ratgeber">
+        <article class="guide-card" role="listitem">
           <h3>Ratgeber</h3>
           <p>Wichtige Tipps und Hintergrundwissen für den richtigen Umgang mit Ihrem Schaden.</p>
           <a class="btn btn-primary" href="/ratgeber/">Zum Ratgeber</a>
