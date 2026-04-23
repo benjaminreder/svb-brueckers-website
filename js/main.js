@@ -1098,6 +1098,36 @@ function init130Rechner() {
   update();
 }
 
+
+function initMainGuideFilter() {
+  var filterRoot = document.querySelector('[data-main-guide-filter]');
+  if (!filterRoot) return;
+
+  var select = filterRoot.querySelector('[data-guide-filter-select]');
+  var resetButton = filterRoot.querySelector('[data-guide-filter-reset]');
+  var cards = Array.prototype.slice.call(document.querySelectorAll('[data-guide-cards] [data-guide-category]'));
+
+  if (!select || !resetButton || !cards.length) return;
+
+  function applyFilter(value) {
+    cards.forEach(function (card) {
+      var isVisible = value === 'all' || card.dataset.guideCategory === value;
+      card.hidden = !isVisible;
+    });
+  }
+
+  select.addEventListener('change', function () {
+    applyFilter(select.value);
+  });
+
+  resetButton.addEventListener('click', function () {
+    select.value = 'all';
+    applyFilter('all');
+  });
+
+  applyFilter(select.value);
+}
+
 function initPageFeatures() {
   initScrollRestorationFix();
   initConsentAndMaps();
@@ -1114,6 +1144,7 @@ function initPageFeatures() {
   initMobileStickyArticleCta();
   initProcessSlider();
   init130Rechner();
+  initMainGuideFilter();
 }
 
 if (document.readyState === 'loading') {
