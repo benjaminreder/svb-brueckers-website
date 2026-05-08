@@ -3700,6 +3700,10 @@ img {
     gap: 12px;
   }
 
+  .process-card-cta-wrap {
+    margin-bottom: 4px;
+  }
+
   .process-card-mobile-cta-lift {
     justify-content: flex-start;
     padding-bottom: 52px;
