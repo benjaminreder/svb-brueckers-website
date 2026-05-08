@@ -135,10 +135,17 @@ function initConsentAndMaps() {
     if (!mapContainer || mapContainer.dataset.mapLoaded === 'true') return;
 
     var mapIframe = document.createElement('iframe');
-    var isMobileMapView = window.matchMedia('(max-width: 768px)').matches;
-    var mapZoom = isMobileMapView ? 13 : 15;
+    var markerPosition = '48.7475466,9.2399083';
+    var mapCenter = '48.7523,9.2332';
+    var mapZoom = 12;
+    var mapUrl = new URL('https://maps.google.com/maps');
 
-    mapIframe.src = 'https://maps.google.com/maps?q=48.7475466,9.2399083&z=' + mapZoom + '&output=embed';
+    mapUrl.searchParams.set('q', markerPosition);
+    mapUrl.searchParams.set('ll', mapCenter);
+    mapUrl.searchParams.set('z', mapZoom);
+    mapUrl.searchParams.set('output', 'embed');
+
+    mapIframe.src = mapUrl.toString();
     mapIframe.loading = 'lazy';
     mapIframe.referrerPolicy = 'no-referrer-when-downgrade';
     mapIframe.allowFullscreen = true;
