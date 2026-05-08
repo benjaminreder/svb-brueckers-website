@@ -135,7 +135,10 @@ function initConsentAndMaps() {
     if (!mapContainer || mapContainer.dataset.mapLoaded === 'true') return;
 
     var mapIframe = document.createElement('iframe');
-    mapIframe.src = 'https://maps.google.com/maps?q=48.7475466,9.2399083&z=15&output=embed';
+    var isMobileMapView = window.matchMedia('(max-width: 768px)').matches;
+    var mapZoom = isMobileMapView ? 13 : 15;
+
+    mapIframe.src = 'https://maps.google.com/maps?q=48.7475466,9.2399083&z=' + mapZoom + '&output=embed';
     mapIframe.loading = 'lazy';
     mapIframe.referrerPolicy = 'no-referrer-when-downgrade';
     mapIframe.allowFullscreen = true;
