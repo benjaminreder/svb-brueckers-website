@@ -530,8 +530,8 @@ function initRatgeberBreadcrumbsAndSchemas() {
       '@context': 'https://schema.org',
       '@type': 'BreadcrumbList',
       itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Startseite', item: 'https://svb-brueckers.de/' },
-        { '@type': 'ListItem', position: 2, name: 'Ratgeber', item: 'https://svb-brueckers.de/ratgeber/' },
+        { '@type': 'ListItem', position: 1, name: 'Startseite', item: 'https://gutachter-heumaden.de/' },
+        { '@type': 'ListItem', position: 2, name: 'Ratgeber', item: 'https://gutachter-heumaden.de/ratgeber/' },
         { '@type': 'ListItem', position: 3, name: title.textContent.trim(), item: window.location.href }
       ]
     };
