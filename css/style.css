@@ -1954,6 +1954,11 @@ img {
   margin-top: 8px;
 }
 
+.footer-copy-tab {
+  display: inline-block;
+  width: clamp(1.5rem, 4vw, 3rem);
+}
+
 /* ---- Consent Banner ---- */
 .consent-banner {
   position: fixed;
